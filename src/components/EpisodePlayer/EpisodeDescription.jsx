@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class EpisodePlayer extends Component {
+export default class EpisodeDescription extends Component {
   render() {
     if (this.props.description) {
       return <div>{this.props.description}</div>;

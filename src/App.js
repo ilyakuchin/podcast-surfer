@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import EpisodePlayer from "./components/EpisodePlayer";
+import EpisodePlayer from "./components/EpisodePlayer/EpisodePlayer";
 
 function App() {
   return (
