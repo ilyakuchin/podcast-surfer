@@ -9,14 +9,14 @@ describe("test episode picture", () => {
   test("should show image ", () => {
     expect(
       shallow(
-        <EpisodePicture link="https://www.placecage.com/640/360"></EpisodePicture>
+        <EpisodePicture src="https://www.placecage.com/640/360"></EpisodePicture>
       ).contains(<img src="https://www.placecage.com/640/360"></img>)
     ).toBe(true);
   });
 
   test("should show placeholder if there is no image", () => {
     expect(
-      shallow(<EpisodePicture link=""></EpisodePicture>).contains(
+      shallow(<EpisodePicture src=""></EpisodePicture>).contains(
         <img src="https://placekitten.com/640/360"></img>
       )
     ).toBe(true);
