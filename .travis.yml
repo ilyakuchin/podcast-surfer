@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - stable
+cache:
+  directories:
+    - node_modules
+script:
+  - yarn test
+  - yarn build
+deploy:
+  provider: heroku
+  api_key:
+    secure: LCVYVnYF7f0Ntsu5nd0wmdvwiuxocXugkkpopoybHoxiMTFtL0EvqJbc8+S+g0rBB8hILRfTu62/Fi5SrNuqupZIOW4FP0Mi6nzCQP9JwIaDoawwcYUUnobdLrIYPvzPuQdV/VgjzupLbbSNjWfGrSHlLbRGWvcYhnwMFghLJ7NpK6p1nfYtuMOEX891aGAz+WuhaqIMGUyQalBHoIqgBeRd5fBC1tJocm/gKlaRCfPbm2GiNgNwwJyN4edR3iVce+6tlRAE3HvsUsPxLcd4DvCa/VchgC7bihQoSJRjwZvfOKS33Dtg1KHixrxYIk6itDntVgaaHKKZfINPe6e354aLqwYv0br2Ce37X4VjZEhE1XtQIg1f3Lhg5tKw6vcfCvfyfOqq8xCpaPctu6EEqu3Qim2m4gTKJl6EADvOs9Rc4wwR8GMP+qlym3+/lcsX9IP47cyGJXhvB/TqCynEWCDmRokqe5Ocx7B85LTzWy7QN8ZVqqwrrpap1+crMIiUvVYSVU3a7wI+6GQ9JXl0dfJeFdsfIa+mWvniH0TN75DktLMbUpLbfNQyCJrJhmVBURcNpKoGniKeXNX8nvpyWujvMGXwjYbyIjmMYIgGAZ8q6Fm2hQ6+bg0NZre69nLhSBCrhEKSWqoMgDYSCL7mwvwSwS3/Gw1HkuSv9vsE0G8=
+  app:
+    master: podcast-web-app
+    dev: podcast-web-app-dev
