@@ -2,10 +2,10 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure } from "enzyme";
 import EpisodePlayer from "./EpisodePlayer";
-import EpisodeDescription from "./EpisodeDescription";
-import EpisodeTitle from "./EpisodeTitle";
-import EpisodePicture from "./EpisodePicture";
-import EpisodeAudio from "./EpisodeAudio";
+import EpisodeDescription from "./EpisodeDescription/EpisodeDescription";
+import EpisodeTitle from "./EpisodeTitle/EpisodeTitle";
+import EpisodePicture from "./EpisodePicture/EpisodePicture";
+import EpisodeAudio from "./EpisodeAudio/EpisodeAudio";
 
 configure({ adapter: new Adapter() });
 

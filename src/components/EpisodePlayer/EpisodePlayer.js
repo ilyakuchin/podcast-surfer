@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import EpisodeDescription from "./EpisodeDescription";
-import EpisodeTitle from "./EpisodeTitle";
-import EpisodePicture from "./EpisodePicture";
-import EpisodeAudio from "./EpisodeAudio";
+import EpisodeDescription from "./EpisodeDescription/EpisodeDescription";
+import EpisodeTitle from "./EpisodeTitle/EpisodeTitle";
+import EpisodePicture from "./EpisodePicture/EpisodePicture";
+import EpisodeAudio from "./EpisodeAudio/EpisodeAudio";
 
 export default class EpisodePlayer extends Component {
   render() {
