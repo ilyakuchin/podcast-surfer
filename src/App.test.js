@@ -1,9 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import Adapter from "enzyme-adapter-react-16";
+import { shallow, configure } from "enzyme";
+import EpisodePlayer from "./components/EpisodePlayer/EpisodePlayer";
+import getFunction from "./api/GetPodcast";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+configure({ adapter: new Adapter() });
+
+describe("Test App component", () => {
+  test("Should render properly", () => {
+    expect(
+      shallow(<App />).contains(
+        <div className="App">
+          <EpisodePlayer episodeInfo={getFunction()}></EpisodePlayer>
+        </div>
+      )
+    ).toBe(true);
+  });
 });
