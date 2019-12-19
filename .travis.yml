@@ -10,7 +10,7 @@ script:
 branches:
   only:
     - master
-    - stable
+    - dev
 deploy:
   provider: heroku
   api_key:
