@@ -7,6 +7,10 @@ cache:
 script:
   - yarn test
   - yarn build
+branches:
+  only:
+    - master
+    - stable
 deploy:
   provider: heroku
   api_key:
