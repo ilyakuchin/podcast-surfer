@@ -14,17 +14,19 @@ describe("Episode player", () => {
     expect(
       shallow(
         <EpisodePlayer
-          pictureSrc=""
-          title=""
-          description=""
-          audioSrc=""
+          episodeInfo={{
+            pictureSrc: "test",
+            title: "test",
+            description: "test",
+            audioSrc: "test"
+          }}
         ></EpisodePlayer>
       ).contains(
         <div>
-          <EpisodePicture src=""></EpisodePicture>
-          <EpisodeTitle title=""></EpisodeTitle>
-          <EpisodeDescription description=""></EpisodeDescription>
-          <EpisodeAudio src=""></EpisodeAudio>
+          <EpisodePicture src="test"></EpisodePicture>
+          <EpisodeTitle title="test"></EpisodeTitle>
+          <EpisodeDescription description="test"></EpisodeDescription>
+          <EpisodeAudio src="test"></EpisodeAudio>
         </div>
       )
     ).toBe(true);

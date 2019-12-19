@@ -1,15 +1,9 @@
-import React from "react";
-import "./App.css";
-import EpisodePlayer from "../EpisodePlayer/EpisodePlayer";
-
-function App() {
-  return (
-    <div className="App">
-      <EpisodePlayer
-        pictureSrc="http://i1.sndcdn.com/avatars-000317750782-4p9exx-original.jpg"
-        title="#117 Садись за стол, Братишка!"
-        description="Вступление (0:35)
-        Ищем евангелистов (16:33)
+export default function getPodcast() {
+  return {
+    pictureSrc: "http://i1.sndcdn.com/avatars-000317750782-4p9exx-original.jpg",
+    title: "#117 Садись за стол, Братишка!",
+    description: `Вступление (0:35) 
+        Ищем евангелистов (16:33) 
         Удаление интервью (21:23)
         ​​Google отказался от обучения нейросетей на бездомных темнокожих (25:04)
         Твиттер временно приостановил планы по удалению неактивных аккаунтов (28:10)
@@ -31,11 +25,7 @@ function App() {
         Официальный сайт RxJS https://rxjs-dev.firebaseapp.com/
         Полезные демки с RxJS https://www.learnrxjs.io/
         Магазин с оборудованием https://www.musik-produktiv.com/
-        Производство мебели https://www.instagram.com/levinart.spb/"
-        audioSrc="http://feeds.soundcloud.com/stream/721823038-frontend_u-e117.m4a"
-      ></EpisodePlayer>
-    </div>
-  );
+        Производство мебели https://www.instagram.com/levinart.spb/`,
+    audioSrc: "http://feeds.soundcloud.com/stream/721823038-frontend_u-e117.m4a"
+  };
 }
-
-export default App;
