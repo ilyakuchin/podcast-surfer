@@ -8,6 +8,15 @@ export default class Podcast extends Component {
         <div>{this.state.name}</div>
         <div>{this.state.description}</div>
         <div>{this.state.image}</div>
+        <ul>
+          {this.state.episodes.map(item => (
+            <li key={item.id}>
+              <div>{item.name}</div>
+              <div>{item.description}</div>
+              <div>{item.image}</div>
+            </li>
+          ))}
+        </ul>
       </div>
     ) : null;
   }

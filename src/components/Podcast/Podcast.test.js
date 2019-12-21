@@ -13,9 +13,24 @@ describe("Pocast component tests", () => {
       description: "pocastDescription",
       image: "link",
       episodes: [
-        { name: "episode1", description: "description1", image: "image1" },
-        { name: "episode2", description: "description2", image: "image2" },
-        { name: "episode2", description: "description2", image: "image2" }
+        {
+          id: 1,
+          name: "episode1",
+          description: "description1",
+          image: "image1"
+        },
+        {
+          id: 2,
+          name: "episode2",
+          description: "description2",
+          image: "image2"
+        },
+        {
+          id: 3,
+          name: "episode2",
+          description: "description2",
+          image: "image2"
+        }
       ]
     });
     expect(
@@ -25,6 +40,15 @@ describe("Pocast component tests", () => {
             <div>{wrap.state("name")}</div>
             <div>{wrap.state("description")}</div>
             <div>{wrap.state("image")}</div>
+            <ul>
+              {wrap.state("episodes").map(item => (
+                <li key={item.id}>
+                  <div>{item.name}</div>
+                  <div>{item.description}</div>
+                  <div>{item.image}</div>
+                </li>
+              ))}
+            </ul>
           </div>
         ) : null
       )
