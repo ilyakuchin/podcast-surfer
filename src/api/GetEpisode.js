@@ -1,4 +1,4 @@
-export default function getPodcast() {
+export default function getEpisode() {
   return {
     pictureSrc: "http://i1.sndcdn.com/avatars-000317750782-4p9exx-original.jpg",
     title: "#117 Садись за стол, Братишка!",
