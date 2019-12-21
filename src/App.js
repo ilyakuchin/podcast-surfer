@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import EpisodePlayer from "./components/EpisodePlayer/EpisodePlayer";
-import getEpisode from "./api/GetEpisode";
+import Podcast from "./components/Podcast/Podcast";
 
 export default class App extends Component {
   constructor(props) {
@@ -14,14 +13,8 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.episodeInfo ? (
-          <EpisodePlayer episodeInfo={this.state.episodeInfo}></EpisodePlayer>
-        ) : null}
+        <Podcast></Podcast>
       </div>
     );
-  }
-
-  componentDidMount() {
-    this.setState({ episodeInfo: getEpisode() });
   }
 }
