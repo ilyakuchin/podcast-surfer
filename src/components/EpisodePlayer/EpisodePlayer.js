@@ -8,12 +8,14 @@ export default class EpisodePlayer extends Component {
   render() {
     return (
       <div>
-        <EpisodePicture src={this.props.pictureSrc}></EpisodePicture>
-        <EpisodeTitle title={this.props.title}></EpisodeTitle>
+        <EpisodePicture
+          src={this.props.episodeInfo.pictureSrc}
+        ></EpisodePicture>
+        <EpisodeTitle title={this.props.episodeInfo.title}></EpisodeTitle>
         <EpisodeDescription
-          description={this.props.description}
+          description={this.props.episodeInfo.description}
         ></EpisodeDescription>
-        <EpisodeAudio src={this.props.audioSrc}></EpisodeAudio>
+        <EpisodeAudio src={this.props.episodeInfo.audioSrc}></EpisodeAudio>
       </div>
     );
   }
