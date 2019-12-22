@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import getPodcast from "../../api/GetPodcast";
+import { Link } from "react-router-dom";
 
 export default class Podcast extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class Podcast extends Component {
         <ul>
           {this.state.episodes.map(item => (
             <li key={item.id}>
-              <div>{item.name}</div>
+              <Link to="/episode-player">{item.name}</Link>
               <div>{item.description}</div>
               <div>{item.image}</div>
             </li>

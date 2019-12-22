@@ -3,20 +3,21 @@ import EpisodeDescription from "./EpisodeDescription/EpisodeDescription";
 import EpisodeTitle from "./EpisodeTitle/EpisodeTitle";
 import EpisodePicture from "./EpisodePicture/EpisodePicture";
 import EpisodeAudio from "./EpisodeAudio/EpisodeAudio";
+import getEpisode from "../../api/GetEpisode";
 
 export default class EpisodePlayer extends Component {
   render() {
-    return (
+    return this.state ? (
       <div>
-        <EpisodePicture
-          src={this.props.episodeInfo.pictureSrc}
-        ></EpisodePicture>
-        <EpisodeTitle title={this.props.episodeInfo.title}></EpisodeTitle>
-        <EpisodeDescription
-          description={this.props.episodeInfo.description}
-        ></EpisodeDescription>
-        <EpisodeAudio src={this.props.episodeInfo.audioSrc}></EpisodeAudio>
+        <EpisodePicture src={this.state.pictureSrc} />
+        <EpisodeTitle title={this.state.title} />
+        <EpisodeDescription description={this.state.description} />
+        <EpisodeAudio src={this.state.audioSrc} />
       </div>
-    );
+    ) : null;
+  }
+
+  componentDidMount() {
+    this.setState({ ...getEpisode() });
   }
 }

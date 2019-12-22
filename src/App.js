@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import Podcast from "./components/Podcast/Podcast";
+import EpisodePlayer from "./components/EpisodePlayer/EpisodePlayer";
+import { Switch, Route } from "react-router-dom";
 
 export default class App extends Component {
   constructor(props) {
@@ -12,9 +14,12 @@ export default class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <Podcast></Podcast>
-      </div>
+      <main>
+        <Switch>
+          <Route path="/" component={Podcast} exact />
+          <Route path="/episode-player" component={EpisodePlayer} />
+        </Switch>
+      </main>
     );
   }
 }

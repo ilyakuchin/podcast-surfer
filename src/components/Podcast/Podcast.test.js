@@ -2,6 +2,7 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure } from "enzyme";
 import Podcast from "./Podcast";
+import { Link } from "react-router-dom";
 
 configure({ adapter: new Adapter() });
 
@@ -43,7 +44,7 @@ describe("Pocast component tests", () => {
             <ul>
               {wrap.state("episodes").map(item => (
                 <li key={item.id}>
-                  <div>{item.name}</div>
+                  <Link to="/episode-player">{item.name}</Link>
                   <div>{item.description}</div>
                   <div>{item.image}</div>
                 </li>
