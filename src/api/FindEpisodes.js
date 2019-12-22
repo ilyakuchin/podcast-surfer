@@ -1,7 +1,7 @@
 export default function() {
   return [
-    { name: "name1", description: "description1", image: "link1" },
-    { name: "name2", description: "description2", image: "link2" },
-    { name: "name3", description: "description3", image: "link3" }
+    { id: 1, name: "name1", description: "description1", image: "link1" },
+    { id: 2, name: "name2", description: "description2", image: "link2" },
+    { id: 3, name: "name3", description: "description3", image: "link3" }
   ];
 }
