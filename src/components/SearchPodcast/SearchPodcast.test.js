@@ -3,11 +3,13 @@ import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure } from "enzyme";
 import SearchPodcast from "./SearchPodcast";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 configure({ adapter: new Adapter() });
 
 describe("SearchPodcast component test", () => {
-  test("should rende properly", () => {
+  test("should render properly", () => {
     const wrap = shallow(<SearchPodcast />);
     wrap.setState({
       episodes: [
@@ -20,6 +22,12 @@ describe("SearchPodcast component test", () => {
       wrap.contains(
         wrap.state ? (
           <div>
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search" />
+              <button type="submit">
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            </form>
             <ul>
               {wrap.state("podcasts").map(item => (
                 <li key={item.id}>
