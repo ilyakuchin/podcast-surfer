@@ -11,22 +11,20 @@ configure({ adapter: new Adapter() });
 
 describe("Episode player", () => {
   test("should return picture, title, description and audio (order sensitive)", () => {
+    const wrap = shallow(<EpisodePlayer />);
+    wrap.setState({
+      pictureSrc: "test",
+      title: "test",
+      description: "test",
+      audioSrc: "test"
+    });
     expect(
-      shallow(
-        <EpisodePlayer
-          episodeInfo={{
-            pictureSrc: "test",
-            title: "test",
-            description: "test",
-            audioSrc: "test"
-          }}
-        ></EpisodePlayer>
-      ).contains(
+      wrap.contains(
         <div>
-          <EpisodePicture src="test"></EpisodePicture>
-          <EpisodeTitle title="test"></EpisodeTitle>
-          <EpisodeDescription description="test"></EpisodeDescription>
-          <EpisodeAudio src="test"></EpisodeAudio>
+          <EpisodePicture src={wrap.state("pictureSrc")} />
+          <EpisodeTitle title={wrap.state("title")} />
+          <EpisodeDescription description={wrap.state("description")} />
+          <EpisodeAudio src={wrap.state("audioSrc")} />
         </div>
       )
     ).toBe(true);
