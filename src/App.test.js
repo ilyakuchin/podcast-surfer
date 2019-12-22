@@ -5,6 +5,7 @@ import { shallow, configure } from "enzyme";
 import Podcast from "./components/Podcast/Podcast";
 import { Switch, Route } from "react-router-dom";
 import EpisodePlayer from "./components/EpisodePlayer/EpisodePlayer";
+import SearchPodcast from "./components/SearchPodcast/SearchPodcast";
 
 configure({ adapter: new Adapter() });
 
@@ -14,7 +15,8 @@ describe("Test App component", () => {
       shallow(<App />).contains(
         <main>
           <Switch>
-            <Route path="/" component={Podcast} exact />
+            <Route path="/" component={SearchPodcast} exact />
+            <Route path="/podcast" component={Podcast} />
             <Route path="/episode-player" component={EpisodePlayer} />
           </Switch>
         </main>
