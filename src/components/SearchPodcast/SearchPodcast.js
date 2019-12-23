@@ -5,15 +5,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default class SearchPodcast extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      podcasts: []
+    };
+  }
   render() {
-    return this.state ? (
+    return (
       <div>
-        <form action="/action_page.php">
-          <input type="text" placeholder="Search.." name="search" />
-          <button type="submit">
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </form>
+        <input type="text" placeholder="Search.." name="search" />
+        <button
+          onClick={() => {
+            this.setState({
+              podcasts: findEpisodes()
+            });
+          }}
+        >
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
+
         <ul>
           {this.state.podcasts.map(item => (
             <li key={item.id}>
@@ -24,10 +36,6 @@ export default class SearchPodcast extends Component {
           ))}
         </ul>
       </div>
-    ) : null;
-  }
-
-  componentDidMount() {
-    this.setState({ podcasts: findEpisodes() });
+    );
   }
 }
