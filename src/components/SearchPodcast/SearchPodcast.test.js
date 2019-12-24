@@ -5,7 +5,6 @@ import SearchPodcast from "./SearchPodcast";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import findEpisodes from "../../api/FindEpisodes";
 
 configure({ adapter: new Adapter() });
 
