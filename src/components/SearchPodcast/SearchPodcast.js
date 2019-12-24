@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import findEpisodes from "../../api/FindEpisodes";
+import findPodcasts from "../../api/FindPodcasts";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -19,7 +19,7 @@ export default class SearchPodcast extends Component {
         <button
           onClick={() => {
             this.setState({
-              podcasts: findEpisodes()
+              podcasts: findPodcasts()
             });
           }}
         >

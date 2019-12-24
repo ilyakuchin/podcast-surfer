@@ -1,4 +1,4 @@
-export default function() {
+export default function findPodcasts() {
   return [
     { id: 1, name: "name1", description: "description1", image: "link1" },
     { id: 2, name: "name2", description: "description2", image: "link2" },
