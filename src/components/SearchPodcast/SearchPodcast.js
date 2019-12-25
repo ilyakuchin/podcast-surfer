@@ -9,33 +9,50 @@ export default class SearchPodcast extends Component {
     super(props);
 
     this.state = {
-      podcasts: []
+      podcasts: [],
+      searchPhrase: ""
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
   render() {
     return (
       <div>
-        <input type="text" placeholder="Search.." name="search" />
-        <button
-          onClick={() => {
-            this.setState({
-              podcasts: findPodcasts()
-            });
-          }}
-        >
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
+        <form>
+          <input
+            type="text"
+            placeholder="Search.."
+            name="search"
+            onChange={this.handleChange}
+          />
+          <button
+            type="submit"
+            onClick={e => {
+              e.preventDefault();
+
+              findPodcasts(this.state.searchPhrase).then(res =>
+                this.setState({ podcasts: res })
+              );
+            }}
+          >
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+        </form>
 
         <ul>
           {this.state.podcasts.map(item => (
             <li key={item.id}>
               <Link to="/podcast">{item.name}</Link>
               <div>{item.description}</div>
-              <div>{item.image}</div>
+              <img src={item.image} alt="podcast cover" />
             </li>
           ))}
         </ul>
       </div>
     );
+  }
+
+  handleChange(e) {
+    this.setState({ searchPhrase: e.target.value });
   }
 }

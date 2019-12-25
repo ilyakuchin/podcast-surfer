@@ -12,10 +12,12 @@ describe("SearchPodcast component test", () => {
   test("should render properly", () => {
     const expectedNode = shallow(
       <div>
-        <input type="text" placeholder="Search.." name="search" />
-        <button>
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
+        <form>
+          <input type="text" placeholder="Search.." name="search" />
+          <button type="submit">
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+        </form>
         <ul></ul>
       </div>
     );
