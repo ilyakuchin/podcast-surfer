@@ -43,7 +43,6 @@ export default class SearchPodcast extends Component {
           {this.state.podcasts.map(item => (
             <li key={item.id}>
               <Link to="/podcast">{item.name}</Link>
-              <div>{item.description}</div>
               <img src={item.image} alt="podcast cover" />
             </li>
           ))}

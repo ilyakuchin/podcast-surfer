@@ -11,7 +11,6 @@ export default function findPodcasts(searchPhrase) {
         podcastsInfo.push({
           id: response.data.results[i].collectionId,
           name: response.data.results[i].collectionName,
-          description: response.data.results[i].collectionName,
           image: response.data.results[i].artworkUrl600
         });
       }
