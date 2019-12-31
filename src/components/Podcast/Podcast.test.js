@@ -2,14 +2,13 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure } from "enzyme";
 import Podcast from "./Podcast";
-import { Link } from "react-router-dom";
 
 configure({ adapter: new Adapter() });
 
 describe("Pocast component tests", () => {
   test("should render properly", () => {
-    const wrap = shallow(<Podcast></Podcast>);
-    wrap.setState({
+    const actual = shallow(<Podcast></Podcast>);
+    actual.setState({
       name: "podcastName",
       description: "pocastDescription",
       image: "link",
@@ -28,31 +27,53 @@ describe("Pocast component tests", () => {
         },
         {
           id: 3,
-          name: "episode2",
-          description: "description2",
-          image: "image2"
+          name: "episode3",
+          description: "description3",
+          image: "image3"
         }
       ]
     });
-    expect(
-      wrap.contains(
-        wrap.state ? (
-          <div>
-            <div>{wrap.state("name")}</div>
-            <div>{wrap.state("description")}</div>
-            <div>{wrap.state("image")}</div>
-            <ul>
-              {wrap.state("episodes").map(item => (
-                <li key={item.id}>
-                  <Link to="/episode-player">{item.name}</Link>
-                  <div>{item.description}</div>
-                  <div>{item.image}</div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null
-      )
-    ).toBe(true);
+
+    const expected = shallow(
+      <div>
+        <div>podcastName</div>
+        <div>pocastDescription</div>
+        <img width="200" height="200" src="link" alt="pocast cover"></img>
+        <ul>
+          <li key="1">
+            <a href="/episode-player">episode1</a>
+            <div>description1</div>
+            <img
+              width="200"
+              height="200"
+              src="image1"
+              alt="episode cover"
+            ></img>
+          </li>
+          <li key="2">
+            <a href="/episode-player">episode2</a>
+            <div>description2</div>
+            <img
+              width="200"
+              height="200"
+              src="image2"
+              alt="episode cover"
+            ></img>
+          </li>
+          <li key="3">
+            <a href="/episode-player">episode3</a>
+            <div>description3</div>
+            <img
+              width="200"
+              height="200"
+              src="image3"
+              alt="episode cover"
+            ></img>
+          </li>
+        </ul>
+      </div>
+    );
+
+    expect(actual.html()).toEqual(expected.html());
   });
 });
