@@ -18,19 +18,19 @@ export default class Podcast extends Component {
           width="200"
           height="200"
           src={this.state.image}
-          alt="pocast cover"
-        ></img>
+          alt="podcast cover"
+        />
         <ul>
           {this.state.episodes.map(item => (
             <li key={item.id}>
-              <a href="/episode-player">{item.name}</a>
+              <Link to="/episode-player">{item.name}</Link>
               <div>{item.description}</div>
               <img
                 width="200"
                 height="200"
                 src={item.image}
                 alt="episode cover"
-              ></img>
+              />
             </li>
           ))}
         </ul>
