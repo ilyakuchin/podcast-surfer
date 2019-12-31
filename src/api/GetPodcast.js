@@ -45,19 +45,17 @@ function getEpisodes(xmlDoc) {
   });
 }
 
-export default function getPodcast() {
-  return axios
-    .get("http://joeroganexp.joerogan.libsynpro.com/rss")
-    .then(res => {
-      let parser = new DOMParser();
-      let xmlDoc = parser.parseFromString(res.data, "text/html");
-      getEpisodes(xmlDoc);
+export default function getPodcast(url) {
+  return axios.get(url).then(res => {
+    let parser = new DOMParser();
+    let xmlDoc = parser.parseFromString(res.data, "text/html");
+    getEpisodes(xmlDoc);
 
-      return {
-        name: getName(xmlDoc),
-        description: getDescription(xmlDoc),
-        image: getImage(xmlDoc),
-        episodes: getEpisodes(xmlDoc)
-      };
-    });
+    return {
+      name: getName(xmlDoc),
+      description: getDescription(xmlDoc),
+      image: getImage(xmlDoc),
+      episodes: getEpisodes(xmlDoc)
+    };
+  });
 }

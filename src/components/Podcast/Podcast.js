@@ -23,7 +23,13 @@ export default class Podcast extends Component {
         <ul>
           {this.state.episodes.map(item => (
             <li key={item.id}>
-              <Link to="/episode-player">{item.name}</Link>
+              <Link
+                to={{
+                  pathname: "/episode-player"
+                }}
+              >
+                {item.name}
+              </Link>
               <div>{item.description}</div>
               <img
                 width="200"
@@ -39,6 +45,7 @@ export default class Podcast extends Component {
   }
 
   componentDidMount() {
-    this.getPodcast().then(res => this.setState({ ...res }));
+    const { rss } = this.props.location.state;
+    this.getPodcast(rss).then(res => this.setState({ ...res }));
   }
 }

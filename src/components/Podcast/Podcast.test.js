@@ -8,9 +8,10 @@ configure({ adapter: new Adapter() });
 
 describe("Pocast component tests", () => {
   test("should render properly", () => {
+    const location = { state: { rss: "sample text" } };
     const actual = mount(
       <BrowserRouter>
-        <Podcast></Podcast>
+        <Podcast location={location}></Podcast>
       </BrowserRouter>
     );
     actual
