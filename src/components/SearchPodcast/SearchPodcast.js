@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import findPodcasts from "../../api/FindPodcasts";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+
+const API_URL = "http://localhost:5000/podcasts?name=";
 
 export default class SearchPodcast extends Component {
   constructor(props) {
@@ -29,10 +31,9 @@ export default class SearchPodcast extends Component {
             type="submit"
             onClick={e => {
               e.preventDefault();
-
-              findPodcasts(this.state.searchPhrase).then(res =>
-                this.setState({ podcasts: res })
-              );
+              axios.get(`${API_URL}${this.state.searchPhrase}`).then(res => {
+                this.setState({ podcasts: res.data });
+              });
             }}
           >
             <FontAwesomeIcon icon={faSearch} />
