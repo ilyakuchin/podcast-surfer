@@ -24,7 +24,13 @@ export default class Podcast extends Component {
             <li key={item.id}>
               <Link
                 to={{
-                  pathname: "/episode-player"
+                  pathname: "/episode-player",
+                  state: {
+                    name: item.name,
+                    description: item.description,
+                    image: item.image,
+                    audio: item.audio
+                  }
                 }}
               >
                 {item.name}
