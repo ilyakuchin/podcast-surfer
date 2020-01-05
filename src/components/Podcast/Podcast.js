@@ -51,8 +51,10 @@ export default class Podcast extends Component {
 
   componentDidMount() {
     const { rss } = this.props.location.state;
-    axios.get(`http://localhost:5000/podcast?rss=${rss}`).then(res => {
-      this.setState({ ...res.data });
-    });
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/podcast?rss=${rss}`)
+      .then(res => {
+        this.setState({ ...res.data });
+      });
   }
 }
