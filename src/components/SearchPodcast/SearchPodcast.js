@@ -31,7 +31,7 @@ export default class SearchPodcast extends Component {
               e.preventDefault();
               axios
                 .get(
-                  `${process.env.REACT_APP_API_URL}/podcasts?name=${this.state.searchPhrase}`
+                  `https://podcast-player-api.herokuapp.com/podcasts?name=${this.state.searchPhrase}`
                 )
                 .then(res => {
                   this.setState({ podcasts: res.data });
