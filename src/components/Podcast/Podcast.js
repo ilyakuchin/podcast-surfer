@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import getPodcast from "../../api/GetPodcast";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default class Podcast extends Component {
   constructor(props) {
     super(props);
 
     this.state = { episodes: [] };
-    this.getPodcast = getPodcast.bind(this);
   }
   render() {
     return this.state ? (
@@ -46,6 +45,8 @@ export default class Podcast extends Component {
 
   componentDidMount() {
     const { rss } = this.props.location.state;
-    this.getPodcast(rss).then(res => this.setState({ ...res }));
+    axios.get(`http://localhost:5000/podcast?rss=${rss}`).then(res => {
+      this.setState({ ...res.data });
+    });
   }
 }
