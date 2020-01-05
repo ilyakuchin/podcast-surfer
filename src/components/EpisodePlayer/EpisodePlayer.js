@@ -1,23 +1,25 @@
 import React, { Component } from "react";
-import EpisodeDescription from "./EpisodeDescription/EpisodeDescription";
-import EpisodeTitle from "./EpisodeTitle/EpisodeTitle";
-import EpisodePicture from "./EpisodePicture/EpisodePicture";
-import EpisodeAudio from "./EpisodeAudio/EpisodeAudio";
-import getEpisode from "../../api/GetEpisode";
 
 export default class EpisodePlayer extends Component {
   render() {
     return this.state ? (
       <div>
-        <EpisodePicture src={this.state.pictureSrc} />
-        <EpisodeTitle title={this.state.title} />
-        <EpisodeDescription description={this.state.description} />
-        <EpisodeAudio src={this.state.audioSrc} />
+        <img width="200" height="200" src={this.state.pictureSrc} alt=""></img>
+        <div>{this.state.title}</div>
+        <div>{this.state.description}</div>
+        <audio controls>
+          <source src={this.state.audioSrc} type="audio/mp4"></source>
+        </audio>
       </div>
     ) : null;
   }
 
   componentDidMount() {
-    this.setState({ ...getEpisode() });
+    this.setState({
+      pictureSrc: this.props.location.state.image,
+      title: this.props.location.state.name,
+      description: this.props.location.state.description,
+      audioSrc: this.props.location.state.audio.url
+    });
   }
 }
