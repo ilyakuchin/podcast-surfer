@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Podcast extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { episodes: [] };
-  }
   render() {
     return this.state ? (
       <div>
@@ -46,7 +41,9 @@ export default class Podcast extends Component {
           ))}
         </ul>
       </div>
-    ) : null;
+    ) : (
+      <div>Loading</div>
+    );
   }
 
   componentDidMount() {

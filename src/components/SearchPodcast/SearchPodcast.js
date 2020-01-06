@@ -15,6 +15,7 @@ export default class SearchPodcast extends Component {
 
     this.handleChange = this.handleChange.bind(this);
   }
+
   render() {
     return (
       <div>
@@ -29,6 +30,7 @@ export default class SearchPodcast extends Component {
             type="submit"
             onClick={e => {
               e.preventDefault();
+              this.setState({ podcasts: undefined });
               axios
                 .get(
                   `https://podcast-player-api.herokuapp.com/podcasts?name=${this.state.searchPhrase}`
@@ -41,22 +43,25 @@ export default class SearchPodcast extends Component {
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>
-
-        <ul>
-          {this.state.podcasts.map(item => (
-            <li key={item.id}>
-              <Link to={{ pathname: "/podcast", state: { rss: item.rss } }}>
-                {item.name}
-              </Link>
-              <img
-                height="200"
-                width="200"
-                src={item.image}
-                alt="podcast cover"
-              />
-            </li>
-          ))}
-        </ul>
+        {this.state.podcasts ? (
+          <ul>
+            {this.state.podcasts.map(item => (
+              <li key={item.id}>
+                <Link to={{ pathname: "/podcast", state: { rss: item.rss } }}>
+                  {item.name}
+                </Link>
+                <img
+                  height="200"
+                  width="200"
+                  src={item.image}
+                  alt="podcast cover"
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div>Loading</div>
+        )}
       </div>
     );
   }

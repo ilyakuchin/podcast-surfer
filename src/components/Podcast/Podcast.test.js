@@ -48,7 +48,7 @@ describe("Pocast component tests", () => {
       <div>
         <div>podcastName</div>
         <div>pocastDescription</div>
-        <img width="200" height="200" alt="podcast cover" src="link" />
+        <img width="200" height="200" src="link" alt="podcast cover" />
         <ul>
           <li key="1">
             <a href="/episode-player">episode1</a>

@@ -11,7 +11,9 @@ export default class EpisodePlayer extends Component {
           <source src={this.state.audioSrc} type="audio/mp4"></source>
         </audio>
       </div>
-    ) : null;
+    ) : (
+      <div>Loading</div>
+    );
   }
 
   componentDidMount() {
