@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 export default class Podcast extends Component {
   render() {
@@ -42,7 +43,7 @@ export default class Podcast extends Component {
         </ul>
       </div>
     ) : (
-      <div>Loading</div>
+      <LoadingSpinner />
     );
   }
 

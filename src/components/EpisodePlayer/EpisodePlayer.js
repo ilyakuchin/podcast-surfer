@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 export default class EpisodePlayer extends Component {
   render() {
@@ -12,7 +13,7 @@ export default class EpisodePlayer extends Component {
         </audio>
       </div>
     ) : (
-      <div>Loading</div>
+      <LoadingSpinner />
     );
   }
 

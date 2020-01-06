@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 export default class SearchPodcast extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ export default class SearchPodcast extends Component {
             ))}
           </ul>
         ) : (
-          <div>Loading</div>
+          <LoadingSpinner />
         )}
       </div>
     );
