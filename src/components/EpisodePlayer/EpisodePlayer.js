@@ -1,16 +1,25 @@
 import React, { Component } from "react";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import "./EpisodePlayer.css";
 
 export default class EpisodePlayer extends Component {
   render() {
     return this.state ? (
-      <div>
-        <img width="200" height="200" src={this.state.pictureSrc} alt=""></img>
-        <div>{this.state.title}</div>
-        <div>{this.state.description}</div>
-        <audio controls>
-          <source src={this.state.audioSrc} type="audio/mp4"></source>
-        </audio>
+      <div className="container">
+        <div className="grid">
+          <img
+            className="pic"
+            width="200"
+            height="200"
+            src={this.state.pictureSrc}
+            alt=""
+          ></img>
+          <h2 className="header">{this.state.title}</h2>
+          <p className="description">{this.state.description}</p>
+          <audio className="audio" controls>
+            <source src={this.state.audioSrc} type="audio/mp4"></source>
+          </audio>
+        </div>
       </div>
     ) : (
       <LoadingSpinner />
