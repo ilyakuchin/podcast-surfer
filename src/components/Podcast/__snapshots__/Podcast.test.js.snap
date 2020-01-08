@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pocast component tests should render properly 1`] = `ReactWrapper {}`;

@@ -15,19 +15,8 @@ describe("Episode player", () => {
         audio: { type: "test", url: "test" }
       }
     };
-    const actual = shallow(<EpisodePlayer location={location} />);
+    const wrapper = shallow(<EpisodePlayer location={location} />);
 
-    const expected = shallow(
-      <div>
-        <img width="200" height="200" src="test" alt=""></img>
-        <div>test</div>
-        <div>test</div>
-        <audio controls>
-          <source src="test" type="audio/mp4"></source>
-        </audio>
-      </div>
-    );
-
-    expect(actual.html()).toEqual(expected.html());
+    expect(wrapper).toMatchSnapshot();
   });
 });
