@@ -112,7 +112,5 @@ export default class Podcast extends Component {
       .then(res => {
         this.setState({ ...res.data });
       });
-
-    window.scrollTo(0, 0);
   }
 }

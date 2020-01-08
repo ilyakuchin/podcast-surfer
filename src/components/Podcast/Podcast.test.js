@@ -9,12 +9,12 @@ configure({ adapter: new Adapter() });
 describe("Pocast component tests", () => {
   test("should render properly", () => {
     const location = { state: { rss: "sample text" } };
-    const actual = mount(
+    const wrapper = mount(
       <BrowserRouter>
         <Podcast location={location}></Podcast>
       </BrowserRouter>
     );
-    actual
+    wrapper
       .find(Podcast)
       .instance()
       .setState({
@@ -42,33 +42,8 @@ describe("Pocast component tests", () => {
           }
         ]
       });
-    actual.update();
+    wrapper.update();
 
-    const expected = mount(
-      <div>
-        <div>podcastName</div>
-        <div>pocastDescription</div>
-        <img width="200" height="200" src="link" alt="podcast cover" />
-        <ul>
-          <li key="1">
-            <a href="/episode-player">episode1</a>
-            <div>description1</div>
-            <img width="200" height="200" src="image1" alt="episode cover" />
-          </li>
-          <li key="2">
-            <a href="/episode-player">episode2</a>
-            <div>description2</div>
-            <img width="200" height="200" src="image2" alt="episode cover" />
-          </li>
-          <li key="3">
-            <a href="/episode-player">episode3</a>
-            <div>description3</div>
-            <img width="200" height="200" src="image3" alt="episode cover" />
-          </li>
-        </ul>
-      </div>
-    );
-
-    expect(actual.html()).toEqual(expected.html());
+    expect(wrapper).toMatchSnapshot();
   });
 });

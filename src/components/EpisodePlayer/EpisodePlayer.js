@@ -57,7 +57,5 @@ export default class EpisodePlayer extends Component {
       description: this.props.location.state.description,
       audioSrc: this.props.location.state.audio.url
     });
-
-    window.scrollTo(0, 0);
   }
 }
