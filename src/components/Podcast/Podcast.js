@@ -25,6 +25,9 @@ const PodcastGrid = styled.div`
 
 const PodcastImg = styled.img`
   grid-area: podcast-img;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 `;
 
 const PodcastTitle = styled.h2`
@@ -50,6 +53,9 @@ const EpisodeGrid = styled.li`
 
 const EpisodeImage = styled.img`
   grid-area: episode-image;
+  width: 200px;
+  height: 200px;
+  object-fit: scale-down;
 `;
 
 const EpisodeLink = styled.div`
@@ -62,23 +68,13 @@ export default class Podcast extends Component {
       <ComponentGrid>
         {this.state ? (
           <PodcastGrid>
-            <PodcastImg
-              width="300"
-              height="300"
-              src={this.state.image}
-              alt="podcast cover"
-            />
+            <PodcastImg src={this.state.image} alt="podcast cover" />
             <PodcastTitle>{this.state.name}</PodcastTitle>
             <PodcastDescription>{this.state.description}</PodcastDescription>
             <Episodes>
               {this.state.episodes.map(item => (
                 <EpisodeGrid key={item.id}>
-                  <EpisodeImage
-                    width="200"
-                    height="200"
-                    src={item.image}
-                    alt="episode cover"
-                  />
+                  <EpisodeImage src={item.image} alt="episode cover" />
                   <EpisodeLink>
                     <Link
                       to={{

@@ -17,6 +17,9 @@ const Grid = styled.div`
 
 const Pic = styled.img`
   grid-area: pic;
+  width: 200 px;
+  height: 200px;
+  object-fit: cover;
 `;
 
 const Header = styled.h2`
@@ -37,7 +40,7 @@ export default class EpisodePlayer extends Component {
   render() {
     return this.state ? (
       <Grid>
-        <Pic width="200" height="200" src={this.state.pictureSrc} alt="" />
+        <Pic src={this.state.pictureSrc} alt="" />
         <Header>{this.state.title}</Header>
         <Audio controls>
           <source src={this.state.audioSrc} type="audio/mp4"></source>
