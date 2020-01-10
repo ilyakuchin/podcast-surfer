@@ -3,15 +3,29 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Podcasts = styled.ul`
+  margin: 0;
+  padding: 0;
+  margin-top: 50px;
+  grid-area: results;
   list-style-type: none;
 `;
 
 const PodcastGrid = styled.li`
+  margin-top: 50px;
+  justify-items: center;
+  align-items: center;
+  max-width: 700px;
   display: grid;
   grid-template-areas: "podcast-image podcast-link";
   justify-items: center;
   align-items: center;
   grid-template-columns: 200px auto;
+
+  @media (max-width: 600px) {
+    grid-template-areas:
+      "podcast-image"
+      "podcast-link";
+  }
 `;
 
 const PodcastImage = styled.img`
@@ -23,6 +37,10 @@ const PodcastImage = styled.img`
 
 const PodcastLink = styled.div`
   grid-area: podcast-link;
+
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 `;
 
 export default class SearchResults extends Component {

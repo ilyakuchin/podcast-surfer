@@ -4,20 +4,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
+const Search = styled.form`
+  margin-top: 30px;
+  grid-area: search;
+  display: grid;
+  max-width: 700px;
+  align-self: center;
+  justify-self: center;
+  grid-template-columns: 10fr 1fr;
+  grid-template-areas: "input button";
+`;
+
 const SearchInput = styled.input`
-  width: 75%;
+  grid-area: input;
   font-size: 18px;
 `;
 
 const SearchButton = styled.button`
-  width: 25%;
+  grid-area: button;
   font-size: 18px;
 `;
 
 export default class SearchForm extends Component {
   render() {
     return (
-      <form>
+      <Search>
         <SearchInput
           type="text"
           placeholder="Search podcast.."
@@ -40,7 +51,7 @@ export default class SearchForm extends Component {
         >
           <FontAwesomeIcon icon={faSearch} />
         </SearchButton>
-      </form>
+      </Search>
     );
   }
 }
