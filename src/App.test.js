@@ -5,8 +5,8 @@ import { shallow, configure } from "enzyme";
 
 configure({ adapter: new Adapter() });
 
-describe("Test App component", () => {
-  test("Should render properly", () => {
+describe("Test App Component", () => {
+  test("Should Render Correctly", () => {
     expect(shallow(<App />)).toMatchSnapshot();
   });
 });

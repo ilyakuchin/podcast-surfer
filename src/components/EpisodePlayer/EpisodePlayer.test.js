@@ -5,8 +5,8 @@ import EpisodePlayer from "./EpisodePlayer";
 
 configure({ adapter: new Adapter() });
 
-describe("Episode player", () => {
-  test("should return picture, title, description and audio (order sensitive)", () => {
+describe("Test EpisodePlayer component", () => {
+  test("should render correctly", () => {
     const location = {
       state: {
         image: "test",
