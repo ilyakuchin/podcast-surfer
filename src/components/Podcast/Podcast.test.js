@@ -6,9 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 
 configure({ adapter: new Adapter() });
 
-describe("Pocast component tests", () => {
-  test("should render properly", () => {
-    const location = { state: { rss: "sample text" } };
+describe("Test Podcast Component", () => {
+  test("should render correctly", () => {
+    const location = { state: { rss: "link" } };
     const wrapper = mount(
       <BrowserRouter>
         <Podcast location={location}></Podcast>
@@ -19,7 +19,7 @@ describe("Pocast component tests", () => {
       .instance()
       .setState({
         name: "podcastName",
-        description: "pocastDescription",
+        description: "podcastDescription",
         image: "link",
         episodes: [
           {

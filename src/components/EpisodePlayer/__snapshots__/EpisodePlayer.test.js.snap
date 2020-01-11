@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Episode player should return picture, title, description and audio (order sensitive) 1`] = `ShallowWrapper {}`;
+exports[`Test EpisodePlayer component should render correctly 1`] = `ShallowWrapper {}`;
