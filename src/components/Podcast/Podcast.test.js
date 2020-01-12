@@ -3,6 +3,7 @@ import Adapter from "enzyme-adapter-react-16";
 import { mount, configure } from "enzyme";
 import Podcast from "./Podcast";
 import { BrowserRouter } from "react-router-dom";
+import toJson from "enzyme-to-json";
 
 configure({ adapter: new Adapter() });
 
@@ -44,6 +45,6 @@ describe("Test Podcast Component", () => {
       });
     wrapper.update();
 
-    expect(wrapper).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

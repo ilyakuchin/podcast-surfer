@@ -2,6 +2,7 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure } from "enzyme";
 import SearchResults from "./SearchResults";
+import toJson from "enzyme-to-json";
 
 configure({ adapter: new Adapter() });
 
@@ -15,6 +16,6 @@ describe("Test SearchResults Component", () => {
 
     const wrapper = shallow(<SearchResults podcasts={podcasts} />);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

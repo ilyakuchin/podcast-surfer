@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Episode Component should render correctly 1`] = `ShallowWrapper {}`;
+exports[`Test Episode Component should render correctly 1`] = `
+<styled.li>
+  <styled.img
+    alt="episode cover"
+  />
+  <styled.div>
+    <Link
+      to={
+        Object {
+          "pathname": "/episode-player",
+          "state": Object {
+            "audio": undefined,
+            "description": undefined,
+            "image": undefined,
+            "name": undefined,
+          },
+        }
+      }
+    />
+  </styled.div>
+</styled.li>
+`;

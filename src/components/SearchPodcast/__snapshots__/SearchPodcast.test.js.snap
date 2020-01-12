@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test SearchPodcast Component should render correctly 1`] = `ShallowWrapper {}`;
+exports[`Test SearchPodcast Component should render correctly 1`] = `
+<styled.div>
+  <SearchForm
+    clearPodcastResults={[Function]}
+    handleChange={[Function]}
+    searchPhrase=""
+    updatePodcastResults={[Function]}
+  />
+  <SearchResults
+    podcasts={Array []}
+  />
+</styled.div>
+`;
