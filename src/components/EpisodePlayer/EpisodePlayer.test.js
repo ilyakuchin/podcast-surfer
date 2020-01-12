@@ -2,6 +2,7 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure } from "enzyme";
 import EpisodePlayer from "./EpisodePlayer";
+import toJson from "enzyme-to-json";
 
 configure({ adapter: new Adapter() });
 
@@ -17,6 +18,6 @@ describe("Test EpisodePlayer component", () => {
     };
     const wrapper = shallow(<EpisodePlayer location={location} />);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

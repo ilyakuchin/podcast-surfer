@@ -2,6 +2,7 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure } from "enzyme";
 import EpisodesList from "./EpisodesList";
+import toJson from "enzyme-to-json";
 
 configure({ adapter: new Adapter() });
 
@@ -30,6 +31,8 @@ describe("Test EpisodesList Component", () => {
         audio: "audio3"
       }
     ];
-    expect(shallow(<EpisodesList episodes={episodes} />)).toMatchSnapshot();
+    expect(
+      toJson(shallow(<EpisodesList episodes={episodes} />))
+    ).toMatchSnapshot();
   });
 });
