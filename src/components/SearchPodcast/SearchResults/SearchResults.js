@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -43,21 +43,19 @@ const PodcastLink = styled.div`
   }
 `;
 
-export default class SearchResults extends Component {
-  render() {
-    return (
-      <Podcasts>
-        {this.props.podcasts.map(item => (
-          <PodcastGrid key={item.id}>
-            <PodcastImage src={item.image} alt="podcast cover" />
-            <PodcastLink>
-              <Link to={{ pathname: "/podcast", state: { rss: item.rss } }}>
-                {item.name}
-              </Link>
-            </PodcastLink>
-          </PodcastGrid>
-        ))}
-      </Podcasts>
-    );
-  }
+export default function SearchResults(props) {
+  return (
+    <Podcasts>
+      {props.podcasts.map(item => (
+        <PodcastGrid key={item.id}>
+          <PodcastImage src={item.image} alt="podcast cover" />
+          <PodcastLink>
+            <Link to={{ pathname: "/podcast", state: { rss: item.rss } }}>
+              {item.name}
+            </Link>
+          </PodcastLink>
+        </PodcastGrid>
+      ))}
+    </Podcasts>
+  );
 }

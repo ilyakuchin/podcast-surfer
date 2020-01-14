@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import styled from "styled-components";
 import SearchForm from "./SearchForm/SearchForm";
@@ -23,49 +23,37 @@ const CenterSpinner = styled.div`
   align-items: center;
 `;
 
-export default class SearchPodcast extends Component {
-  constructor(props) {
-    super(props);
+export default function SearchPodcast() {
+  const [searchPhrase, setSearchPhrase] = useState("");
+  const [podcasts, setPodcasts] = useState([]);
 
-    this.state = {
-      podcasts: [],
-      searchPhrase: ""
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.updatePodcastResults = this.updatePodcastResults.bind(this);
-    this.clearPodcastResults = this.clearPodcastResults.bind(this);
+  function handleSearchPhraseChange(e) {
+    setSearchPhrase(e.target.value);
   }
 
-  render() {
-    return (
-      <ComponentGrid>
-        <SearchForm
-          searchPhrase={this.state.searchPhrase}
-          handleChange={this.handleChange}
-          updatePodcastResults={this.updatePodcastResults}
-          clearPodcastResults={this.clearPodcastResults}
-        />
-        {this.state.podcasts ? (
-          <SearchResults podcasts={this.state.podcasts} />
-        ) : (
-          <CenterSpinner>
-            <LoadingSpinner />
-          </CenterSpinner>
-        )}
-      </ComponentGrid>
-    );
+  function updatePodcastResults(podcasts) {
+    setPodcasts(podcasts);
   }
 
-  handleChange(e) {
-    this.setState({ searchPhrase: e.target.value });
+  function clearPodcastResults() {
+    setPodcasts(null);
   }
 
-  updatePodcastResults(podcasts) {
-    this.setState({ podcasts: podcasts });
-  }
-
-  clearPodcastResults(podcasts) {
-    this.setState({ podcasts: null });
-  }
+  return (
+    <ComponentGrid>
+      <SearchForm
+        searchPhrase={searchPhrase}
+        handleChange={handleSearchPhraseChange}
+        updatePodcastResults={updatePodcastResults}
+        clearPodcastResults={clearPodcastResults}
+      />
+      {podcasts ? (
+        <SearchResults podcasts={podcasts} />
+      ) : (
+        <CenterSpinner>
+          <LoadingSpinner />
+        </CenterSpinner>
+      )}
+    </ComponentGrid>
+  );
 }
