@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -25,33 +25,30 @@ const SearchButton = styled.button`
   font-size: 18px;
 `;
 
-export default class SearchForm extends Component {
-  render() {
-    return (
-      <Search>
-        <SearchInput
-          type="text"
-          placeholder="Search podcast.."
-          name="search"
-          onChange={this.props.handleChange}
-        />
-        <SearchButton
-          type="submit"
-          onClick={e => {
-            e.preventDefault();
-            this.props.clearPodcastResults();
-            axios
-              .get(
-                `https://podcast-player-api.herokuapp.com/podcasts?name=${this.props.searchPhrase}`
-              )
-              .then(res => {
-                this.props.updatePodcastResults(res.data);
-              });
-          }}
-        >
-          <FontAwesomeIcon icon={faSearch} />
-        </SearchButton>
-      </Search>
-    );
+export default function SearchForm(props) {
+  function getPodcastList(e) {
+    e.preventDefault();
+    props.clearPodcastResults();
+    axios
+      .get(
+        `https://podcast-player-api.herokuapp.com/podcasts?name=${props.searchPhrase}`
+      )
+      .then(res => {
+        props.updatePodcastResults(res.data);
+      });
   }
+
+  return (
+    <Search>
+      <SearchInput
+        type="text"
+        placeholder="Search podcast.."
+        name="search"
+        onChange={props.handleChange}
+      />
+      <SearchButton type="submit" onClick={getPodcastList}>
+        <FontAwesomeIcon icon={faSearch} />
+      </SearchButton>
+    </Search>
+  );
 }
