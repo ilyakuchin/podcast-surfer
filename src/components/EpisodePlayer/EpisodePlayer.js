@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import React from "react";
 import styled from "styled-components";
 
 const Grid = styled.div`
@@ -63,29 +62,16 @@ const Description = styled.div`
   white-space: pre-line;
 `;
 
-export default class EpisodePlayer extends Component {
-  render() {
-    return this.state ? (
-      <Grid>
-        <Pic src={this.state.pictureSrc} alt="" />
-        <Header>{this.state.title}</Header>
-        <Audio controls>
-          <source src={this.state.audioSrc} type="audio/mp4"></source>
-        </Audio>
+export default function EpisodePlayer(props) {
+  return (
+    <Grid>
+      <Pic src={props.location.state.image} alt="" />
+      <Header>{props.location.state.name}</Header>
+      <Audio controls>
+        <source src={props.location.state.audio.url} type="audio/mp4"></source>
+      </Audio>
 
-        <Description>{this.state.description}</Description>
-      </Grid>
-    ) : (
-      <LoadingSpinner />
-    );
-  }
-
-  componentDidMount() {
-    this.setState({
-      pictureSrc: this.props.location.state.image,
-      title: this.props.location.state.name,
-      description: this.props.location.state.description,
-      audioSrc: this.props.location.state.audio.url
-    });
-  }
+      <Description>{props.location.state.description}</Description>
+    </Grid>
+  );
 }
