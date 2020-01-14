@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Episode from "../Episode/Episode";
 import styled from "styled-components";
 
@@ -13,20 +13,18 @@ const Episodes = styled.ul`
   align-items: center;
 `;
 
-export default class EpisodesList extends Component {
-  render() {
-    return (
-      <Episodes>
-        {this.props.episodes.map(item => (
-          <Episode
-            key={item.id}
-            name={item.name}
-            description={item.description}
-            image={item.image}
-            audio={item.audio}
-          ></Episode>
-        ))}
-      </Episodes>
-    );
-  }
+export default function EpisodesList(props) {
+  return (
+    <Episodes>
+      {props.episodes.map(item => (
+        <Episode
+          key={item.id}
+          name={item.name}
+          description={item.description}
+          image={item.image}
+          audio={item.audio}
+        ></Episode>
+      ))}
+    </Episodes>
+  );
 }

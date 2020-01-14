@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -41,27 +41,25 @@ const EpisodeLink = styled.div`
   }
 `;
 
-export default class Episode extends Component {
-  render() {
-    return (
-      <EpisodeGrid>
-        <EpisodeImage src={this.props.image} alt="episode cover" />
-        <EpisodeLink>
-          <Link
-            to={{
-              pathname: "/episode-player",
-              state: {
-                name: this.props.name,
-                description: this.props.description,
-                image: this.props.image,
-                audio: this.props.audio
-              }
-            }}
-          >
-            {this.props.name}
-          </Link>
-        </EpisodeLink>
-      </EpisodeGrid>
-    );
-  }
+export default function Episode(props) {
+  return (
+    <EpisodeGrid>
+      <EpisodeImage src={props.image} alt="episode cover" />
+      <EpisodeLink>
+        <Link
+          to={{
+            pathname: "/episode-player",
+            state: {
+              name: props.name,
+              description: props.description,
+              image: props.image,
+              audio: props.audio
+            }
+          }}
+        >
+          {props.name}
+        </Link>
+      </EpisodeLink>
+    </EpisodeGrid>
+  );
 }
