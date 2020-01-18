@@ -3,6 +3,7 @@ import axios from "axios";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import styled from "styled-components";
 import EpisodesList from "./EpisodesList/EpisodesList";
+import { Redirect } from "react-router-dom";
 
 const PodcastGrid = styled.div`
   display: grid;
@@ -73,28 +74,36 @@ const CenteredSpinner = styled(LoadingSpinner)`
   grid-area: spinner;
 `;
 
+const isAuthenticated = false;
+
 export default class Podcast extends Component {
   render() {
-    return this.state ? (
-      <PodcastGrid>
-        <PodcastImg src={this.state.image} alt="podcast cover" />
-        <PodcastTitle>{this.state.name}</PodcastTitle>
-        <PodcastDescription>{this.state.description}</PodcastDescription>
-        <EpisodesList episodes={this.state.episodes}></EpisodesList>
-      </PodcastGrid>
+    return isAuthenticated ? (
+      this.state ? (
+        <PodcastGrid>
+          <PodcastImg src={this.state.image} alt="podcast cover" />
+          <PodcastTitle>{this.state.name}</PodcastTitle>
+          <PodcastDescription>{this.state.description}</PodcastDescription>
+          <EpisodesList episodes={this.state.episodes}></EpisodesList>
+        </PodcastGrid>
+      ) : (
+        <SpinnerGrid>
+          <CenteredSpinner></CenteredSpinner>
+        </SpinnerGrid>
+      )
     ) : (
-      <SpinnerGrid>
-        <CenteredSpinner></CenteredSpinner>
-      </SpinnerGrid>
+      <Redirect to="/" />
     );
   }
 
   componentDidMount() {
-    const { rss } = this.props.location.state;
-    axios
-      .get(`https://podcast-player-api.herokuapp.com/podcast?rss=${rss}`)
-      .then(res => {
-        this.setState({ ...res.data });
-      });
+    if (this.props.location.state) {
+      const { rss } = this.props.location.state;
+      axios
+        .get(`https://podcast-player-api.herokuapp.com/podcast?rss=${rss}`)
+        .then(res => {
+          this.setState({ ...res.data });
+        });
+    }
   }
 }

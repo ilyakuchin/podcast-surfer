@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Redirect } from "react-router-dom";
 
 const Grid = styled.div`
   position: relative;
@@ -63,7 +64,8 @@ const Description = styled.div`
 `;
 
 export default function EpisodePlayer(props) {
-  return (
+  const isAuthenticated = false;
+  return isAuthenticated ? (
     <Grid>
       <Pic src={props.location.state.image} alt="" />
       <Header>{props.location.state.name}</Header>
@@ -73,5 +75,7 @@ export default function EpisodePlayer(props) {
 
       <Description>{props.location.state.description}</Description>
     </Grid>
+  ) : (
+    <Redirect to="/" />
   );
 }

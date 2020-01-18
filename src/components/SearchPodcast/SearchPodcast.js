@@ -3,6 +3,7 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import styled from "styled-components";
 import SearchForm from "./SearchForm/SearchForm";
 import SearchResults from "./SearchResults/SearchResults";
+import { Redirect } from "react-router-dom";
 
 const ComponentGrid = styled.div`
   display: grid;
@@ -39,7 +40,9 @@ export default function SearchPodcast() {
     setPodcasts(null);
   }
 
-  return (
+  const isAuthenticated = false;
+
+  return isAuthenticated ? (
     <ComponentGrid>
       <SearchForm
         searchPhrase={searchPhrase}
@@ -55,5 +58,7 @@ export default function SearchPodcast() {
         </CenterSpinner>
       )}
     </ComponentGrid>
+  ) : (
+    <Redirect to="/" />
   );
 }
