@@ -64,8 +64,8 @@ const Description = styled.div`
 `;
 
 export default function EpisodePlayer(props) {
-  const isAuthenticated = false;
-  return isAuthenticated ? (
+  const token = window.localStorage.getItem("podcast_jwt");
+  return token ? (
     <Grid>
       <Pic src={props.location.state.image} alt="" />
       <Header>{props.location.state.name}</Header>

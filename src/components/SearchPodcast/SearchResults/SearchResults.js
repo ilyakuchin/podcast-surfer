@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import AuthContext from "../../../context/AuthContext";
 
 const Podcasts = styled.ul`
   margin: 0;
@@ -44,13 +45,14 @@ const PodcastLink = styled.div`
 `;
 
 export default function SearchResults(props) {
+  const value = useContext(AuthContext);
   return (
     <Podcasts>
       {props.podcasts.map(item => (
         <PodcastGrid key={item.id}>
           <PodcastImage src={item.image} alt="podcast cover" />
           <PodcastLink>
-            <Link to={{ pathname: "/podcast", state: { rss: item.rss } }}>
+            <Link onClick={() => value.setRSS(item.rss)} to={"/podcast"}>
               {item.name}
             </Link>
           </PodcastLink>

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isRedirectToSearch, setIsRedirectToSearch] = useState(false);
 
-  function sbmt(e) {
-    e.preventDefault();
-    console.log("login");
-  }
+  const value = useContext(AuthContext);
+
   function handleUsernameChange(e) {
     setUsername(e.target.value);
   }
@@ -16,7 +17,7 @@ export default function Login() {
     setPassword(e.target.value);
   }
 
-  return (
+  return !isRedirectToSearch ? (
     <div>
       <form>
         <label>Username</label>
@@ -38,8 +39,18 @@ export default function Login() {
           name="pswrd"
           required
         />
-        <input type="submit" value="Submit" onClick={sbmt} />
+        <input
+          type="submit"
+          value="Submit"
+          onClick={e =>
+            value.login(e, username, password, () =>
+              setIsRedirectToSearch(true)
+            )
+          }
+        />
       </form>
     </div>
+  ) : (
+    <Redirect to="/search" />
   );
 }

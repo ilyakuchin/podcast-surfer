@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import styled from "styled-components";
 import EpisodesList from "./EpisodesList/EpisodesList";
-import { Redirect } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 const PodcastGrid = styled.div`
   display: grid;
@@ -74,36 +75,39 @@ const CenteredSpinner = styled(LoadingSpinner)`
   grid-area: spinner;
 `;
 
-const isAuthenticated = false;
+export default function Podcast() {
+  const [image, setImage] = useState();
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
+  const [episodes, setEpisodes] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
-export default class Podcast extends Component {
-  render() {
-    return isAuthenticated ? (
-      this.state ? (
-        <PodcastGrid>
-          <PodcastImg src={this.state.image} alt="podcast cover" />
-          <PodcastTitle>{this.state.name}</PodcastTitle>
-          <PodcastDescription>{this.state.description}</PodcastDescription>
-          <EpisodesList episodes={this.state.episodes}></EpisodesList>
-        </PodcastGrid>
-      ) : (
-        <SpinnerGrid>
-          <CenteredSpinner></CenteredSpinner>
-        </SpinnerGrid>
-      )
-    ) : (
-      <Redirect to="/" />
-    );
-  }
+  const value = useContext(AuthContext);
 
-  componentDidMount() {
-    if (this.props.location.state) {
-      const { rss } = this.props.location.state;
-      axios
-        .get(`https://podcast-player-api.herokuapp.com/podcast?rss=${rss}`)
-        .then(res => {
-          this.setState({ ...res.data });
-        });
-    }
-  }
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/podcast?rss=${value.rss}`, {
+        headers: { authorization: `Bearer ${value.jwt}` }
+      })
+      .then(res => {
+        setImage(res.data.image);
+        setName(res.data.name);
+        setDescription(res.data.description);
+        setEpisodes(res.data.episodes);
+        setIsLoading(false);
+      });
+  });
+
+  return !isLoading ? (
+    <PodcastGrid>
+      <PodcastImg src={image} alt="podcast cover" />
+      <PodcastTitle>{name}</PodcastTitle>
+      <PodcastDescription>{description}</PodcastDescription>
+      <EpisodesList episodes={episodes}></EpisodesList>
+    </PodcastGrid>
+  ) : (
+    <SpinnerGrid>
+      <CenteredSpinner></CenteredSpinner>
+    </SpinnerGrid>
+  );
 }

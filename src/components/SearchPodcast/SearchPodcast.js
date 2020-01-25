@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import styled from "styled-components";
 import SearchForm from "./SearchForm/SearchForm";
 import SearchResults from "./SearchResults/SearchResults";
-import { Redirect } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 const ComponentGrid = styled.div`
   display: grid;
@@ -27,6 +27,7 @@ const CenterSpinner = styled.div`
 export default function SearchPodcast() {
   const [searchPhrase, setSearchPhrase] = useState("");
   const [podcasts, setPodcasts] = useState([]);
+  const value = useContext(AuthContext);
 
   function handleSearchPhraseChange(e) {
     setSearchPhrase(e.target.value);
@@ -40,9 +41,7 @@ export default function SearchPodcast() {
     setPodcasts(null);
   }
 
-  const isAuthenticated = false;
-
-  return isAuthenticated ? (
+  return (
     <ComponentGrid>
       <SearchForm
         searchPhrase={searchPhrase}
@@ -58,7 +57,5 @@ export default function SearchPodcast() {
         </CenterSpinner>
       )}
     </ComponentGrid>
-  ) : (
-    <Redirect to="/" />
   );
 }

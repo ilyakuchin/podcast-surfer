@@ -26,12 +26,15 @@ const SearchButton = styled.button`
 `;
 
 export default function SearchForm(props) {
+  const token = window.localStorage.getItem("podcast_jwt");
+
   function getPodcastList(e) {
     e.preventDefault();
     props.clearPodcastResults();
     axios
       .get(
-        `https://podcast-player-api.herokuapp.com/podcasts?name=${props.searchPhrase}`
+        `${process.env.REACT_APP_API_URL}/podcasts?name=${props.searchPhrase}`,
+        { headers: { authorization: `Bearer ${token}` } }
       )
       .then(res => {
         props.updatePodcastResults(res.data);

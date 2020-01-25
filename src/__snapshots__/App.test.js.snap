@@ -1,42 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test App Component Should Render Correctly 1`] = `
-<Router
-  history={
+<AuthProvider
+  value={
     Object {
-      "action": "POP",
-      "block": [Function],
-      "createHref": [Function],
-      "go": [Function],
-      "goBack": [Function],
-      "goForward": [Function],
-      "length": 1,
-      "listen": [Function],
-      "location": Object {
-        "hash": "",
-        "pathname": "/",
-        "search": "",
-        "state": undefined,
-      },
-      "push": [Function],
-      "replace": [Function],
+      "jwt": undefined,
+      "login": [Function],
+      "logout": [Function],
+      "register": [Function],
+      "rss": undefined,
+      "setRSS": [Function],
+      "setUsername": [Function],
+      "username": undefined,
     }
   }
 >
-  <Switch>
-    <Route
-      component={[Function]}
-      exact={true}
-      path="/"
-    />
-    <Route
-      component={[Function]}
-      path="/podcast"
-    />
-    <Route
-      component={[Function]}
-      path="/episode-player"
-    />
-  </Switch>
-</Router>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Switch>
+      <UnauthenticatedApp />
+    </Switch>
+  </Router>
+</AuthProvider>
 `;

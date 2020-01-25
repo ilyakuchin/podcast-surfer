@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import Podcast from "./components/Podcast/Podcast";
-import EpisodePlayer from "./components/EpisodePlayer/EpisodePlayer";
-import { Switch, Route, Router } from "react-router-dom";
-import SearchPodcast from "./components/SearchPodcast/SearchPodcast";
+import AuthProvider from "./context/AuthProvider";
+import AuthenticatedApp from "./AuthenticatedApp";
+import axios from "axios";
+import UnauthenticatedApp from "./UnauthenticatedApp";
+import { Switch, Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import Login from "./components/Login/Login";
 
 export const history = createBrowserHistory();
 
@@ -14,14 +14,52 @@ history.listen((location, action) => {
 });
 
 export default function App() {
+  const [username, setUsername] = useState();
+  const [jwt, setJWT] = useState();
+  const [rss, setRSS] = useState();
+
+  let contextValue = {
+    username: username,
+
+    setUsername: setUsername,
+
+    login(e, username, password, callback) {
+      e.preventDefault();
+
+      setUsername(username);
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/login`, {
+          username,
+          password
+        })
+        .then(res => {
+          window.localStorage.setItem("podcast_jwt", res.data.token);
+          setJWT(window.localStorage.getItem("podcast_jwt"));
+          callback();
+        });
+    },
+
+    jwt: jwt,
+    rss: rss,
+
+    setRSS: setRSS,
+
+    register() {
+      console.log("register");
+    },
+
+    logout() {
+      setUsername(null);
+      window.localStorage.removeItem("podcast_jwt");
+    }
+  };
   return (
-    <Router history={history}>
-      <Switch>
-        <Route path={"/"} component={Login} exact />
-        <Route path={"/search"} component={SearchPodcast} exact />
-        <Route path={"/podcast"} component={Podcast} />
-        <Route path={"/episode-player"} component={EpisodePlayer} />
-      </Switch>
-    </Router>
+    <AuthProvider value={contextValue}>
+      <Router history={history}>
+        <Switch>
+          {username ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
