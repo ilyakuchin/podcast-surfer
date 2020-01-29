@@ -2,6 +2,14 @@
 
 exports[`Test Login component should render correctly 1`] = `
 <div>
+  <h2>
+    LOGIN
+  </h2>
+  <Link
+    to="/signup"
+  >
+    Sign Up
+  </Link>
   <form>
     <div>
       Username

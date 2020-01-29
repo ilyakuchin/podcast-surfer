@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { setUsername, setPassword, login } from '../../redux/actions/userInfo';
 
 export function Login({ username, password, setUsername, setPassword, login }) {
   return (
     <div>
+      <h2>LOGIN</h2>
+      <Link to='/signup'>Sign Up</Link>
       <form>
         <div>Username</div>
         <input

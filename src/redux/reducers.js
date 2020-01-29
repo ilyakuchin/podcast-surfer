@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux';
-import { SET_USERNAME, SET_PASSWORD, LOGIN, LOGOUT } from './actions/userInfo';
+import {
+  SET_USERNAME,
+  SET_PASSWORD,
+  LOGIN,
+  LOGOUT,
+  CLEAR_USER_INFO,
+  SET_VALIDATION_ERROR_MESSAGE
+} from './actions/userInfo';
 import { SET_SEARCH_PHRASE } from './actions/searchPhrase';
 import { REQUEST_EPISODE, RECEIVE_EPISODE } from './actions/currentEpisode';
 import { REQUEST_PODCASTS, RECEIVE_PODCASTS } from './actions/podcasts';
@@ -17,7 +24,23 @@ function userInfo(state = {}, action) {
     case LOGIN:
       return { ...state, jwt: action.jwt };
     case LOGOUT:
-      return { ...state, username: null, password: null, jwt: null };
+      return {
+        ...state,
+        username: action.username,
+        password: action.password,
+        jwt: action.jwt
+      };
+    case CLEAR_USER_INFO:
+      return {
+        ...state,
+        username: action.username,
+        password: action.password
+      };
+    case SET_VALIDATION_ERROR_MESSAGE:
+      return {
+        ...state,
+        validationErrorMessage: action.validationErrorMessage
+      };
     default:
       return state;
   }

@@ -24,7 +24,7 @@ exports[`Test App Component Should Render Correctly 1`] = `
   }
 >
   <Switch>
-    <Connect(Login) />
+    <UnauthenticatedApp />
   </Switch>
 </Router>
 `;

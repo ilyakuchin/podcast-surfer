@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import history from './helpers/history';
 import './App.css';
 import ConnectedAuthenticatedApp from './components/AuthenticatedApp/AuthenticatedApp';
-import ConnectedLogin from './components/Login/Login';
+import UnauthenticatedApp from './components/UnauthenticatedApp/UnauthenticatedApp';
 
 export function App({ jwt }) {
   return (
     <Router history={history}>
       <Switch>
-        {jwt ? <ConnectedAuthenticatedApp /> : <ConnectedLogin />}
+        {jwt ? <ConnectedAuthenticatedApp /> : <UnauthenticatedApp />}
       </Switch>
     </Router>
   );
