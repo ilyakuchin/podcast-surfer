@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test EpisodePlayer component should render correctly 1`] = `
+<styled.div>
+  <styled.img
+    alt=""
+    src="test"
+  />
+  <styled.h2>
+    test
+  </styled.h2>
+  <styled.audio
+    controls={true}
+  >
+    <source
+      src="test"
+      type="audio/mp4"
+    />
+  </styled.audio>
+  <styled.div>
+    test
+  </styled.div>
+</styled.div>
+`;

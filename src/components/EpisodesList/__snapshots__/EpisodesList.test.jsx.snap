@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test EpisodesList Component should render correctly 1`] = `
+<styled.ul>
+  <styled.li
+    key="1"
+  >
+    <styled.img
+      alt="episode cover"
+    />
+    <styled.div>
+      <Link
+        onClick={[Function]}
+        to="/episode-player"
+      >
+        name1
+      </Link>
+    </styled.div>
+  </styled.li>
+  <styled.li
+    key="2"
+  >
+    <styled.img
+      alt="episode cover"
+    />
+    <styled.div>
+      <Link
+        onClick={[Function]}
+        to="/episode-player"
+      >
+        name2
+      </Link>
+    </styled.div>
+  </styled.li>
+  <styled.li
+    key="3"
+  >
+    <styled.img
+      alt="episode cover"
+    />
+    <styled.div>
+      <Link
+        onClick={[Function]}
+        to="/episode-player"
+      >
+        name3
+      </Link>
+    </styled.div>
+  </styled.li>
+</styled.ul>
+`;
