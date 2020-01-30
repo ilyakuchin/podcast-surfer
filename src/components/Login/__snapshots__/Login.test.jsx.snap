@@ -10,6 +10,7 @@ exports[`Test Login component should render correctly 1`] = `
   >
     Sign Up
   </Link>
+  <div />
   <form>
     <div>
       Username

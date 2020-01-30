@@ -15,6 +15,7 @@ export function Login({
   setUsername,
   setPassword,
   login,
+  validationErrorMessage,
   setValidationErrorMessage
 }) {
   function validateInput() {
@@ -32,6 +33,7 @@ export function Login({
     <div>
       <h2>LOGIN</h2>
       <Link to='/signup'>Sign Up</Link>
+      <div>{validationErrorMessage}</div>
       <form>
         <div>Username</div>
         <input
@@ -84,7 +86,8 @@ Login.propTypes = {
 const mapStateToProps = state => {
   return {
     username: state.userInfo.username,
-    password: state.userInfo.password
+    password: state.userInfo.password,
+    validationErrorMessage: state.userInfo.validationErrorMessage
   };
 };
 
