@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setUsername, setPassword, signup } from '../../redux/actions/userInfo';
+import {
+  setUsername,
+  setPassword,
+  signup,
+  setValidationErrorMessage
+} from '../../redux/actions/userInfo';
 
 export function Signup({
   username,
@@ -9,9 +14,48 @@ export function Signup({
   signup,
   validationErrorMessage,
   setUsername,
-  setPassword
+  setPassword,
+  setValidationErrorMessage
 }) {
   const [confirmPassword, setConfirmPassword] = useState();
+  function validateInput() {
+    if (!username) {
+      setValidationErrorMessage('Username field is required');
+      return false;
+    }
+
+    if (!username.match('^[a-zA-Z0-9_.-]*$')) {
+      setValidationErrorMessage(
+        'Username must contain only letters and numbers'
+      );
+      return false;
+    }
+
+    if (username.length < 3) {
+      setValidationErrorMessage('Username must be at least 3 characters long');
+      return false;
+    }
+    if (!password) {
+      setValidationErrorMessage('Password field is required');
+      return false;
+    }
+
+    if (password.length < 3) {
+      setValidationErrorMessage('Password must be at least 3 characters long');
+      return false;
+    }
+
+    if (!confirmPassword) {
+      setValidationErrorMessage('Confirm password field is required');
+      return false;
+    }
+    if (password !== confirmPassword) {
+      setValidationErrorMessage('Password and confirm password does not match');
+      return false;
+    }
+
+    return true;
+  }
   return (
     <div>
       <h2>SIGNUP</h2>
@@ -41,7 +85,11 @@ export function Signup({
         />
         <input
           type='submit'
-          onClick={e => signup(e, username, password, confirmPassword)}
+          onClick={e => {
+            if (validateInput()) {
+              signup(e, username, password, confirmPassword);
+            }
+          }}
         />
       </form>
     </div>
@@ -61,7 +109,9 @@ const dispatchToProps = dispatch => {
     signup: (e, username, password, confirmPassword) =>
       dispatch(signup(e, username, password, confirmPassword)),
     setUsername: username => dispatch(setUsername(username)),
-    setPassword: password => dispatch(setPassword(password))
+    setPassword: password => dispatch(setPassword(password)),
+    setValidationErrorMessage: message =>
+      dispatch(setValidationErrorMessage(message))
   };
 };
 
