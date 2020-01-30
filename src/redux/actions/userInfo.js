@@ -20,6 +20,13 @@ export function setJWT(jwt) {
   return { type: LOGIN, jwt };
 }
 
+export function setValidationErrorMessage(message) {
+  return {
+    type: SET_VALIDATION_ERROR_MESSAGE,
+    validationErrorMessage: message
+  };
+}
+
 export function login(e, username, password) {
   e.preventDefault();
 
@@ -33,6 +40,9 @@ export function login(e, username, password) {
         window.localStorage.setItem('jwt_token_podcast', res.data.token);
         dispatch(setJWT(window.localStorage.getItem('jwt_token_podcast')));
         history.push('/');
+      })
+      .catch(error => {
+        dispatch(setValidationErrorMessage(error.response.data));
       });
   };
 }
@@ -44,13 +54,6 @@ export function logout() {
 
 export function clearUserInfo() {
   return { type: CLEAR_USER_INFO, username: '', password: '' };
-}
-
-export function setValidationErrorMessage(message) {
-  return {
-    type: SET_VALIDATION_ERROR_MESSAGE,
-    validationErrorMessage: message
-  };
 }
 
 export function signup(e, username, password, confirmPassword) {
