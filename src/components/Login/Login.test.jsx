@@ -8,6 +8,16 @@ configure({ adapter: new Adapter() });
 
 describe('Test Login component', () => {
   test('should render correctly', () => {
-    expect(toJson(shallow(<Login />))).toMatchSnapshot();
+    expect(
+      toJson(
+        shallow(
+          <Login
+            username='username'
+            password='password'
+            validationErrorMessage='errorMessage'
+          />
+        )
+      )
+    ).toMatchSnapshot();
   });
 });

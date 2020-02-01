@@ -32,7 +32,7 @@ describe('Test EpisodesList Component', () => {
       }
     ];
     expect(
-      toJson(shallow(<EpisodesList episodes={episodes} />))
+      toJson(shallow(<EpisodesList jwt='jwt' rss='rss' episodes={episodes} />))
     ).toMatchSnapshot();
   });
 });

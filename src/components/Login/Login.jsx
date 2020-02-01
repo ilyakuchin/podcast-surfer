@@ -12,10 +12,10 @@ import {
 export function Login({
   username,
   password,
+  validationErrorMessage,
   setUsername,
   setPassword,
   login,
-  validationErrorMessage,
   setValidationErrorMessage
 }) {
   function validateInput() {
@@ -39,11 +39,7 @@ export function Login({
         <input
           type='text'
           value={username}
-          onChange={e => {
-            if (validateInput()) {
-              setUsername(e.target.value);
-            }
-          }}
+          onChange={e => setUsername(e.target.value)}
           placeholder='username'
           name='uname'
           required
@@ -62,7 +58,9 @@ export function Login({
           type='submit'
           value='Submit'
           onClick={e => {
-            login(e, username, password);
+            if (validateInput()) {
+              login(e, username, password);
+            }
           }}
         />
       </form>

@@ -2,6 +2,7 @@
 
 exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
 <div>
+  username
   <Link
     to="/"
   >

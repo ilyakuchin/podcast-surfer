@@ -1,5 +1,10 @@
 const mockState = {
-  userInfo: { jwt: 'test', username: 'testLogin', password: 'testPassword' },
+  userInfo: {
+    jwt: 'test',
+    username: 'testLogin',
+    password: 'testPassword',
+    validationErrorMessage: 'error'
+  },
   podcasts: {
     isFetching: false,
     podcasts: [

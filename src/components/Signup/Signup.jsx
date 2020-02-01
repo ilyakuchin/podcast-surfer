@@ -11,8 +11,8 @@ import {
 export function Signup({
   username,
   password,
-  signup,
   validationErrorMessage,
+  signup,
   setUsername,
   setPassword,
   setValidationErrorMessage

@@ -14,7 +14,9 @@ describe('Test SearchResults Component', () => {
       { id: '3', image: 'link3', rss: 'link3', name: 'name3' }
     ];
 
-    const wrapper = shallow(<SearchResults podcasts={podcasts} />);
+    const wrapper = shallow(
+      <SearchResults podcasts={podcasts} isFetching={false} jwt='jwt' />
+    );
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });

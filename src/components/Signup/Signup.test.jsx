@@ -2,14 +2,22 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import { configure, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { AuthenticatedApp } from './AuthenticatedApp';
+import { Signup } from './Signup';
 
 configure({ adapter: new Adapter() });
 
-describe('Test {AuthenticatedApp} component', () => {
+describe('Test Signup component', () => {
   test('should render correctly', () => {
     expect(
-      toJson(shallow(<AuthenticatedApp username='username' />))
+      toJson(
+        shallow(
+          <Signup
+            username='username'
+            password='password'
+            validationErrorMessage='error'
+          />
+        )
+      )
     ).toMatchSnapshot();
   });
 });

@@ -30,4 +30,8 @@ describe('Test ConnectedSearchResults component', () => {
   test('should get jwt props from the store correctly', () => {
     expect(component.props().children.props.jwt).toBe('test');
   });
+
+  test('should get isFetching props from the store correctly', () => {
+    expect(component.props().children.props.isFetching).toBe(false);
+  });
 });

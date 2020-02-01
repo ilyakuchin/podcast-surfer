@@ -3,7 +3,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import { configure, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import mockState from '../../helpers/index';
-import ConnectedLogin from './Login';
+import ConnectedSignup from './Signup';
 
 const mockStore = configureStore([]);
 configure({ adapter: new Adapter() });
@@ -11,12 +11,13 @@ configure({ adapter: new Adapter() });
 let store;
 let component;
 
-describe('Test ConnectedLogin component', () => {
+describe('Test ConnectedSignup component', () => {
   beforeEach(() => {
     store = mockStore(mockState);
 
-    component = shallow(<ConnectedLogin store={store} />);
+    component = shallow(<ConnectedSignup store={store} />);
   });
+
   test('should get username props from the store correctly', () => {
     expect(component.props().children.props.username).toBe('testLogin');
   });
@@ -25,7 +26,7 @@ describe('Test ConnectedLogin component', () => {
     expect(component.props().children.props.password).toBe('testPassword');
   });
 
-  test('should get error message props from the store correctly', () => {
+  test('should get validationErrorMessage props from the store correctly', () => {
     expect(component.props().children.props.validationErrorMessage).toBe(
       'error'
     );
