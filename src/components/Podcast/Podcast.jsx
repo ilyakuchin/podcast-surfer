@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import ConnectedEpisodesList from '../EpisodesList/EpisodesList';
 
@@ -73,6 +74,13 @@ export function Podcast({ isFetching, name, description, imageUrl }) {
     <LoadingSpinner />
   );
 }
+
+Podcast.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired
+};
 
 const mapStateToProps = state => {
   return {

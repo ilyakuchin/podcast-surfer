@@ -15,6 +15,9 @@ describe('Test Signup component', () => {
             username='username'
             password='password'
             validationErrorMessage='error'
+            signupConnect={() => {}}
+            setUsernameConnect={() => {}}
+            setPasswordConnect={() => {}}
           />
         )
       )

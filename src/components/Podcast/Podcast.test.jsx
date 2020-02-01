@@ -10,6 +10,7 @@ describe('Test Podcast Component', () => {
   test('should render correctly', () => {
     const wrapper = shallow(
       <Podcast
+        isFetching={false}
         name='podacstName'
         description='podcastDescription'
         imageUrl='podcast image'

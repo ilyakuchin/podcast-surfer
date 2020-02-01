@@ -9,7 +9,11 @@ configure({ adapter: new Adapter() });
 describe('Test {AuthenticatedApp} component', () => {
   test('should render correctly', () => {
     expect(
-      toJson(shallow(<AuthenticatedApp username='username' />))
+      toJson(
+        shallow(
+          <AuthenticatedApp username='username' logoutConnect={() => {}} />
+        )
+      )
     ).toMatchSnapshot();
   });
 });

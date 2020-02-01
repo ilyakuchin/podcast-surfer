@@ -15,7 +15,12 @@ describe('Test SearchResults Component', () => {
     ];
 
     const wrapper = shallow(
-      <SearchResults podcasts={podcasts} isFetching={false} jwt='jwt' />
+      <SearchResults
+        podcasts={podcasts}
+        isFetching={false}
+        jwt='jwt'
+        fetchCurrentPodcastConnect={() => {}}
+      />
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();

@@ -1,61 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  setUsername,
-  setPassword,
-  signup,
-  setValidationErrorMessage
-} from '../../redux/actions/userInfo';
+import PropTypes from 'prop-types';
+import { setUsername, setPassword, signup } from '../../redux/actions/userInfo';
 
 export function Signup({
   username,
   password,
   validationErrorMessage,
-  signup,
-  setUsername,
-  setPassword,
-  setValidationErrorMessage
+  signupConnect,
+  setUsernameConnect,
+  setPasswordConnect
 }) {
   const [confirmPassword, setConfirmPassword] = useState();
-  function validateInput() {
-    if (!username) {
-      setValidationErrorMessage('Username field is required');
-      return false;
-    }
 
-    if (!username.match('^[a-zA-Z0-9_.-]*$')) {
-      setValidationErrorMessage(
-        'Username must contain only letters and numbers'
-      );
-      return false;
-    }
-
-    if (username.length < 3) {
-      setValidationErrorMessage('Username must be at least 3 characters long');
-      return false;
-    }
-    if (!password) {
-      setValidationErrorMessage('Password field is required');
-      return false;
-    }
-
-    if (password.length < 3) {
-      setValidationErrorMessage('Password must be at least 3 characters long');
-      return false;
-    }
-
-    if (!confirmPassword) {
-      setValidationErrorMessage('Confirm password field is required');
-      return false;
-    }
-    if (password !== confirmPassword) {
-      setValidationErrorMessage('Password and confirm password does not match');
-      return false;
-    }
-
-    return true;
-  }
   return (
     <div>
       <h2>SIGNUP</h2>
@@ -65,14 +23,14 @@ export function Signup({
         <input
           type='text'
           value={username}
-          onChange={e => setUsername(e.target.value)}
+          onChange={e => setUsernameConnect(e.target.value)}
           placeholder='username'
           required
         />
         <input
           type='password'
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={e => setPasswordConnect(e.target.value)}
           placeholder='password'
           required
         />
@@ -85,16 +43,21 @@ export function Signup({
         />
         <input
           type='submit'
-          onClick={e => {
-            if (validateInput()) {
-              signup(e, username, password, confirmPassword);
-            }
-          }}
+          onClick={e => signupConnect(e, username, password, confirmPassword)}
         />
       </form>
     </div>
   );
 }
+
+Signup.propTypes = {
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  validationErrorMessage: PropTypes.string.isRequired,
+  signupConnect: PropTypes.func.isRequired,
+  setUsernameConnect: PropTypes.func.isRequired,
+  setPasswordConnect: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => {
   return {
@@ -106,12 +69,10 @@ const mapStateToProps = state => {
 
 const dispatchToProps = dispatch => {
   return {
-    signup: (e, username, password, confirmPassword) =>
+    signupConnect: (e, username, password, confirmPassword) =>
       dispatch(signup(e, username, password, confirmPassword)),
-    setUsername: username => dispatch(setUsername(username)),
-    setPassword: password => dispatch(setPassword(password)),
-    setValidationErrorMessage: message =>
-      dispatch(setValidationErrorMessage(message))
+    setUsernameConnect: username => dispatch(setUsername(username)),
+    setPasswordConnect: password => dispatch(setPassword(password))
   };
 };
 

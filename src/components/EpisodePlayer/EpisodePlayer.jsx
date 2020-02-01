@@ -86,20 +86,12 @@ export function EpisodePlayer({
   );
 }
 
-EpisodePlayer.defaultProps = {
-  isFetching: true,
-  name: '',
-  description: '',
-  imageUrl: '',
-  audioUrl: ''
-};
-
 EpisodePlayer.propTypes = {
-  isFetching: PropTypes.bool,
-  name: PropTypes.string,
-  description: PropTypes.string,
-  imageUrl: PropTypes.string,
-  audioUrl: PropTypes.string
+  isFetching: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  audioUrl: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => {

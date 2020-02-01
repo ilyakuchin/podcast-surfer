@@ -15,6 +15,9 @@ describe('Test Login component', () => {
             username='username'
             password='password'
             validationErrorMessage='errorMessage'
+            setUsernameConnect={() => {}}
+            setPasswordConnect={() => {}}
+            loginConnect={() => {}}
           />
         )
       )

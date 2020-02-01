@@ -55,7 +55,7 @@ const EpisodeLink = styled.div`
   }
 `;
 
-export function EpisodesList({ jwt, rss, episodes, fetchEpisode }) {
+export function EpisodesList({ jwt, rss, episodes, fetchEpisodeConnect }) {
   return (
     <Episodes>
       {episodes.map(({ id, name, imageUrl }) => (
@@ -63,7 +63,7 @@ export function EpisodesList({ jwt, rss, episodes, fetchEpisode }) {
           <EpisodeImage src={imageUrl} alt='episode cover' />
           <EpisodeLink>
             <Link
-              onClick={() => fetchEpisode(jwt, rss, id)}
+              onClick={() => fetchEpisodeConnect(jwt, rss, id)}
               to='/episode-player'
             >
               {name}
@@ -85,18 +85,21 @@ const mapStateToProps = state => {
 
 const dispatchToProps = dispatch => {
   return {
-    fetchEpisode: (jwt, rss, id) => dispatch(fetchEpisode(jwt, rss, id))
+    fetchEpisodeConnect: (jwt, rss, id) => dispatch(fetchEpisode(jwt, rss, id))
   };
 };
 
 EpisodesList.propTypes = {
+  jwt: PropTypes.string.isRequired,
+  rss: PropTypes.string.isRequired,
   episodes: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
       imageUrl: PropTypes.string
     })
-  ).isRequired
+  ).isRequired,
+  fetchEpisodeConnect: PropTypes.func.isRequired
 };
 
 const ConnectedEpisodesList = connect(

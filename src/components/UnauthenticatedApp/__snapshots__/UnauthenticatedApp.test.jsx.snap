@@ -1,16 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
+exports[`Test UnauthenticatedApp component should render correctly 1`] = `
 <div>
-  username
-  <Link
-    onClick={[Function]}
-    to="/"
-  >
-    Logout
-  </Link>
   <Route
-    component={[Function]}
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Login)",
+        "type": [Function],
+      }
+    }
     exact={true}
     path="/"
   />
@@ -20,23 +21,11 @@ exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
         "$$typeof": Symbol(react.memo),
         "WrappedComponent": [Function],
         "compare": null,
-        "displayName": "Connect(Podcast)",
+        "displayName": "Connect(Signup)",
         "type": [Function],
       }
     }
-    path="/podcast"
-  />
-  <Route
-    component={
-      Object {
-        "$$typeof": Symbol(react.memo),
-        "WrappedComponent": [Function],
-        "compare": null,
-        "displayName": "Connect(EpisodePlayer)",
-        "type": [Function],
-      }
-    }
-    path="/episode-player"
+    path="/signup"
   />
 </div>
 `;

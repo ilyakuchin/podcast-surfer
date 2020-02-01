@@ -4,7 +4,7 @@ exports[`Test SearchForm component should render correctly 1`] = `
 <styled.form>
   <styled.input
     name="search"
-    onChange={null}
+    onChange={[Function]}
     placeholder="Search podcast.."
     type="text"
     value="searchPhrase"

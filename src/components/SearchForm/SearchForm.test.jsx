@@ -14,8 +14,8 @@ describe('Test SearchForm component', () => {
           <SearchForm
             searchPhrase='searchPhrase'
             jwt='test'
-            setSearchPhrase={null}
-            searchPodcasts={null}
+            setSearchPhraseConnect={() => {}}
+            searchPodcastsConnect={() => {}}
           />
         )
       )

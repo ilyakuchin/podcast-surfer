@@ -31,8 +31,8 @@ const SearchButton = styled.button`
 export function SearchForm({
   searchPhrase,
   jwt,
-  setSearchPhrase,
-  searchPodcasts
+  setSearchPhraseConnect,
+  searchPodcastsConnect
 }) {
   return (
     <Search>
@@ -41,11 +41,11 @@ export function SearchForm({
         placeholder='Search podcast..'
         name='search'
         value={searchPhrase}
-        onChange={setSearchPhrase}
+        onChange={setSearchPhraseConnect}
       />
       <SearchButton
         type='submit'
-        onClick={e => searchPodcasts(e, searchPhrase, jwt)}
+        onClick={e => searchPodcastsConnect(e, searchPhrase, jwt)}
       >
         <FontAwesomeIcon icon={faSearch} />
       </SearchButton>
@@ -62,23 +62,17 @@ const mapStateToProps = state => {
 
 const dispatchStateToProps = dispatch => {
   return {
-    searchPodcasts: (e, searchPhrase, jwt) =>
+    searchPodcastsConnect: (e, searchPhrase, jwt) =>
       dispatch(searchPodcasts(e, searchPhrase, jwt)),
-    setSearchPhrase: e => dispatch(setSearchPhrase(e.target.value))
+    setSearchPhraseConnect: e => dispatch(setSearchPhrase(e.target.value))
   };
 };
 
 SearchForm.propTypes = {
-  searchPhrase: PropTypes.string,
+  searchPhrase: PropTypes.string.isRequired,
   jwt: PropTypes.string.isRequired,
-  setSearchPhrase: PropTypes.func,
-  searchPodcasts: PropTypes.func
-};
-
-SearchForm.defaultProps = {
-  searchPhrase: '',
-  setSearchPhrase: null,
-  searchPodcasts: null
+  setSearchPhraseConnect: PropTypes.func.isRequired,
+  searchPodcastsConnect: PropTypes.func.isRequired
 };
 
 const ConnectedSearchForm = connect(

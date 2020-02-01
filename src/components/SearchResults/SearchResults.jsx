@@ -60,7 +60,7 @@ export function SearchResults({
   isFetching,
   jwt,
   podcasts,
-  fetchCurrentPodcast
+  fetchCurrentPodcastConnect
 }) {
   return !isFetching ? (
     <Podcasts>
@@ -68,7 +68,10 @@ export function SearchResults({
         <PodcastGrid key={id}>
           <PodcastImage src={image} alt='podcast cover' />
           <PodcastLink>
-            <Link onClick={() => fetchCurrentPodcast(rss, jwt)} to='/podcast'>
+            <Link
+              onClick={() => fetchCurrentPodcastConnect(rss, jwt)}
+              to='/podcast'
+            >
               {name}
             </Link>
           </PodcastLink>
@@ -83,6 +86,8 @@ export function SearchResults({
 }
 
 SearchResults.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  jwt: PropTypes.string.isRequired,
   podcasts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -90,7 +95,8 @@ SearchResults.propTypes = {
       rss: PropTypes.string,
       name: PropTypes.string
     })
-  ).isRequired
+  ).isRequired,
+  fetchCurrentPodcastConnect: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -103,7 +109,8 @@ const mapStateToProps = state => {
 
 const dispatchToProps = dispatch => {
   return {
-    fetchCurrentPodcast: (rss, jwt) => dispatch(fetchCurrentPodcast(rss, jwt))
+    fetchCurrentPodcastConnect: (rss, jwt) =>
+      dispatch(fetchCurrentPodcast(rss, jwt))
   };
 };
 

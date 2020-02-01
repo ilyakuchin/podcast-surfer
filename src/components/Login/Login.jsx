@@ -2,33 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import {
-  setUsername,
-  setPassword,
-  login,
-  setValidationErrorMessage
-} from '../../redux/actions/userInfo';
+import { setUsername, setPassword, login } from '../../redux/actions/userInfo';
 
 export function Login({
   username,
   password,
   validationErrorMessage,
-  setUsername,
-  setPassword,
-  login,
-  setValidationErrorMessage
+  setUsernameConnect,
+  setPasswordConnect,
+  loginConnect
 }) {
-  function validateInput() {
-    if (!username) {
-      setValidationErrorMessage('Username field is required');
-      return false;
-    }
-    if (!password) {
-      setValidationErrorMessage('Password field is required');
-      return false;
-    }
-    return true;
-  }
   return (
     <div>
       <h2>LOGIN</h2>
@@ -39,7 +22,7 @@ export function Login({
         <input
           type='text'
           value={username}
-          onChange={e => setUsername(e.target.value)}
+          onChange={e => setUsernameConnect(e.target.value)}
           placeholder='username'
           name='uname'
           required
@@ -49,7 +32,7 @@ export function Login({
         <input
           type='password'
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={e => setPasswordConnect(e.target.value)}
           placeholder='password'
           name='pswrd'
           required
@@ -57,28 +40,20 @@ export function Login({
         <input
           type='submit'
           value='Submit'
-          onClick={e => {
-            if (validateInput()) {
-              login(e, username, password);
-            }
-          }}
+          onClick={e => loginConnect(e, username, password)}
         />
       </form>
     </div>
   );
 }
 
-Login.defaultProps = {
-  username: '',
-  password: ''
-};
-
 Login.propTypes = {
-  username: PropTypes.string,
-  password: PropTypes.string,
-  setUsername: PropTypes.func,
-  setPassword: PropTypes.func,
-  login: PropTypes.func
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  validationErrorMessage: PropTypes.string.isRequired,
+  setUsernameConnect: PropTypes.func.isRequired,
+  setPasswordConnect: PropTypes.func.isRequired,
+  loginConnect: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -91,11 +66,10 @@ const mapStateToProps = state => {
 
 const dispatchToProps = dispatch => {
   return {
-    setUsername: username => dispatch(setUsername(username)),
-    setPassword: password => dispatch(setPassword(password)),
-    login: (e, username, password) => dispatch(login(e, username, password)),
-    setValidationErrorMessage: message =>
-      dispatch(setValidationErrorMessage(message))
+    setUsernameConnect: username => dispatch(setUsername(username)),
+    setPasswordConnect: password => dispatch(setPassword(password)),
+    loginConnect: (e, username, password) =>
+      dispatch(login(e, username, password))
   };
 };
 

@@ -7,11 +7,11 @@ import ConnectedPodcast from '../Podcast/Podcast';
 import ConnectedEpisodePlayer from '../EpisodePlayer/EpisodePlayer';
 import SearchPodcast from '../SearchPodcast/SearchPodcast';
 
-export function AuthenticatedApp({ username, logout }) {
+export function AuthenticatedApp({ username, logoutConnect }) {
   return (
     <div>
       {username}
-      <Link to='/' onClick={logout}>
+      <Link to='/' onClick={logoutConnect}>
         Logout
       </Link>
       <Route path='/' component={SearchPodcast} exact />
@@ -27,13 +27,13 @@ const mapStateToProps = state => {
 
 const dispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(logout())
+    logoutConnect: () => dispatch(logout())
   };
 };
 
 AuthenticatedApp.propTypes = {
-  username: PropTypes.string,
-  logout: PropTypes.func
+  username: PropTypes.string.isRequired,
+  logoutConnect: PropTypes.func.isRequired
 };
 
 const ConnectedAuthenticatedApp = connect(

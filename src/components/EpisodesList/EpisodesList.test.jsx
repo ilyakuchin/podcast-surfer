@@ -32,7 +32,16 @@ describe('Test EpisodesList Component', () => {
       }
     ];
     expect(
-      toJson(shallow(<EpisodesList jwt='jwt' rss='rss' episodes={episodes} />))
+      toJson(
+        shallow(
+          <EpisodesList
+            jwt='jwt'
+            rss='rss'
+            episodes={episodes}
+            fetchEpisodeConnect={() => {}}
+          />
+        )
+      )
     ).toMatchSnapshot();
   });
 });
