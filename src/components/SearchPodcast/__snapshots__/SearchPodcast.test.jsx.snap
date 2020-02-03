@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test SearchPodcast Component should render correctly 1`] = `
+<styled.div>
+  <Connect(SearchForm) />
+  <Connect(SearchResults) />
+</styled.div>
+`;

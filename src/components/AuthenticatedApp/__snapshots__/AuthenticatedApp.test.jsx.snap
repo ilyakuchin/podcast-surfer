@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
+<div>
+  username
+  <Link
+    onClick={[Function]}
+    to="/"
+  >
+    Logout
+  </Link>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Podcast)",
+        "type": [Function],
+      }
+    }
+    path="/podcast"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(EpisodePlayer)",
+        "type": [Function],
+      }
+    }
+    path="/episode-player"
+  />
+</div>
+`;

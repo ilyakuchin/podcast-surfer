@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Login component should render correctly 1`] = `
+<div>
+  <h2>
+    LOGIN
+  </h2>
+  <Link
+    to="/signup"
+  >
+    Sign Up
+  </Link>
+  <div>
+    errorMessage
+  </div>
+  <form>
+    <div>
+      Username
+    </div>
+    <input
+      name="uname"
+      onChange={[Function]}
+      placeholder="username"
+      required={true}
+      type="text"
+      value="username"
+    />
+    <div>
+      Password
+    </div>
+    <input
+      name="pswrd"
+      onChange={[Function]}
+      placeholder="password"
+      required={true}
+      type="password"
+      value="password"
+    />
+    <input
+      onClick={[Function]}
+      type="submit"
+      value="Submit"
+    />
+  </form>
+</div>
+`;

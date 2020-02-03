@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Podcast Component should render correctly 1`] = `
+<styled.div>
+  <styled.img
+    alt="podcast cover"
+    src="podcast image"
+  />
+  <styled.h2>
+    podacstName
+  </styled.h2>
+  <styled.p>
+    podcastDescription
+  </styled.p>
+  <Connect(EpisodesList) />
+</styled.div>
+`;
