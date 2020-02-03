@@ -21,7 +21,10 @@ import {
   RECEIVE_CURRENT_PODCAST
 } from './actions/CurrentPodcast/currentPodcast';
 
-function userInfo(state = {}, action) {
+function userInfo(
+  state = { username: '', password: '', validationErrorMessage: '', jwt: '' },
+  action
+) {
   switch (action.type) {
     case SET_USERNAME:
       return { ...state, username: action.username };
@@ -61,7 +64,7 @@ function searchPhrase(state = '', action) {
   }
 }
 
-function podcasts(state = { podcasts: [] }, action) {
+function podcasts(state = { isFetching: false, podcasts: [] }, action) {
   switch (action.type) {
     case REQUEST_PODCASTS:
       return { ...state, isFetching: action.isFetching };
@@ -76,12 +79,23 @@ function podcasts(state = { podcasts: [] }, action) {
   }
 }
 
-function currentPodcast(state = { episodes: [] }, action) {
+function currentPodcast(
+  state = {
+    isFetching: false,
+    name: '',
+    description: '',
+    imageUrl: '',
+    rss: '',
+    episodes: []
+  },
+  action
+) {
   switch (action.type) {
     case REQUEST_CURRENT_PODCAST:
-      return { isFetching: action.isFetching, episodes: [] };
+      return { ...state, isFetching: action.isFetching, episodes: [] };
     case RECEIVE_CURRENT_PODCAST:
       return {
+        ...state,
         isFetching: action.isFetching,
         name: action.name,
         description: action.description,
@@ -94,14 +108,25 @@ function currentPodcast(state = { episodes: [] }, action) {
   }
 }
 
-function currentEpisode(state = { isFetching: false }, action) {
+function currentEpisode(
+  state = {
+    isFetching: false,
+    name: '',
+    description: '',
+    imageUrl: '',
+    audioUrl: ''
+  },
+  action
+) {
   switch (action.type) {
     case REQUEST_EPISODE:
       return {
+        ...state,
         isFetching: action.isFetching
       };
     case RECEIVE_EPISODE:
       return {
+        ...state,
         isFetching: action.isFetching,
         name: action.name,
         description: action.description,
