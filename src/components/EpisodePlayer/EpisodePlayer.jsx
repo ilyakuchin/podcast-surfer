@@ -65,6 +65,14 @@ const Description = styled.div`
   white-space: pre-line;
 `;
 
+const CenterSpinner = styled.div`
+  display: grid;
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+`;
+
 export function EpisodePlayer({
   isFetching,
   name,
@@ -82,7 +90,9 @@ export function EpisodePlayer({
       <Description>{description}</Description>
     </Grid>
   ) : (
-    <LoadingSpinner />
+    <CenterSpinner>
+      <LoadingSpinner />
+    </CenterSpinner>
   );
 }
 
