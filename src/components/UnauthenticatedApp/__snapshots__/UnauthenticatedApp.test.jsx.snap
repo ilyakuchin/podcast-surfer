@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test UnauthenticatedApp component should render correctly 1`] = `
-<div>
+<styled.div>
   <Route
     component={
       Object {
@@ -27,5 +27,5 @@ exports[`Test UnauthenticatedApp component should render correctly 1`] = `
     }
     path="/signup"
   />
-</div>
+</styled.div>
 `;
