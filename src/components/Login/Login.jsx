@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { setUsername, setPassword, login } from '../../redux/actions/userInfo';
+import {
+  setUsername,
+  setPassword,
+  login
+} from '../../redux/actions/UserInfo/userInfo';
 
 export function Login({
   username,
@@ -68,8 +72,10 @@ const dispatchToProps = dispatch => {
   return {
     setUsernameConnect: username => dispatch(setUsername(username)),
     setPasswordConnect: password => dispatch(setPassword(password)),
-    loginConnect: (e, username, password) =>
-      dispatch(login(e, username, password))
+    loginConnect: (e, username, password) => {
+      e.preventDefault();
+      dispatch(login(username, password));
+    }
   };
 };
 

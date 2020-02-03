@@ -2,12 +2,13 @@ import axios from 'axios';
 
 export const REQUEST_EPISODE = 'REQUEST_EPISODE';
 export const RECEIVE_EPISODE = 'RECEIVE_EPISODE';
+export const FETCH_EPISODE_FAILURE = 'FETCH_EPISODE_FAILURE';
 
-export function requestEpisode() {
+export function fetchEpisodeRequest() {
   return { type: REQUEST_EPISODE, isFetching: true };
 }
 
-export function receiveEpisode(currentEpisode) {
+export function fetchEpisodeSuccess(currentEpisode) {
   return {
     type: RECEIVE_EPISODE,
     isFetching: false,
@@ -18,9 +19,16 @@ export function receiveEpisode(currentEpisode) {
   };
 }
 
+export function fetchEpisodeFailure(ex) {
+  return {
+    type: FETCH_EPISODE_FAILURE,
+    ex
+  };
+}
+
 export function fetchEpisode(jwt, rss, episodeId) {
   return dispatch => {
-    dispatch(requestEpisode());
+    dispatch(fetchEpisodeRequest());
     return axios
       .get(
         `${process.env.REACT_APP_API_URL}/episode?rss=${rss}&episodeId=${episodeId}`,
@@ -29,7 +37,7 @@ export function fetchEpisode(jwt, rss, episodeId) {
         }
       )
       .then(res => {
-        dispatch(receiveEpisode(res.data));
+        dispatch(fetchEpisodeSuccess(res.data));
       });
   };
 }

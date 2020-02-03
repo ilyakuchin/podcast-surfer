@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchEpisode } from '../../redux/actions/currentEpisode';
+import { fetchEpisode } from '../../redux/actions/CurrentEpisode/currentEpisode';
 
 const Episodes = styled.ul`
   margin: 0;

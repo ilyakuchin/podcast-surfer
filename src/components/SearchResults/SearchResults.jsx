@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchCurrentPodcast } from '../../redux/actions/currentPodcast';
+import { fetchCurrentPodcast } from '../../redux/actions/CurrentPodcast/currentPodcast';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const Podcasts = styled.ul`

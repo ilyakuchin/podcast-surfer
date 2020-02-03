@@ -6,14 +6,20 @@ import {
   LOGOUT,
   CLEAR_USER_INFO,
   SET_VALIDATION_ERROR_MESSAGE
-} from './actions/userInfo';
-import { SET_SEARCH_PHRASE } from './actions/searchPhrase';
-import { REQUEST_EPISODE, RECEIVE_EPISODE } from './actions/currentEpisode';
-import { REQUEST_PODCASTS, RECEIVE_PODCASTS } from './actions/podcasts';
+} from './actions/UserInfo/userInfo';
+import { SET_SEARCH_PHRASE } from './actions/SearchPhrase/searchPhrase';
+import {
+  REQUEST_EPISODE,
+  RECEIVE_EPISODE
+} from './actions/CurrentEpisode/currentEpisode';
+import {
+  REQUEST_PODCASTS,
+  RECEIVE_PODCASTS
+} from './actions/Podcasts/podcasts';
 import {
   REQUEST_CURRENT_PODCAST,
   RECEIVE_CURRENT_PODCAST
-} from './actions/currentPodcast';
+} from './actions/CurrentPodcast/currentPodcast';
 
 function userInfo(state = {}, action) {
   switch (action.type) {

@@ -24,6 +24,35 @@ exports[`Test App Component Should Render Correctly 1`] = `
   }
 >
   <Switch>
+    <Connect(AuthenticatedApp) />
+  </Switch>
+</Router>
+`;
+
+exports[`Test App Component Should Render Correctly 2`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Switch>
     <UnauthenticatedApp />
   </Switch>
 </Router>

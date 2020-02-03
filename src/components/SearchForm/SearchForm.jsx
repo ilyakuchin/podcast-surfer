@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-import { setSearchPhrase } from '../../redux/actions/searchPhrase';
-import { searchPodcasts } from '../../redux/actions/podcasts';
+import { setSearchPhrase } from '../../redux/actions/SearchPhrase/searchPhrase';
+import { searchPodcasts } from '../../redux/actions/Podcasts/podcasts';
 
 const Search = styled.form`
   margin-top: 30px;

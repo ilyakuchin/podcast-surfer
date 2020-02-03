@@ -1,5 +1,5 @@
 import axios from 'axios';
-import history from '../../helpers/history';
+import history from '../../../helpers/history';
 
 export const SET_USERNAME = 'SET_USERNAME';
 export const SET_PASSWORD = 'SET_PASSWORD';
@@ -38,9 +38,7 @@ export function loginInputValidation(username, password) {
   return '';
 }
 
-export function login(e, username, password) {
-  e.preventDefault();
-
+export function login(username, password) {
   const errorMessage = loginInputValidation(username, password);
 
   if (errorMessage !== '') {
@@ -64,8 +62,12 @@ export function login(e, username, password) {
   };
 }
 
-export function logout() {
+export function removeLocalStorageToken() {
   window.localStorage.removeItem('jwt_token_podcast');
+}
+
+export function logout() {
+  removeLocalStorageToken();
   return { type: LOGOUT, username: '', password: '', jwt: null };
 }
 
@@ -103,9 +105,7 @@ export function signupInputValidation(username, password, confirmPassword) {
   return '';
 }
 
-export function signup(e, username, password, confirmPassword) {
-  e.preventDefault();
-
+export function signup(username, password, confirmPassword) {
   const validationErrorMessage = signupInputValidation(
     username,
     password,

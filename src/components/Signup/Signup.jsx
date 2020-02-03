@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setUsername, setPassword, signup } from '../../redux/actions/userInfo';
+import {
+  setUsername,
+  setPassword,
+  signup
+} from '../../redux/actions/UserInfo/userInfo';
 
 export function Signup({
   username,
@@ -69,8 +73,10 @@ const mapStateToProps = state => {
 
 const dispatchToProps = dispatch => {
   return {
-    signupConnect: (e, username, password, confirmPassword) =>
-      dispatch(signup(e, username, password, confirmPassword)),
+    signupConnect: (e, username, password, confirmPassword) => {
+      e.preventDefault();
+      dispatch(signup(username, password, confirmPassword));
+    },
     setUsernameConnect: username => dispatch(setUsername(username)),
     setPasswordConnect: password => dispatch(setPassword(password))
   };

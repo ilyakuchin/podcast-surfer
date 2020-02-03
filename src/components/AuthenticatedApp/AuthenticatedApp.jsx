@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { logout } from '../../redux/actions/userInfo';
+import { logout } from '../../redux/actions/UserInfo/userInfo';
 import ConnectedPodcast from '../Podcast/Podcast';
 import ConnectedEpisodePlayer from '../EpisodePlayer/EpisodePlayer';
 import SearchPodcast from '../SearchPodcast/SearchPodcast';
