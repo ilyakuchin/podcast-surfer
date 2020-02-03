@@ -1,43 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test Signup component should render correctly 1`] = `
-<div>
+<styled.div>
   <h2>
     SIGNUP
   </h2>
-  <Link
-    to="/"
-  >
-    Back to Login
-  </Link>
   <div>
     error
   </div>
-  <form>
-    <input
+  <styled.form>
+    <styled.input
       onChange={[Function]}
       placeholder="username"
       required={true}
       type="text"
       value="username"
     />
-    <input
+    <styled.input
       onChange={[Function]}
       placeholder="password"
       required={true}
       type="password"
       value="password"
     />
-    <input
+    <styled.input
       onChange={[Function]}
       placeholder="confirm password"
       required={true}
       type="password"
     />
-    <input
+    <styled.input
       onClick={[Function]}
       type="submit"
     />
-  </form>
-</div>
+  </styled.form>
+  <Link
+    to="/"
+  >
+    Back to Login
+  </Link>
+</styled.div>
 `;

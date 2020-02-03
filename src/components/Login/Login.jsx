@@ -2,11 +2,35 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import {
   setUsername,
   setPassword,
   login
 } from '../../redux/actions/UserInfo/userInfo';
+
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  flex-direction: column;
+`;
+
+const Input = styled.input`
+  font-size: 18px;
+`;
+
+const Form = styled.form`
+  display: grid;
+  grid-gap: 10px;
+  align-items: center;
+  align-self: center;
+  margin-bottom: 20px;
+`;
 
 export function Login({
   username,
@@ -17,13 +41,12 @@ export function Login({
   loginConnect
 }) {
   return (
-    <div>
+    <Container>
       <h2>LOGIN</h2>
-      <Link to='/signup'>Sign Up</Link>
       <div>{validationErrorMessage}</div>
-      <form>
-        <div>Username</div>
-        <input
+      <Form>
+        {/* <div>Username</div> */}
+        <Input
           type='text'
           value={username}
           onChange={e => setUsernameConnect(e.target.value)}
@@ -32,8 +55,8 @@ export function Login({
           required
         />
 
-        <div>Password</div>
-        <input
+        {/* <div>Password</div> */}
+        <Input
           type='password'
           value={password}
           onChange={e => setPasswordConnect(e.target.value)}
@@ -41,13 +64,16 @@ export function Login({
           name='pswrd'
           required
         />
-        <input
+        <Input
           type='submit'
           value='Submit'
           onClick={e => loginConnect(e, username, password)}
         />
-      </form>
-    </div>
+      </Form>
+      <div>
+        Don't have an account? <Link to='/signup'>Sign Up</Link>
+      </div>
+    </Container>
   );
 }
 

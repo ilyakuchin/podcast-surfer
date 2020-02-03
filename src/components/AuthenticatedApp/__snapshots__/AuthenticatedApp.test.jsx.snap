@@ -1,14 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
-<div>
-  username
-  <Link
-    onClick={[Function]}
-    to="/"
-  >
-    Logout
-  </Link>
+<styled.div>
+  <styled.div>
+    username
+    <div>
+      <Link
+        onClick={[Function]}
+        to="/"
+      >
+        Logout
+      </Link>
+    </div>
+  </styled.div>
   <Route
     component={[Function]}
     exact={true}
@@ -38,5 +42,5 @@ exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
     }
     path="/episode-player"
   />
-</div>
+</styled.div>
 `;

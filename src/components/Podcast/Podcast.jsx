@@ -7,23 +7,23 @@ import ConnectedEpisodesList from '../EpisodesList/EpisodesList';
 
 const PodcastGrid = styled.div`
   display: grid;
-  width: 100%
+  width: 100%;
   margin-top: 30px;
   justify-items: center;
   grid-gap: 15px;
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas:
-    "podcast-img podcast-title"
-    "podcast-img podcast-description"
-    "episodes episodes";
+    'podcast-img podcast-title'
+    'podcast-img podcast-description'
+    'episodes episodes';
 
-  @media(max-width: 600px) {
+  @media (max-width: 600px) {
     grid-template-areas:
-    "podcast-img"
-    "podcast-title"
-    "podcast-description"
-    "episodes";
+      'podcast-img'
+      'podcast-title'
+      'podcast-description'
+      'episodes';
   }
 `;
 
@@ -62,6 +62,14 @@ const PodcastDescription = styled.p`
   }
 `;
 
+const CenterSpinner = styled.div`
+  display: grid;
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+`;
+
 export function Podcast({ isFetching, name, description, imageUrl }) {
   return !isFetching ? (
     <PodcastGrid>
@@ -71,7 +79,9 @@ export function Podcast({ isFetching, name, description, imageUrl }) {
       <ConnectedEpisodesList />
     </PodcastGrid>
   ) : (
-    <LoadingSpinner />
+    <CenterSpinner>
+      <LoadingSpinner />
+    </CenterSpinner>
   );
 }
 
