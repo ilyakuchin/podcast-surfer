@@ -70,6 +70,7 @@ export function Signup({
         />
         <Input
           type='submit'
+          value='Submit'
           onClick={e => signupConnect(e, username, password, confirmPassword)}
         />
       </Form>
