@@ -44,7 +44,8 @@ describe('UserInfo actions test', () => {
     const expectedAction = {
       type: CLEAR_USER_INFO,
       username: '',
-      password: ''
+      password: '',
+      validationErrorMessage: ''
     };
     expect(clearUserInfo()).toEqual(expectedAction);
   });

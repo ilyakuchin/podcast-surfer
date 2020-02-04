@@ -54,6 +54,7 @@ export function login(username, password) {
       .then(res => {
         window.localStorage.setItem('jwt_token_podcast', res.data.token);
         dispatch(setJWT(window.localStorage.getItem('jwt_token_podcast')));
+        dispatch(setValidationErrorMessage(''));
         history.push('/');
       })
       .catch(error => {
@@ -72,7 +73,12 @@ export function logout() {
 }
 
 export function clearUserInfo() {
-  return { type: CLEAR_USER_INFO, username: '', password: '' };
+  return {
+    type: CLEAR_USER_INFO,
+    username: '',
+    password: '',
+    validationErrorMessage: ''
+  };
 }
 
 export function signupInputValidation(username, password, confirmPassword) {

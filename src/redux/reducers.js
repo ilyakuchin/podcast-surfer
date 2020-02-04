@@ -43,7 +43,8 @@ function userInfo(
       return {
         ...state,
         username: action.username,
-        password: action.password
+        password: action.password,
+        validationErrorMessage: action.validationErrorMessage
       };
     case SET_VALIDATION_ERROR_MESSAGE:
       return {
