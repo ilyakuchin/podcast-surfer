@@ -32,6 +32,7 @@ exports[`Test Signup component should render correctly 1`] = `
     <styled.input
       onClick={[Function]}
       type="submit"
+      value="Submit"
     />
   </styled.form>
   <Link

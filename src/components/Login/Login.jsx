@@ -45,7 +45,6 @@ export function Login({
       <h2>LOGIN</h2>
       <div>{validationErrorMessage}</div>
       <Form>
-        {/* <div>Username</div> */}
         <Input
           type='text'
           value={username}
@@ -55,7 +54,6 @@ export function Login({
           required
         />
 
-        {/* <div>Password</div> */}
         <Input
           type='password'
           value={password}

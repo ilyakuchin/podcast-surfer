@@ -31,8 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lintjs": "eslint 'src/**/*.js'",
-    "lint": "yarn lintjs && eslint 'src/**/*.jsx'",
+    "lint": "eslint 'src/**/*.js' && eslint 'src/**/*.jsx'",
     "size": "yarn build && size-limit"
   },
   "jest": {
