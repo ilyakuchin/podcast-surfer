@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrentPodcast } from '../../redux/actions/CurrentPodcast/currentPodcast';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { fetchPopularPodcasts } from '../../redux/actions/Podcasts/podcasts';
 
 const Podcasts = styled.ul`
   margin: 0;
@@ -60,8 +61,12 @@ export function SearchResults({
   isFetching,
   jwt,
   podcasts,
-  fetchCurrentPodcastConnect
+  fetchCurrentPodcastConnect,
+  fetchPopularPodcasts
 }) {
+  useEffect(() => {
+    fetchPopularPodcasts();
+  }, [fetchPopularPodcasts]);
   return !isFetching ? (
     <Podcasts>
       {podcasts.map(({ id, name, image, rss }) => (
@@ -110,7 +115,8 @@ const mapStateToProps = state => {
 const dispatchToProps = dispatch => {
   return {
     fetchCurrentPodcastConnect: (rss, jwt) =>
-      dispatch(fetchCurrentPodcast(rss, jwt))
+      dispatch(fetchCurrentPodcast(rss, jwt)),
+    fetchPopularPodcasts: () => dispatch(fetchPopularPodcasts())
   };
 };
 
