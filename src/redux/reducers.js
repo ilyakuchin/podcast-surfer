@@ -7,6 +7,10 @@ import {
   CLEAR_USER_INFO,
   SET_VALIDATION_ERROR_MESSAGE
 } from './actions/UserInfo/userInfo';
+import {
+  ADD_SUBSCRIPTION,
+  REMOVE_SUBSCRIPTION
+} from './actions/Subscriptions/subscriptions';
 import { SET_SEARCH_PHRASE } from './actions/SearchPhrase/searchPhrase';
 import {
   REQUEST_EPISODE,
@@ -22,7 +26,13 @@ import {
 } from './actions/CurrentPodcast/currentPodcast';
 
 function userInfo(
-  state = { username: '', password: '', validationErrorMessage: '', jwt: '' },
+  state = {
+    username: '',
+    password: '',
+    validationErrorMessage: '',
+    jwt: '',
+    subscptions: []
+  },
   action
 ) {
   switch (action.type) {
@@ -51,6 +61,7 @@ function userInfo(
         ...state,
         validationErrorMessage: action.validationErrorMessage
       };
+
     default:
       return state;
   }
@@ -83,6 +94,7 @@ function podcasts(state = { isFetching: false, podcasts: [] }, action) {
 function currentPodcast(
   state = {
     isFetching: false,
+    isSubscribed: false,
     name: '',
     description: '',
     imageUrl: '',
@@ -139,12 +151,29 @@ function currentEpisode(
   }
 }
 
+export function subscriptions(state = [], action) {
+  switch (action.type) {
+    case ADD_SUBSCRIPTION:
+      return [...state, action.podcastUrl];
+    case REMOVE_SUBSCRIPTION: {
+      const index = state.indexOf(action.podcastUrl);
+      if (index !== -1) {
+        return [...state.slice(0, index), ...state.slice(index + 1)];
+      }
+      return state;
+    }
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   userInfo,
   searchPhrase,
   podcasts,
   currentPodcast,
-  currentEpisode
+  currentEpisode,
+  subscriptions
 });
 
 export default rootReducer;

@@ -5,6 +5,7 @@ const mockState = {
     password: 'testPassword',
     validationErrorMessage: 'error'
   },
+  subscriptions: [],
   podcasts: {
     isFetching: false,
     podcasts: [

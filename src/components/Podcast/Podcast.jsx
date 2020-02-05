@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import ConnectedEpisodesList from '../EpisodesList/EpisodesList';
+import ConnectedSubscribeButton from '../SubscribeButton/SubscribeButton';
 
 const PodcastGrid = styled.div`
   display: grid;
@@ -22,6 +23,7 @@ const PodcastGrid = styled.div`
     grid-template-areas:
       'podcast-img'
       'podcast-title'
+      'subscribe-button'
       'podcast-description'
       'episodes';
   }
@@ -74,7 +76,10 @@ export function Podcast({ isFetching, name, description, imageUrl }) {
   return !isFetching ? (
     <PodcastGrid>
       <PodcastImg src={imageUrl} alt='podcast cover' />
-      <PodcastTitle>{name}</PodcastTitle>
+      <PodcastTitle>
+        {name} <ConnectedSubscribeButton />
+      </PodcastTitle>
+
       <PodcastDescription>{description}</PodcastDescription>
       <ConnectedEpisodesList />
     </PodcastGrid>
