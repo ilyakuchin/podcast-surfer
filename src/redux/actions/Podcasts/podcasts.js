@@ -25,3 +25,12 @@ export function searchPodcasts(e, searchPhrase, jwt) {
       });
   };
 }
+
+export function fetchPopularPodcasts() {
+  return dispatch => {
+    dispatch(requestPodcasts());
+    return axios
+      .get(`${process.env.REACT_APP_API_URL}/popular`)
+      .then(res => dispatch(receivePodcasts(res.data)));
+  };
+}
