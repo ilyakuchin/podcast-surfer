@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import ConnectedSearchForm from '../SearchForm/SearchForm';
 import ConnectedSearchResults from '../SearchResults/SearchResults';
+import PopularPodcasts from '../PopularPodcasts/PopularPodcasts';
 
 const ComponentGrid = styled.div`
   display: grid;
@@ -13,11 +15,24 @@ const ComponentGrid = styled.div`
     'results';
 `;
 
-export default function SearchPodcast() {
+export function SearchPodcast({ podcasts }) {
+  function hasPodcasts() {
+    return podcasts.length !== 0;
+  }
   return (
     <ComponentGrid>
       <ConnectedSearchForm />
-      <ConnectedSearchResults />
+      {!hasPodcasts() ? <PopularPodcasts /> : <ConnectedSearchResults />}
     </ComponentGrid>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    podcasts: state.podcasts.podcasts
+  };
+};
+
+const ConnectedSearchPodcast = connect(mapStateToProps)(SearchPodcast);
+
+export default ConnectedSearchPodcast;

@@ -5,8 +5,8 @@ import configureMockStore from 'redux-mock-store';
 import {
   fetchEpisodeRequest,
   fetchEpisode,
-  REQUEST_EPISODE,
-  RECEIVE_EPISODE,
+  FETCH_EPISODE_REQUEST,
+  FETCH_EPISODE_SUCCESS,
   fetchEpisodeSuccess
 } from './currentEpisode';
 
@@ -15,14 +15,14 @@ const mockStore = configureMockStore(middlewares);
 
 describe('CurrentEpisode tests', () => {
   test('should create action to request an episode', () => {
-    const expectedAction = { type: REQUEST_EPISODE, isFetching: true };
+    const expectedAction = { type: FETCH_EPISODE_REQUEST, isFetching: true };
 
     expect(fetchEpisodeRequest()).toEqual(expectedAction);
   });
 
   test('should create action to receive an episode', () => {
     const expectedAction = {
-      type: RECEIVE_EPISODE,
+      type: FETCH_EPISODE_SUCCESS,
       isFetching: false,
       name: 'name',
       description: 'description',
@@ -49,9 +49,9 @@ describe('Async actions', () => {
     const jwt = 'jwt';
 
     const expectedActions = [
-      { type: REQUEST_EPISODE, isFetching: true },
+      { type: FETCH_EPISODE_REQUEST, isFetching: true },
       {
-        type: RECEIVE_EPISODE,
+        type: FETCH_EPISODE_SUCCESS,
         isFetching: false,
         name: 'name',
         description: 'description',

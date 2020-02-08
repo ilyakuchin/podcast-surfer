@@ -6,7 +6,8 @@ import styled from 'styled-components';
 import { logout } from '../../redux/actions/UserInfo/userInfo';
 import ConnectedPodcast from '../Podcast/Podcast';
 import ConnectedEpisodePlayer from '../EpisodePlayer/EpisodePlayer';
-import SearchPodcast from '../SearchPodcast/SearchPodcast';
+import ConnectedSearchPodcast from '../SearchPodcast/SearchPodcast';
+import ConnectedSubscriptions from '../Subscriptions/Subscriptions';
 
 const Container = styled.div`
   width: 100%;
@@ -26,14 +27,18 @@ export function AuthenticatedApp({ username, logoutConnect }) {
       <UserProfile>
         {username}
         <div>
+          <Link to='/subscriptions'>View subscriptions</Link>
+        </div>
+        <div>
           <Link to='/' onClick={logoutConnect}>
             Logout
           </Link>
         </div>
       </UserProfile>
-      <Route path='/' component={SearchPodcast} exact />
+      <Route path='/' component={ConnectedSearchPodcast} exact />
       <Route path='/podcast' component={ConnectedPodcast} />
       <Route path='/episode-player' component={ConnectedEpisodePlayer} />
+      <Route path='/subscriptions' component={ConnectedSubscriptions} />
     </Container>
   );
 }

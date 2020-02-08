@@ -6,6 +6,13 @@ exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
     username
     <div>
       <Link
+        to="/subscriptions"
+      >
+        View subscriptions
+      </Link>
+    </div>
+    <div>
+      <Link
         onClick={[Function]}
         to="/"
       >
@@ -14,7 +21,15 @@ exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
     </div>
   </styled.div>
   <Route
-    component={[Function]}
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(SearchPodcast)",
+        "type": [Function],
+      }
+    }
     exact={true}
     path="/"
   />
@@ -41,6 +56,18 @@ exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
       }
     }
     path="/episode-player"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Subscriptions)",
+        "type": [Function],
+      }
+    }
+    path="/subscriptions"
   />
 </styled.div>
 `;

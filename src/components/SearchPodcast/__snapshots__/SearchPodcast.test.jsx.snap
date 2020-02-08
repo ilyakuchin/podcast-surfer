@@ -3,6 +3,6 @@
 exports[`Test SearchPodcast Component should render correctly 1`] = `
 <styled.div>
   <Connect(SearchForm) />
-  <Connect(SearchResults) />
+  <Connect(PopularPodcasts) />
 </styled.div>
 `;

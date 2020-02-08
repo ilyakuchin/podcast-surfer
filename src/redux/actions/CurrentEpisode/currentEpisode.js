@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-export const REQUEST_EPISODE = 'REQUEST_EPISODE';
-export const RECEIVE_EPISODE = 'RECEIVE_EPISODE';
+export const FETCH_EPISODE_REQUEST = 'FETCH_EPISODE_REQUEST';
+export const FETCH_EPISODE_SUCCESS = 'FETCH_EPISODE_SUCCESS';
 export const FETCH_EPISODE_FAILURE = 'FETCH_EPISODE_FAILURE';
 
 export function fetchEpisodeRequest() {
-  return { type: REQUEST_EPISODE, isFetching: true };
+  return { type: FETCH_EPISODE_REQUEST, isFetching: true };
 }
 
 export function fetchEpisodeSuccess(currentEpisode) {
   return {
-    type: RECEIVE_EPISODE,
+    type: FETCH_EPISODE_SUCCESS,
     isFetching: false,
     name: currentEpisode.name,
     description: currentEpisode.description,

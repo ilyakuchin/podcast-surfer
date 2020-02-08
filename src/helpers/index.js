@@ -5,13 +5,29 @@ const mockState = {
     password: 'testPassword',
     validationErrorMessage: 'error'
   },
-  subscriptions: [],
+  subscriptions: {
+    isFetching: false,
+    podcasts: [
+      { id: '1', image: 'sublink', rss: 'subrss1', name: 'subname' },
+      { id: '2', image: 'sublink2', rss: 'subrss2', name: 'subname2' },
+      { id: '3', image: 'sublink3', rss: 'subrss3', name: 'subname3' }
+    ]
+  },
   podcasts: {
     isFetching: false,
     podcasts: [
       { id: '1', image: 'link', rss: 'rss1', name: 'name' },
       { id: '2', image: 'link2', rss: 'rss2', name: 'name2' },
       { id: '3', image: 'link3', rss: 'rss3', name: 'name3' }
+    ]
+  },
+
+  popularPodcasts: {
+    isFetching: false,
+    podcasts: [
+      { id: '1', image: 'toplink', rss: 'toprss1', name: 'topname' },
+      { id: '2', image: 'toplink2', rss: 'toprss2', name: 'topname2' },
+      { id: '3', image: 'toplink3', rss: 'toprss3', name: 'topname3' }
     ]
   },
 

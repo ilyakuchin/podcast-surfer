@@ -1,54 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test SearchResults Component should render correctly 1`] = `
-<styled.ul>
-  <styled.li
-    key="1"
-  >
-    <styled.img
-      alt="podcast cover"
-      src="link"
-    />
-    <styled.div>
-      <Link
-        onClick={[Function]}
-        to="/podcast"
-      >
-        name
-      </Link>
-    </styled.div>
-  </styled.li>
-  <styled.li
-    key="2"
-  >
-    <styled.img
-      alt="podcast cover"
-      src="link2"
-    />
-    <styled.div>
-      <Link
-        onClick={[Function]}
-        to="/podcast"
-      >
-        name2
-      </Link>
-    </styled.div>
-  </styled.li>
-  <styled.li
-    key="3"
-  >
-    <styled.img
-      alt="podcast cover"
-      src="link3"
-    />
-    <styled.div>
-      <Link
-        onClick={[Function]}
-        to="/podcast"
-      >
-        name3
-      </Link>
-    </styled.div>
-  </styled.li>
-</styled.ul>
+<PodcastList
+  fetchCurrentPodcast={[Function]}
+  isFetching={false}
+  jwt="jwt"
+  podcasts={
+    Array [
+      Object {
+        "id": "1",
+        "image": "link",
+        "name": "name",
+        "rss": "link",
+      },
+      Object {
+        "id": "2",
+        "image": "link2",
+        "name": "name2",
+        "rss": "link2",
+      },
+      Object {
+        "id": "3",
+        "image": "link3",
+        "name": "name3",
+        "rss": "link3",
+      },
+    ]
+  }
+/>
 `;

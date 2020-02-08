@@ -10,16 +10,18 @@ export function requestCurrentPodcast() {
 export function receiveCurrentPodcast(currentPodcast) {
   return {
     type: RECEIVE_CURRENT_PODCAST,
+    id: currentPodcast.id,
     isFetching: false,
     name: currentPodcast.name,
     description: currentPodcast.description,
     imageUrl: currentPodcast.imageUrl,
     episodes: currentPodcast.episodes,
-    rss: currentPodcast.rss
+    rss: currentPodcast.rss,
+    podcastUrl: currentPodcast.podcastUrl
   };
 }
 
-export function fetchCurrentPodcast(rss, jwt) {
+export function fetchCurrentPodcast(rss, jwt, id) {
   return dispatch => {
     dispatch(requestCurrentPodcast());
     return axios
@@ -27,6 +29,7 @@ export function fetchCurrentPodcast(rss, jwt) {
         headers: { authorization: `Bearer ${jwt}` }
       })
       .then(res => {
+        res.data.id = id;
         dispatch(receiveCurrentPodcast(res.data));
       });
   };

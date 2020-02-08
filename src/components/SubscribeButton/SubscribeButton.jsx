@@ -5,9 +5,13 @@ import {
   removeSubscription
 } from '../../redux/actions/Subscriptions/subscriptions';
 
-function isSubscribed(subscriptions, currentPodcast) {
+function isSubscribed(subscriptions, currentPodcastId) {
   if (subscriptions) {
-    const index = subscriptions.indexOf(currentPodcast);
+    const index = subscriptions
+      .map(item => {
+        return item.id;
+      })
+      .indexOf(currentPodcastId);
     return index !== -1;
   }
   return false;
@@ -15,7 +19,11 @@ function isSubscribed(subscriptions, currentPodcast) {
 
 export function SubscribeButton({
   subscriptions,
+  currentPodcastId,
   currentPodcastName,
+  currentPodcastDescription,
+  currentPodcastImageUrl,
+  currentPodcastUrl,
   addSubscription,
   removeSubscription
 }) {
@@ -24,15 +32,21 @@ export function SubscribeButton({
       <button
         onClick={e => {
           e.preventDefault();
-          if (!isSubscribed(subscriptions, currentPodcastName)) {
-            addSubscription(currentPodcastName);
+          if (!isSubscribed(subscriptions, currentPodcastId)) {
+            addSubscription({
+              currentPodcastId,
+              currentPodcastName,
+              currentPodcastDescription,
+              currentPodcastImageUrl,
+              currentPodcastUrl
+            });
           } else {
-            removeSubscription(currentPodcastName);
+            removeSubscription(currentPodcastUrl);
           }
         }}
         type='button'
       >
-        {!isSubscribed(subscriptions, currentPodcastName)
+        {!isSubscribed(subscriptions, currentPodcastId)
           ? 'Subscribe'
           : 'Unsbscribe'}
       </button>
@@ -42,15 +56,19 @@ export function SubscribeButton({
 
 const mapStateToProps = state => {
   return {
-    subscriptions: state.subscriptions,
-    currentPodcastName: state.currentPodcast.name
+    subscriptions: state.subscriptions.podcasts,
+    currentPodcastId: state.currentPodcast.id,
+    currentPodcastName: state.currentPodcast.name,
+    currentPodcastDescription: state.currentPodcast.description,
+    currentPodcastImageUrl: state.currentPodcast.imageUrl,
+    currentPodcastUrl: state.currentPodcast.rss
   };
 };
 
 const dispatchToProps = dispatch => {
   return {
-    addSubscription: name => dispatch(addSubscription(name)),
-    removeSubscription: name => dispatch(removeSubscription(name))
+    addSubscription: podcastInfo => dispatch(addSubscription(podcastInfo)),
+    removeSubscription: podcastUrl => dispatch(removeSubscription(podcastUrl))
   };
 };
 

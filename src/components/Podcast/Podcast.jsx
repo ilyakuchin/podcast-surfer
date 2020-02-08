@@ -72,12 +72,19 @@ const CenterSpinner = styled.div`
   align-items: center;
 `;
 
-export function Podcast({ isFetching, name, description, imageUrl }) {
+export function Podcast({
+  isFetching,
+  name,
+  description,
+  imageUrl,
+  podcastUrl
+}) {
   return !isFetching ? (
     <PodcastGrid>
       <PodcastImg src={imageUrl} alt='podcast cover' />
       <PodcastTitle>
-        {name} <ConnectedSubscribeButton />
+        {name}
+        <ConnectedSubscribeButton />
       </PodcastTitle>
 
       <PodcastDescription>{description}</PodcastDescription>
@@ -102,7 +109,8 @@ const mapStateToProps = state => {
     isFetching: state.currentPodcast.isFetching,
     name: state.currentPodcast.name,
     description: state.currentPodcast.description,
-    imageUrl: state.currentPodcast.imageUrl
+    imageUrl: state.currentPodcast.imageUrl,
+    podcastUrl: state.currentPodcast.podcastUrl
   };
 };
 
