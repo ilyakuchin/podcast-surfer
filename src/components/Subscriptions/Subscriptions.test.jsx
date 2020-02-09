@@ -8,6 +8,17 @@ configure({ adapter: new Adapter() });
 
 describe('Test Subscriptions component', () => {
   test('should render correctly', () => {
-    expect(toJson(shallow(<Subscriptions />))).toMatchSnapshot();
+    expect(
+      toJson(
+        shallow(
+          <Subscriptions
+            subscriptions={[]}
+            isFetching={false}
+            jwt='jwt'
+            fetchCurrentPodcastConnect={() => {}}
+          />
+        )
+      )
+    ).toMatchSnapshot();
   });
 });

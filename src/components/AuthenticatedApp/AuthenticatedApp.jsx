@@ -8,6 +8,7 @@ import ConnectedPodcast from '../Podcast/Podcast';
 import ConnectedEpisodePlayer from '../EpisodePlayer/EpisodePlayer';
 import ConnectedSearchPodcast from '../SearchPodcast/SearchPodcast';
 import ConnectedSubscriptions from '../Subscriptions/Subscriptions';
+import SubscriptionsEpisodeFeed from '../SubscriptionsEpisodeFeed/SubscriptionsEpisodeFeed';
 
 const Container = styled.div`
   width: 100%;
@@ -30,6 +31,9 @@ export function AuthenticatedApp({ username, logoutConnect }) {
           <Link to='/subscriptions'>View subscriptions</Link>
         </div>
         <div>
+          <Link to='/feed'>Feed</Link>
+        </div>
+        <div>
           <Link to='/' onClick={logoutConnect}>
             Logout
           </Link>
@@ -39,6 +43,7 @@ export function AuthenticatedApp({ username, logoutConnect }) {
       <Route path='/podcast' component={ConnectedPodcast} />
       <Route path='/episode-player' component={ConnectedEpisodePlayer} />
       <Route path='/subscriptions' component={ConnectedSubscriptions} />
+      <Route path='/feed' component={SubscriptionsEpisodeFeed} />
     </Container>
   );
 }

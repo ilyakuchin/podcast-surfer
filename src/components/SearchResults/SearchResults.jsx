@@ -25,8 +25,7 @@ SearchResults.propTypes = {
   jwt: PropTypes.string.isRequired,
   podcasts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
-      image: PropTypes.string,
+      imageUrl: PropTypes.string,
       rss: PropTypes.string,
       name: PropTypes.string
     })
@@ -44,8 +43,8 @@ const mapStateToProps = state => {
 
 const dispatchToProps = dispatch => {
   return {
-    fetchCurrentPodcastConnect: (rss, jwt, id) =>
-      dispatch(fetchCurrentPodcast(rss, jwt, id))
+    fetchCurrentPodcastConnect: (rss, jwt) =>
+      dispatch(fetchCurrentPodcast(rss, jwt))
   };
 };
 

@@ -13,6 +13,13 @@ exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
     </div>
     <div>
       <Link
+        to="/feed"
+      >
+        Feed
+      </Link>
+    </div>
+    <div>
+      <Link
         onClick={[Function]}
         to="/"
       >
@@ -68,6 +75,18 @@ exports[`Test {AuthenticatedApp} component should render correctly 1`] = `
       }
     }
     path="/subscriptions"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(SubscriptionsEpisodeFeed)",
+        "type": [Function],
+      }
+    }
+    path="/feed"
   />
 </styled.div>
 `;

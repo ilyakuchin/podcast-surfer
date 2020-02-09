@@ -7,13 +7,14 @@ import { fetchSubscriptions } from '../../redux/actions/Subscriptions/subscripti
 export function Subscriptions({
   isFetching,
   subscriptions,
+  username,
   jwt,
   fetchCurrentPodcastConnect,
   fetchSubscriptionsConnect
 }) {
   useEffect(() => {
-    fetchSubscriptionsConnect();
-  }, [fetchSubscriptionsConnect]);
+    fetchSubscriptionsConnect(username, jwt);
+  }, [fetchSubscriptionsConnect, jwt, username]);
 
   return (
     <PodcastList
@@ -27,9 +28,10 @@ export function Subscriptions({
 
 const mapStateToProps = state => {
   return {
-    subscriptions: state.subscriptions.podcasts,
+    subscriptions: state.subscriptions.subscriptions,
     isFetching: state.subscriptions.isFetching,
-    jwt: state.userInfo.jwt
+    jwt: state.userInfo.jwt,
+    username: state.userInfo.username
   };
 };
 
@@ -37,7 +39,8 @@ const dispatchToProps = dispatch => {
   return {
     fetchCurrentPodcastConnect: (rss, jwt, id) =>
       dispatch(fetchCurrentPodcast(rss, jwt, id)),
-    fetchSubscriptionsConnect: () => dispatch(fetchSubscriptions())
+    fetchSubscriptionsConnect: (username, jwt) =>
+      dispatch(fetchSubscriptions(username, jwt))
   };
 };
 

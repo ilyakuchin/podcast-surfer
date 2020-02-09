@@ -21,7 +21,7 @@ export function receiveCurrentPodcast(currentPodcast) {
   };
 }
 
-export function fetchCurrentPodcast(rss, jwt, id) {
+export function fetchCurrentPodcast(rss, jwt) {
   return dispatch => {
     dispatch(requestCurrentPodcast());
     return axios
@@ -29,7 +29,6 @@ export function fetchCurrentPodcast(rss, jwt, id) {
         headers: { authorization: `Bearer ${jwt}` }
       })
       .then(res => {
-        res.data.id = id;
         dispatch(receiveCurrentPodcast(res.data));
       });
   };

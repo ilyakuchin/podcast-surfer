@@ -55,15 +55,15 @@ const EpisodeLink = styled.div`
   }
 `;
 
-export function EpisodesList({ jwt, rss, episodes, fetchEpisodeConnect }) {
+export function EpisodesList({ jwt, episodes, fetchEpisodeConnect }) {
   return (
     <Episodes>
-      {episodes.map(({ id, name, imageUrl }) => (
+      {episodes.map(({ id, name, imageUrl, podcastUrl }) => (
         <EpisodeGrid key={id}>
           <EpisodeImage src={imageUrl} alt='episode cover' />
           <EpisodeLink>
             <Link
-              onClick={() => fetchEpisodeConnect(jwt, rss, id)}
+              onClick={() => fetchEpisodeConnect(jwt, podcastUrl, id)}
               to='/episode-player'
             >
               {name}
@@ -77,7 +77,6 @@ export function EpisodesList({ jwt, rss, episodes, fetchEpisodeConnect }) {
 
 const mapStateToProps = state => {
   return {
-    rss: state.currentPodcast.rss,
     episodes: state.currentPodcast.episodes,
     jwt: state.userInfo.jwt
   };
@@ -91,7 +90,6 @@ const dispatchToProps = dispatch => {
 
 EpisodesList.propTypes = {
   jwt: PropTypes.string.isRequired,
-  rss: PropTypes.string.isRequired,
   episodes: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,

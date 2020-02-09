@@ -62,14 +62,11 @@ export default function PodcastList({
 }) {
   return !isFetching ? (
     <Podcasts>
-      {podcasts.map(({ id, name, image, rss }) => (
-        <PodcastGrid key={id}>
-          <PodcastImage src={image} alt='podcast cover' />
+      {podcasts.map(({ name, imageUrl, rss }) => (
+        <PodcastGrid key={rss}>
+          <PodcastImage src={imageUrl} alt='podcast cover' />
           <PodcastLink>
-            <Link
-              onClick={() => fetchCurrentPodcast(rss, jwt, id)}
-              to='/podcast'
-            >
+            <Link onClick={() => fetchCurrentPodcast(rss, jwt)} to='/podcast'>
               {name}
             </Link>
           </PodcastLink>

@@ -48,8 +48,4 @@ describe('Test ConnectedEpisodesList component', () => {
   test('should get jwt props from the store correctly', () => {
     expect(component.props().children.props.jwt).toBe('test');
   });
-
-  test('should get rss props from the store correctly', () => {
-    expect(component.props().children.props.rss).toBe('rssUrl');
-  });
 });
