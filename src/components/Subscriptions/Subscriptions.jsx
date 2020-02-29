@@ -1,8 +1,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ConnectedPodcastList from '../PodcastList/PodcastList';
 import { fetchSubscriptions } from '../../redux/actions/Subscriptions/subscriptions';
+
+const ComponentGrid = styled.div`
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-areas: 'results';
+`;
 
 export function Subscriptions({
   fetchSubscriptionsConnect,
@@ -15,7 +23,9 @@ export function Subscriptions({
   }, [fetchSubscriptionsConnect, subscriptionUrls]);
 
   return (
-    <ConnectedPodcastList podcasts={subscriptions} isFetching={isFetching} />
+    <ComponentGrid>
+      <ConnectedPodcastList podcasts={subscriptions} isFetching={isFetching} />
+    </ComponentGrid>
   );
 }
 

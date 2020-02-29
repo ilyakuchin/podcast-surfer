@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Switch, Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import history from './helpers/history';
 import './App.css';
@@ -13,37 +14,62 @@ import ConnectedLogin from './components/Login/Login';
 import ConnectedSubscriptionsEpisodeFeed from './components/SubscriptionsEpisodeFeed/SubscriptionsEpisodeFeed';
 import ConnectedSignup from './components/Signup/Signup';
 
+const Container = styled.div`
+  height: 100%;
+  display: grid;
+  grid-template-rows: 60px auto;
+  grid-template-areas:
+    'profile'
+    'app';
+`;
+
+const Profile = styled.div`
+  grid-area: profile;
+`;
+
+const AppContainer = styled.div`
+  grid-area: app;
+`;
+
 export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
   useEffect(() => {
     fetchUserConnect();
   }, [fetchUserConnect]);
 
   return (
-    <div>
+    <Container>
       <Router history={history}>
         {jwt ? (
-          <div>
+          <Profile>
             <div>{username}</div>
-            <Link to='/subscriptions'>Subscriptions</Link>
-            <Link to='/feed'>Feed</Link>
-            <Link to='/' onClick={logoutConnect}>
-              Logout
-            </Link>
-          </div>
+            <div>
+              <Link to='/subscriptions'>Subscriptions</Link>
+            </div>
+            <div>
+              <Link to='/feed'>Feed</Link>
+            </div>
+            <div>
+              <Link to='/' onClick={logoutConnect}>
+                Logout
+              </Link>
+            </div>
+          </Profile>
         ) : (
           <Link to='/login'>Log in</Link>
         )}
-        <Switch>
-          <Route path='/' component={ConnectedSearchPodcast} exact />
-          <Route path='/podcast' component={ConnectedPodcast} />
-          <Route path='/episode-player' component={ConnectedEpisodePlayer} />
-          <Route path='/subscriptions' component={ConnectedSubscriptions} />
-          <Route path='/feed' component={ConnectedSubscriptionsEpisodeFeed} />
-          <Route path='/login' component={ConnectedLogin} />
-          <Route path='/signup' component={ConnectedSignup} />
-        </Switch>
+        <AppContainer>
+          <Switch>
+            <Route path='/' component={ConnectedSearchPodcast} exact />
+            <Route path='/podcast' component={ConnectedPodcast} />
+            <Route path='/episode-player' component={ConnectedEpisodePlayer} />
+            <Route path='/subscriptions' component={ConnectedSubscriptions} />
+            <Route path='/feed' component={ConnectedSubscriptionsEpisodeFeed} />
+            <Route path='/login' component={ConnectedLogin} />
+            <Route path='/signup' component={ConnectedSignup} />
+          </Switch>
+        </AppContainer>
       </Router>
-    </div>
+    </Container>
   );
 }
 
