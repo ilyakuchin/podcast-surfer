@@ -1,15 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  addSubscription,
-  removeSubscription
-} from '../../redux/actions/Subscriptions/subscriptions';
+import { updateSubscriptions } from '../../redux/actions/UserInfo/userInfo';
 
 function isSubscribed(subscriptions, currentPodcastUrl) {
   if (subscriptions) {
-    const index = subscriptions
-      .map(item => item.rss)
-      .indexOf(currentPodcastUrl);
+    const index = subscriptions.indexOf(currentPodcastUrl);
     return index !== -1;
   }
   return false;
@@ -17,15 +13,9 @@ function isSubscribed(subscriptions, currentPodcastUrl) {
 
 export function SubscribeButton({
   subscriptions,
-  currentPodcastId,
-  currentPodcastName,
-  currentPodcastDescription,
-  currentPodcastImageUrl,
   currentPodcastUrl,
-  addSubscription,
-  removeSubscription,
-  username,
-  jwt
+  jwt,
+  updateSubscriptionsConnect
 }) {
   return (
     <div>
@@ -33,9 +23,21 @@ export function SubscribeButton({
         onClick={e => {
           e.preventDefault();
           if (!isSubscribed(subscriptions, currentPodcastUrl)) {
-            addSubscription(currentPodcastUrl, username, jwt);
+            updateSubscriptionsConnect(
+              [...subscriptions, currentPodcastUrl],
+              jwt
+            );
           } else {
-            removeSubscription(currentPodcastUrl, username, jwt);
+            const index = subscriptions.indexOf(currentPodcastUrl);
+            if (index !== -1) {
+              updateSubscriptionsConnect(
+                [
+                  ...subscriptions.slice(0, index),
+                  ...subscriptions.slice(index + 1)
+                ],
+                jwt
+              );
+            }
           }
         }}
         type='button'
@@ -48,25 +50,26 @@ export function SubscribeButton({
   );
 }
 
+SubscribeButton.propTypes = {
+  subscriptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentPodcastUrl: PropTypes.string.isRequired,
+  jwt: PropTypes.string.isRequired,
+  updateSubscriptionsConnect: PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => {
   return {
-    subscriptions: state.subscriptions.subscriptions,
-    currentPodcastId: state.currentPodcast.id,
-    currentPodcastName: state.currentPodcast.name,
-    currentPodcastDescription: state.currentPodcast.description,
+    subscriptions: state.userInfo.subscriptions,
     currentPodcastImageUrl: state.currentPodcast.imageUrl,
-    currentPodcastUrl: state.currentPodcast.rss,
-    username: state.userInfo.username,
-    jwt: state.userInfo.jwt
+    jwt: state.userInfo.jwt,
+    currentPodcastUrl: state.currentPodcast.rss
   };
 };
 
 const dispatchToProps = dispatch => {
   return {
-    addSubscription: (podcastUrl, username, jwt) =>
-      dispatch(addSubscription(podcastUrl, username, jwt)),
-    removeSubscription: (podcastUrl, username, jwt) =>
-      dispatch(removeSubscription(podcastUrl, username, jwt))
+    updateSubscriptionsConnect: (subscriptions, jwt) =>
+      dispatch(updateSubscriptions(subscriptions, jwt))
   };
 };
 

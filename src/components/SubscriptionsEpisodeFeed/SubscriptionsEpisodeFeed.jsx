@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { fetchFeed } from '../../redux/actions/Feed/feed';
 import { EpisodesList } from '../EpisodesList/EpisodesList';
-import { fetchEpisode } from '../../redux/actions/CurrentEpisode/currentEpisode';
+import { setCurrentEpisode } from '../../redux/actions/CurrentEpisode/currentEpisode';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const PodcastGrid = styled.div`
@@ -25,28 +26,22 @@ const CenterSpinner = styled.div`
   align-items: center;
 `;
 
-function SubscriptionsEpisodeFeed({
+export function SubscriptionsEpisodeFeed({
   fetchFeedConnect,
   feed,
   subscriptions,
-  jwt,
-  fetchEpisodeConnect,
+  setCurrentEpisodeConnect,
   isFetching
 }) {
-  useEffect(
-    () =>
-      fetchFeedConnect(
-        subscriptions.map(item => item.rss),
-        jwt
-      ),
-    [fetchFeedConnect, subscriptions, jwt]
-  );
+  useEffect(() => fetchFeedConnect(subscriptions), [
+    fetchFeedConnect,
+    subscriptions
+  ]);
   return !isFetching ? (
     <PodcastGrid>
       <EpisodesList
-        jwt={jwt}
         episodes={feed}
-        fetchEpisodeConnect={fetchEpisodeConnect}
+        setCurrentEpisodeConnect={setCurrentEpisodeConnect}
       />
     </PodcastGrid>
   ) : (
@@ -56,24 +51,39 @@ function SubscriptionsEpisodeFeed({
   );
 }
 
+SubscriptionsEpisodeFeed.propTypes = {
+  fetchFeedConnect: PropTypes.func.isRequired,
+  feed: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      imageUrl: PropTypes.string
+    })
+  ).isRequired,
+  subscriptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setCurrentEpisodeConnect: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired
+};
+
 const mapStateToProps = state => {
   return {
-    subscriptions: state.subscriptions.subscriptions,
+    subscriptions: state.userInfo.subscriptions,
     feed: state.feed.feed,
-    jwt: state.userInfo.jwt,
     isFetching: state.feed.isFetching
   };
 };
 
 const dispatchToProps = dispatch => {
   return {
-    fetchFeedConnect: (urlList, jwt) => dispatch(fetchFeed(urlList, jwt)),
-    fetchEpisodeConnect: (jwt, podcastUrl, id) =>
-      dispatch(fetchEpisode(jwt, podcastUrl, id))
+    fetchFeedConnect: urlList => dispatch(fetchFeed(urlList)),
+    setCurrentEpisodeConnect: (name, description, imageUrl, audioUrl) =>
+      dispatch(setCurrentEpisode(name, description, imageUrl, audioUrl))
   };
 };
 
-export default connect(
+const ConnectedSubscriptionsEpisodeFeed = connect(
   mapStateToProps,
   dispatchToProps
 )(SubscriptionsEpisodeFeed);
+
+export default ConnectedSubscriptionsEpisodeFeed;

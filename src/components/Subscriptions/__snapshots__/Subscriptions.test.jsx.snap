@@ -1,10 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test Subscriptions component should render correctly 1`] = `
-<PodcastList
-  fetchCurrentPodcast={[Function]}
+<Connect(PodcastList)
   isFetching={false}
-  jwt="jwt"
   podcasts={Array []}
 />
 `;

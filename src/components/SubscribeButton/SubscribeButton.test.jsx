@@ -8,6 +8,17 @@ configure({ adapter: new Adapter() });
 
 describe('Test SubscribeButton component', () => {
   test('should render correctly', () => {
-    expect(toJson(shallow(<SubscribeButton />))).toMatchSnapshot();
+    expect(
+      toJson(
+        shallow(
+          <SubscribeButton
+            subscriptions={[]}
+            currentPodcastUrl=''
+            jwt=''
+            updateSubscriptionsConnect={() => {}}
+          />
+        )
+      )
+    ).toMatchSnapshot();
   });
 });

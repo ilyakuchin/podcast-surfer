@@ -65,11 +65,15 @@ export function Login({
         <Input
           type='submit'
           value='Submit'
-          onClick={e => loginConnect(e, username, password)}
+          onClick={e => {
+            e.preventDefault();
+            loginConnect(username, password);
+          }}
         />
       </Form>
       <div>
-        Don't have an account? <Link to='/signup'>Sign Up</Link>
+        Don&#39t have an account?
+        <Link to='/signup'>Sign Up</Link>
       </div>
     </Container>
   );
@@ -96,10 +100,7 @@ const dispatchToProps = dispatch => {
   return {
     setUsernameConnect: username => dispatch(setUsername(username)),
     setPasswordConnect: password => dispatch(setPassword(password)),
-    loginConnect: (e, username, password) => {
-      e.preventDefault();
-      dispatch(login(username, password));
-    }
+    loginConnect: (username, password) => dispatch(login(username, password))
   };
 };
 

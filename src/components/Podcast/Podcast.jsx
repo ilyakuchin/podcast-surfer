@@ -72,13 +72,7 @@ const CenterSpinner = styled.div`
   align-items: center;
 `;
 
-export function Podcast({
-  isFetching,
-  name,
-  description,
-  imageUrl,
-  podcastUrl
-}) {
+export function Podcast({ isFetching, name, description, imageUrl }) {
   return !isFetching ? (
     <PodcastGrid>
       <PodcastImg src={imageUrl} alt='podcast cover' />

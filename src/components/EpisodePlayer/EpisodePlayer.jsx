@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const Grid = styled.div`
   position: relative;
@@ -65,22 +64,8 @@ const Description = styled.div`
   white-space: pre-line;
 `;
 
-const CenterSpinner = styled.div`
-  display: grid;
-  width: 100%;
-  height: 100%;
-  justify-items: center;
-  align-items: center;
-`;
-
-export function EpisodePlayer({
-  isFetching,
-  name,
-  description,
-  imageUrl,
-  audioUrl
-}) {
-  return !isFetching ? (
+export function EpisodePlayer({ name, description, imageUrl, audioUrl }) {
+  return (
     <Grid>
       <Pic src={imageUrl} alt='' />
       <Header>{name}</Header>
@@ -89,15 +74,10 @@ export function EpisodePlayer({
       </Audio>
       <Description>{description}</Description>
     </Grid>
-  ) : (
-    <CenterSpinner>
-      <LoadingSpinner />
-    </CenterSpinner>
   );
 }
 
 EpisodePlayer.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,

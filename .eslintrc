@@ -4,7 +4,6 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -17,5 +16,6 @@
     "sourceType": "module"
   },
   "plugins": ["react", "prettier"],
-  "rules": { "no-underscore-dangle": "off" }
+  "rules": { "no-underscore-dangle": "off" },
+  "extends": ["airbnb", "prettier", "prettier/react"]
 }

@@ -6,3 +6,10 @@ exports[`Test SearchPodcast Component should render correctly 1`] = `
   <Connect(PopularPodcasts) />
 </styled.div>
 `;
+
+exports[`Test SearchPodcast Component should show popular podcasts when has no podcasts in search results 1`] = `
+<styled.div>
+  <Connect(SearchForm) />
+  <Connect(SearchResults) />
+</styled.div>
+`;

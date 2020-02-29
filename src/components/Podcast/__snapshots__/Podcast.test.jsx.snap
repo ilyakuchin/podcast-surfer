@@ -16,3 +16,9 @@ exports[`Test Podcast Component should render correctly 1`] = `
   <Connect(EpisodesList) />
 </styled.div>
 `;
+
+exports[`Test Podcast Component should render correctly when isFetching 1`] = `
+<styled.div>
+  <LoadingSpinner />
+</styled.div>
+`;

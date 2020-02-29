@@ -8,10 +8,32 @@ configure({ adapter: new Adapter() });
 
 describe('Test App Component', () => {
   test('Should Render Correctly', () => {
-    expect(toJson(shallow(<App jwt="jwt" username='username' />))).toMatchSnapshot();
+    expect(
+      toJson(
+        shallow(
+          <App
+            jwt='jwt'
+            username='username'
+            fetchUserConnect={() => {}}
+            logoutConnect={() => {}}
+          />
+        )
+      )
+    ).toMatchSnapshot();
   });
 
   test('Should Render Correctly', () => {
-    expect(toJson(shallow(<App jwt={undefined} username='username' />))).toMatchSnapshot();
+    expect(
+      toJson(
+        shallow(
+          <App
+            jwt={undefined}
+            username='username'
+            fetchUserConnect={() => {}}
+            logoutConnect={() => {}}
+          />
+        )
+      )
+    ).toMatchSnapshot();
   });
 });

@@ -1,35 +1,44 @@
 import axios from 'axios';
+import { buildPodcastRequestUrl } from '../../../helpers/urls';
 
-export const REQUEST_CURRENT_PODCAST = 'REQUEST_CURRENT_PODCAST';
-export const RECEIVE_CURRENT_PODCAST = 'RECEIVE_CURRENT_PODCAST';
+export const FETCH_CURRENT_PODCAST_REQUEST = 'FETCH_CURRENT_PODCAST_REQUEST';
+export const FETCH_CURRENT_PODCAST_SUCCESS = 'FETCH_CURRENT_PODCAST_SUCCESS';
+export const FETCH_CURRENT_PODCAST_FAILURE = 'FETCH_CURRENT_PODCAST_FAILURE';
 
-export function requestCurrentPodcast() {
-  return { type: REQUEST_CURRENT_PODCAST, isFetching: true };
+export function fetchCurrentPodcastRequest() {
+  return { type: FETCH_CURRENT_PODCAST_REQUEST, isFetching: true };
 }
 
-export function receiveCurrentPodcast(currentPodcast) {
+export function fetchCurrentPodcastSuccess(currentPodcast) {
   return {
-    type: RECEIVE_CURRENT_PODCAST,
-    id: currentPodcast.id,
+    type: FETCH_CURRENT_PODCAST_SUCCESS,
     isFetching: false,
-    name: currentPodcast.name,
-    description: currentPodcast.description,
-    imageUrl: currentPodcast.imageUrl,
-    episodes: currentPodcast.episodes,
-    rss: currentPodcast.rss,
-    podcastUrl: currentPodcast.podcastUrl
+    currentPodcast
   };
 }
 
-export function fetchCurrentPodcast(rss, jwt) {
+export function fetchCurrentPodcastFailure(error) {
+  return { type: FETCH_CURRENT_PODCAST_FAILURE, isFetching: false, error };
+}
+
+export function fetchCurrentPodcast(url) {
   return dispatch => {
-    dispatch(requestCurrentPodcast());
-    return axios
-      .get(`${process.env.REACT_APP_API_URL}/podcast?rss=${rss}`, {
-        headers: { authorization: `Bearer ${jwt}` }
-      })
+    dispatch(fetchCurrentPodcastRequest());
+    axios
+      .get(buildPodcastRequestUrl(url))
       .then(res => {
-        dispatch(receiveCurrentPodcast(res.data));
-      });
+        dispatch(
+          fetchCurrentPodcastSuccess({
+            id: res.data.id,
+            name: res.data.name,
+            description: res.data.description,
+            imageUrl: res.data.imageUrl,
+            episodes: res.data.episodes,
+            rss: res.data.rss,
+            podcastUrl: res.data.podcastUrl
+          })
+        );
+      })
+      .catch(err => fetchCurrentPodcastFailure(err));
   };
 }

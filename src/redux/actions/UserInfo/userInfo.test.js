@@ -1,3 +1,8 @@
+import thunk from 'redux-thunk';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import configureMockStore from 'redux-mock-store';
+
 import {
   SET_USERNAME,
   SET_PASSWORD,
@@ -13,8 +18,14 @@ import {
   signupInputValidation,
   clearUserInfo,
   logout,
-  removeLocalStorageToken
+  removeLocalStorageToken,
+  signup
 } from './userInfo';
+
+import { registerUrl } from '../../../helpers/urls';
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 describe('UserInfo actions test', () => {
   test('should create action to set username', () => {
@@ -141,4 +152,35 @@ describe('Test signup input validation', () => {
       'Password and confirm password does not match'
     );
   });
+});
+
+test('should return signup actions', () => {
+  const mock = new MockAdapter(axios);
+  const username = 'username';
+  const password = 'password';
+  const confirmPassword = 'password';
+
+  const expectedActions = [
+    {
+      type: CLEAR_USER_INFO,
+      username: '',
+      password: '',
+      validationErrorMessage: ''
+    }
+  ];
+
+  mock
+    .onPost(registerUrl, {
+      username,
+      password,
+      confirmPassword
+    })
+    .reply(200);
+
+  const store = mockStore();
+  return store
+    .dispatch(signup(username, password, confirmPassword))
+    .then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
 });

@@ -35,13 +35,55 @@ describe('Test EpisodesList Component', () => {
       toJson(
         shallow(
           <EpisodesList
-            jwt='jwt'
             rss='rss'
             episodes={episodes}
-            fetchEpisodeConnect={() => {}}
+            setCurrentEpisodeConnect={jest.fn}
           />
         )
       )
     ).toMatchSnapshot();
+  });
+
+  test('should call fetchEpisodeConnect function on Link click', () => {
+    const episodes = [
+      {
+        id: '1',
+        name: 'name1',
+        description: 'description1',
+        image: 'image1',
+        audio: 'audio1'
+      },
+      {
+        id: '2',
+        name: 'name2',
+        description: 'description2',
+        image: 'image2',
+        audio: 'audio2'
+      },
+      {
+        id: '3',
+        name: 'name3',
+        description: 'description3',
+        image: 'image3',
+        audio: 'audio3'
+      }
+    ];
+
+    const fn = jest.fn();
+
+    const wrapper = shallow(
+      <EpisodesList
+        rss='rss'
+        episodes={episodes}
+        setCurrentEpisodeConnect={fn}
+      />
+    );
+
+    wrapper
+      .find('Link')
+      .first()
+      .simulate('click');
+
+    expect(fn.mock.calls.length).toEqual(1);
   });
 });

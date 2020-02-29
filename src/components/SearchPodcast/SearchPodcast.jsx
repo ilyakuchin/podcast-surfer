@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ConnectedSearchForm from '../SearchForm/SearchForm';
 import ConnectedSearchResults from '../SearchResults/SearchResults';
 import PopularPodcasts from '../PopularPodcasts/PopularPodcasts';
@@ -26,6 +27,17 @@ export function SearchPodcast({ podcasts }) {
     </ComponentGrid>
   );
 }
+
+SearchPodcast.propTypes = {
+  podcasts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      image: PropTypes.string,
+      rss: PropTypes.string,
+      name: PropTypes.string
+    })
+  ).isRequired
+};
 
 const mapStateToProps = state => {
   return {

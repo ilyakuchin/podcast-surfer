@@ -1,7 +1,7 @@
 import {
   REQUEST_PODCASTS,
   RECEIVE_PODCASTS
-} from '../actions/Podcasts/podcasts';
+} from '../../actions/Podcasts/podcasts';
 
 export default function podcasts(
   state = { isFetching: false, podcasts: [] },

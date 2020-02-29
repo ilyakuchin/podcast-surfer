@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { fetchCurrentPodcast } from '../../redux/actions/CurrentPodcast/currentPodcast';
 
 const Podcasts = styled.ul`
   margin: 0;
@@ -54,11 +56,10 @@ const PodcastLink = styled.div`
   }
 `;
 
-export default function PodcastList({
+export function PodcastList({
   isFetching,
   podcasts,
-  fetchCurrentPodcast,
-  jwt
+  fetchCurrentPodcastConnect
 }) {
   return !isFetching ? (
     <Podcasts>
@@ -66,7 +67,7 @@ export default function PodcastList({
         <PodcastGrid key={rss}>
           <PodcastImage src={imageUrl} alt='podcast cover' />
           <PodcastLink>
-            <Link onClick={() => fetchCurrentPodcast(rss, jwt)} to='/podcast'>
+            <Link onClick={() => fetchCurrentPodcastConnect(rss)} to='/podcast'>
               {name}
             </Link>
           </PodcastLink>
@@ -80,9 +81,18 @@ export default function PodcastList({
   );
 }
 
+const dispatchToProps = dispatch => {
+  return {
+    fetchCurrentPodcastConnect: rss => dispatch(fetchCurrentPodcast(rss))
+  };
+};
+
+const ConnectedPodcastList = connect(null, dispatchToProps)(PodcastList);
+
+export default ConnectedPodcastList;
+
 PodcastList.propTypes = {
   isFetching: PropTypes.bool.isRequired,
-  jwt: PropTypes.string.isRequired,
   podcasts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -91,5 +101,5 @@ PodcastList.propTypes = {
       name: PropTypes.string
     })
   ).isRequired,
-  fetchCurrentPodcast: PropTypes.func.isRequired
+  fetchCurrentPodcastConnect: PropTypes.func.isRequired
 };

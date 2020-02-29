@@ -1,4 +1,7 @@
-import { FETCH_FEED_REQUEST, FETCH_FEED_SUCCESS } from '../actions/Feed/feed';
+import {
+  FETCH_FEED_REQUEST,
+  FETCH_FEED_SUCCESS
+} from '../../actions/Feed/feed';
 
 export default function feed(state = { isFetching: false, feed: [] }, action) {
   switch (action.type) {

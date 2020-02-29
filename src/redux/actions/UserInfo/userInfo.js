@@ -1,5 +1,6 @@
 import axios from 'axios';
 import history from '../../../helpers/history';
+import { loginUrl, registerUrl } from '../../../helpers/urls';
 
 export const SET_USERNAME = 'SET_USERNAME';
 export const SET_PASSWORD = 'SET_PASSWORD';
@@ -7,6 +8,11 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_USER_INFO = 'CLEAR_USER_INFO';
 export const SET_VALIDATION_ERROR_MESSAGE = 'SET_VALIDATION_ERROR_MESSAGE';
+export const SET_SUBSCRIPTIONS = 'SET_SUBSCRIPTIONS';
+
+export const UPDATE_SUBSCRIPTIONS_REQUEST = 'UPDATE_SUBSCRIPTIONS_REQUEST';
+export const UPDATE_SUBSCRIPTIONS_SUCCESS = 'UPDATE_SUBSCRIPTIONS_SUCCESS';
+export const UPDATE_SUBSCRIPTIONS_FAILURE = 'UPDATE_SUBSCRIPTIONS_FAILURE';
 
 export function setUsername(username) {
   return { type: SET_USERNAME, username };
@@ -18,6 +24,19 @@ export function setPassword(password) {
 
 export function setJWT(jwt) {
   return { type: LOGIN, jwt };
+}
+
+export function setSubscriptions(subscriptions) {
+  return { type: SET_SUBSCRIPTIONS, subscriptions };
+}
+
+export function clearUserInfo() {
+  return {
+    type: CLEAR_USER_INFO,
+    username: '',
+    password: '',
+    validationErrorMessage: ''
+  };
 }
 
 export function setValidationErrorMessage(message) {
@@ -47,7 +66,7 @@ export function login(username, password) {
 
   return dispatch => {
     return axios
-      .post(`${process.env.REACT_APP_API_URL}/login`, {
+      .post(loginUrl, {
         username,
         password
       })
@@ -57,8 +76,41 @@ export function login(username, password) {
         dispatch(setValidationErrorMessage(''));
         history.push('/');
       })
+      .then(() => {
+        return axios.get(`${process.env.REACT_APP_API_URL}/users`, {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem(
+              'jwt_token_podcast'
+            )}`
+          }
+        });
+      })
+      .then(res => {
+        dispatch(setSubscriptions(res.data.user.subscriptions));
+      })
       .catch(error => {
         dispatch(setValidationErrorMessage(error.response.data));
+      });
+  };
+}
+
+export function fetchUser() {
+  return dispatch => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/users`, {
+        headers: {
+          Authorization: `Bearer: ${window.localStorage.getItem(
+            'jwt_token_podcast'
+          )}`
+        }
+      })
+      .then(res => {
+        dispatch(setUsername(res.data.user.username));
+        dispatch(setJWT(window.localStorage.getItem('jwt_token_podcast')));
+        dispatch(setSubscriptions(res.data.user.subscriptions));
+      })
+      .catch(() => {
+        dispatch(clearUserInfo());
       });
   };
 }
@@ -70,15 +122,6 @@ export function removeLocalStorageToken() {
 export function logout() {
   removeLocalStorageToken();
   return { type: LOGOUT, username: '', password: '', jwt: null };
-}
-
-export function clearUserInfo() {
-  return {
-    type: CLEAR_USER_INFO,
-    username: '',
-    password: '',
-    validationErrorMessage: ''
-  };
 }
 
 export function signupInputValidation(username, password, confirmPassword) {
@@ -123,7 +166,7 @@ export function signup(username, password, confirmPassword) {
   }
   return dispatch => {
     return axios
-      .post(`${process.env.REACT_APP_API_URL}/register`, {
+      .post(registerUrl, {
         username,
         password,
         confirmPassword
@@ -135,5 +178,44 @@ export function signup(username, password, confirmPassword) {
       .catch(error => {
         dispatch(setValidationErrorMessage(error.response.data));
       });
+  };
+}
+
+export function updateSubscriptionsRequest() {
+  return {
+    type: UPDATE_SUBSCRIPTIONS_REQUEST,
+    isSubscribeButtonEnabled: false
+  };
+}
+
+export function updateSubscriptionsSuccess() {
+  return {
+    type: UPDATE_SUBSCRIPTIONS_SUCCESS,
+    isSubscribeButtonEnabled: true
+  };
+}
+
+export function updateSubscriptionsFailure() {
+  return {
+    type: UPDATE_SUBSCRIPTIONS_FAILURE,
+    isSubscribeButtonEnabled: false
+  };
+}
+
+export function updateSubscriptions(subscriptionUrls, jwt) {
+  return dispatch => {
+    dispatch(updateSubscriptionsRequest());
+    return axios
+      .patch(
+        `${process.env.REACT_APP_API_URL}/users`,
+        { subscriptions: subscriptionUrls },
+        {
+          headers: {
+            Authorization: `Bearer: ${jwt}`
+          }
+        }
+      )
+      .then(() => dispatch(fetchUser()))
+      .then(() => dispatch(updateSubscriptionsSuccess()));
   };
 }

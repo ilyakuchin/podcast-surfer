@@ -1,4 +1,4 @@
-import { SET_SEARCH_PHRASE } from '../actions/SearchPhrase/searchPhrase';
+import { SET_SEARCH_PHRASE } from '../../actions/SearchPhrase/searchPhrase';
 
 export default function searchPhrase(state = '', action) {
   switch (action.type) {

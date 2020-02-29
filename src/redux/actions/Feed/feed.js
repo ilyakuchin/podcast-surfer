@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_EPISODE_FAILURE } from '../CurrentEpisode/currentEpisode';
+import { buildPodcastRequestUrl } from '../../../helpers/urls';
 
 export const FETCH_FEED_REQUEST = 'FETCH_FEED_REQUEST';
 export const FETCH_FEED_SUCCESS = 'FETCH_FEED_SUCCESS';
@@ -14,29 +14,21 @@ export function fetchFeedSuccess(feed) {
 }
 
 export function fetchFeedFailure() {
-  return { type: FETCH_EPISODE_FAILURE, isFetching: false };
+  return { type: FETCH_FEED_FAILURE, isFetching: false };
 }
 
-export function fetchFeed(urlList, jwt) {
+export function fetchFeed(urlList) {
   return dispatch => {
     dispatch(fetchFeedRequest());
     const promises = [];
     for (let i = 0; i < urlList.length; i += 1) {
-      promises.push(
-        axios.get(
-          `${process.env.REACT_APP_API_URL}/podcast?rss=${urlList[i]}`,
-          {
-            headers: { authorization: `Bearer ${jwt}` }
-          }
-        )
-      );
+      promises.push(axios.get(buildPodcastRequestUrl(urlList[i])));
     }
     Promise.all(promises).then(res => {
       const episodes = res
         .flatMap(item => item.data.episodes)
         .map(item => {
-          item.date = new Date(item.date);
-          return item;
+          return { ...item, date: new Date(item.date) };
         })
         .sort((a, b) => {
           if (a.date < b.date) return 1;

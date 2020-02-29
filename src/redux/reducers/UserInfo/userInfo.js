@@ -4,8 +4,11 @@ import {
   LOGIN,
   LOGOUT,
   CLEAR_USER_INFO,
-  SET_VALIDATION_ERROR_MESSAGE
-} from '../actions/UserInfo/userInfo';
+  SET_VALIDATION_ERROR_MESSAGE,
+  SET_SUBSCRIPTIONS,
+  UPDATE_SUBSCRIPTIONS_REQUEST,
+  UPDATE_SUBSCRIPTIONS_SUCCESS
+} from '../../actions/UserInfo/userInfo';
 
 export default function userInfo(
   state = {
@@ -13,7 +16,8 @@ export default function userInfo(
     password: '',
     validationErrorMessage: '',
     jwt: '',
-    subscptions: []
+    subscriptions: [],
+    isSubscribeButtonEnabled: true
   },
   action
 ) {
@@ -43,7 +47,21 @@ export default function userInfo(
         ...state,
         validationErrorMessage: action.validationErrorMessage
       };
-
+    case SET_SUBSCRIPTIONS:
+      return {
+        ...state,
+        subscriptions: action.subscriptions
+      };
+    case UPDATE_SUBSCRIPTIONS_REQUEST:
+      return {
+        ...state,
+        isSubscribeButtonEnabled: action.isSubscribeButtonEnabled
+      };
+    case UPDATE_SUBSCRIPTIONS_SUCCESS:
+      return {
+        ...state,
+        isSubscribeButtonEnabled: action.isSubscribeButtonEnabled
+      };
     default:
       return state;
   }

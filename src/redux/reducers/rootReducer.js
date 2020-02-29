@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 
-import subscriptions from './subscriptions';
-import userInfo from './userInfo';
-import currentEpisode from './currentEpisode';
-import currentPodcast from './currentPodcast';
-import podcasts from './podcasts';
-import searchPhrase from './searchPhrase';
-import feed from './feed';
+import userInfo from './UserInfo/userInfo';
+import currentEpisode from './CurrentEpisode/currentEpisode';
+import currentPodcast from './CurrentPodcast/currentPodcast';
+import podcasts from './Podcasts/podcasts';
+import searchPhrase from './SearchPhrase/searchPhrase';
+import feed from './Feed/feed';
+import popularPodcasts from './PopularPodcasts/popularPodcasts';
+import subscriptions from './Subscriptions/subscriptions';
 
 const rootReducer = combineReducers({
   userInfo,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   podcasts,
   currentPodcast,
   currentEpisode,
+  popularPodcasts,
   subscriptions,
   feed
 });

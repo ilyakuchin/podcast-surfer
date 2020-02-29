@@ -13,9 +13,10 @@ describe('Test Subscriptions component', () => {
         shallow(
           <Subscriptions
             subscriptions={[]}
+            subscriptionUrls={[]}
             isFetching={false}
             jwt='jwt'
-            fetchCurrentPodcastConnect={() => {}}
+            fetchSubscriptionsConnect={() => {}}
           />
         )
       )
