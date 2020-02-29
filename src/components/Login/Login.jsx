@@ -72,7 +72,7 @@ export function Login({
         />
       </Form>
       <div>
-        Don&#39t have an account?
+        Don&#39;t have an account?
         <Link to='/signup'>Sign Up</Link>
       </div>
     </Container>
