@@ -21,4 +21,19 @@ describe('Test EpisodePlayer component', () => {
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  test('should render correctly', () => {
+    const wrapper = shallow(
+      <EpisodePlayer
+        isFetching
+        name='test'
+        description='test'
+        imageUrl='test'
+        audioUrl='test'
+        fetchEpisode={null}
+      />
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });

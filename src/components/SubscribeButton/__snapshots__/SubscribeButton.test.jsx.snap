@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test SubscribeButton component should render correctly 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Subscribe
+  </button>
+</div>
+`;

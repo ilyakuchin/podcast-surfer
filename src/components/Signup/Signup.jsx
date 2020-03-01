@@ -40,7 +40,7 @@ export function Signup({
   setUsernameConnect,
   setPasswordConnect
 }) {
-  const [confirmPassword, setConfirmPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
     <Container>
@@ -74,7 +74,7 @@ export function Signup({
           onClick={e => signupConnect(e, username, password, confirmPassword)}
         />
       </Form>
-      <Link to='/'>Back to Login</Link>
+      <Link to='/login'>Back to Login</Link>
     </Container>
   );
 }

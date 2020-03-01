@@ -1,54 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test SearchResults Component should render correctly 1`] = `
-<styled.ul>
-  <styled.li
-    key="1"
-  >
-    <styled.img
-      alt="podcast cover"
-      src="link"
-    />
-    <styled.div>
-      <Link
-        onClick={[Function]}
-        to="/podcast"
-      >
-        name
-      </Link>
-    </styled.div>
-  </styled.li>
-  <styled.li
-    key="2"
-  >
-    <styled.img
-      alt="podcast cover"
-      src="link2"
-    />
-    <styled.div>
-      <Link
-        onClick={[Function]}
-        to="/podcast"
-      >
-        name2
-      </Link>
-    </styled.div>
-  </styled.li>
-  <styled.li
-    key="3"
-  >
-    <styled.img
-      alt="podcast cover"
-      src="link3"
-    />
-    <styled.div>
-      <Link
-        onClick={[Function]}
-        to="/podcast"
-      >
-        name3
-      </Link>
-    </styled.div>
-  </styled.li>
-</styled.ul>
+<Connect(PodcastList)
+  isFetching={true}
+  podcasts={Array []}
+/>
 `;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchEpisode } from '../../redux/actions/CurrentEpisode/currentEpisode';
+import { setCurrentEpisode } from '../../redux/actions/CurrentEpisode/currentEpisode';
 
 const Episodes = styled.ul`
   margin: 0;
@@ -55,15 +55,17 @@ const EpisodeLink = styled.div`
   }
 `;
 
-export function EpisodesList({ jwt, rss, episodes, fetchEpisodeConnect }) {
+export function EpisodesList({ episodes, setCurrentEpisodeConnect }) {
   return (
     <Episodes>
-      {episodes.map(({ id, name, imageUrl }) => (
+      {episodes.map(({ id, name, description, imageUrl, audioUrl }) => (
         <EpisodeGrid key={id}>
           <EpisodeImage src={imageUrl} alt='episode cover' />
           <EpisodeLink>
             <Link
-              onClick={() => fetchEpisodeConnect(jwt, rss, id)}
+              onClick={() =>
+                setCurrentEpisodeConnect(name, description, imageUrl, audioUrl)
+              }
               to='/episode-player'
             >
               {name}
@@ -77,21 +79,18 @@ export function EpisodesList({ jwt, rss, episodes, fetchEpisodeConnect }) {
 
 const mapStateToProps = state => {
   return {
-    rss: state.currentPodcast.rss,
-    episodes: state.currentPodcast.episodes,
-    jwt: state.userInfo.jwt
+    episodes: state.currentPodcast.episodes
   };
 };
 
 const dispatchToProps = dispatch => {
   return {
-    fetchEpisodeConnect: (jwt, rss, id) => dispatch(fetchEpisode(jwt, rss, id))
+    setCurrentEpisodeConnect: (name, description, imageUrl, audioUrl) =>
+      dispatch(setCurrentEpisode(name, description, imageUrl, audioUrl))
   };
 };
 
 EpisodesList.propTypes = {
-  jwt: PropTypes.string.isRequired,
-  rss: PropTypes.string.isRequired,
   episodes: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -99,7 +98,7 @@ EpisodesList.propTypes = {
       imageUrl: PropTypes.string
     })
   ).isRequired,
-  fetchEpisodeConnect: PropTypes.func.isRequired
+  setCurrentEpisodeConnect: PropTypes.func.isRequired
 };
 
 const ConnectedEpisodesList = connect(

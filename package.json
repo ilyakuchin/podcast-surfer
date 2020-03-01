@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.js' && eslint 'src/**/*.jsx'",
     "size": "yarn build && size-limit",
-    "coverage": "yarn test --coverage --watchAll=false"
+    "coverage": "yarn test --coverage --watchAll"
   },
   "jest": {
     "coverageThreshold": {

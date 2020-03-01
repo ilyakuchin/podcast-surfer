@@ -19,4 +19,17 @@ describe('Test Podcast Component', () => {
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  test('should render correctly when isFetching', () => {
+    const wrapper = shallow(
+      <Podcast
+        isFetching
+        name='podacstName'
+        description='podcastDescription'
+        imageUrl='podcast image'
+      />
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });

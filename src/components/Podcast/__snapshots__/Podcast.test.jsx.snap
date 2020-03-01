@@ -8,10 +8,17 @@ exports[`Test Podcast Component should render correctly 1`] = `
   />
   <styled.h2>
     podacstName
+    <Connect(SubscribeButton) />
   </styled.h2>
   <styled.p>
     podcastDescription
   </styled.p>
   <Connect(EpisodesList) />
+</styled.div>
+`;
+
+exports[`Test Podcast Component should render correctly when isFetching 1`] = `
+<styled.div>
+  <LoadingSpinner />
 </styled.div>
 `;

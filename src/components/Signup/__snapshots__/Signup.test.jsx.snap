@@ -28,6 +28,7 @@ exports[`Test Signup component should render correctly 1`] = `
       placeholder="confirm password"
       required={true}
       type="password"
+      value=""
     />
     <styled.input
       onClick={[Function]}
@@ -36,7 +37,7 @@ exports[`Test Signup component should render correctly 1`] = `
     />
   </styled.form>
   <Link
-    to="/"
+    to="/login"
   >
     Back to Login
   </Link>
