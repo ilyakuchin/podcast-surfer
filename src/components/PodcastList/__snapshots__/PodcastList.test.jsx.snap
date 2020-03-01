@@ -1,53 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test PodcastList component should render correctly 1`] = `
-<styled.ul>
-  <styled.li
+<CardGroup>
+  <Card
+    centered={true}
     key="rss1"
   >
-    <styled.img
-      alt="podcast cover"
-    />
-    <styled.div>
-      <Link
-        onClick={[Function]}
-        to="/podcast"
+    <CardContent
+      textAlign="center"
+    >
+      <Image
+        as="img"
+        style={
+          Object {
+            "height": "200px",
+            "object-fit": "scale-down",
+            "width": "200px",
+          }
+        }
+        ui={false}
+      />
+      <CardHeader
+        textAlign="center"
       >
-        name
-      </Link>
-    </styled.div>
-  </styled.li>
-  <styled.li
+        <Link
+          onClick={[Function]}
+          to="/podcast"
+        >
+          name
+        </Link>
+      </CardHeader>
+    </CardContent>
+  </Card>
+  <Card
+    centered={true}
     key="rss2"
   >
-    <styled.img
-      alt="podcast cover"
-    />
-    <styled.div>
-      <Link
-        onClick={[Function]}
-        to="/podcast"
+    <CardContent
+      textAlign="center"
+    >
+      <Image
+        as="img"
+        style={
+          Object {
+            "height": "200px",
+            "object-fit": "scale-down",
+            "width": "200px",
+          }
+        }
+        ui={false}
+      />
+      <CardHeader
+        textAlign="center"
       >
-        name2
-      </Link>
-    </styled.div>
-  </styled.li>
-  <styled.li
+        <Link
+          onClick={[Function]}
+          to="/podcast"
+        >
+          name2
+        </Link>
+      </CardHeader>
+    </CardContent>
+  </Card>
+  <Card
+    centered={true}
     key="rss3"
   >
-    <styled.img
-      alt="podcast cover"
-    />
-    <styled.div>
-      <Link
-        onClick={[Function]}
-        to="/podcast"
+    <CardContent
+      textAlign="center"
+    >
+      <Image
+        as="img"
+        style={
+          Object {
+            "height": "200px",
+            "object-fit": "scale-down",
+            "width": "200px",
+          }
+        }
+        ui={false}
+      />
+      <CardHeader
+        textAlign="center"
       >
-        name3
-      </Link>
-    </styled.div>
-  </styled.li>
-</styled.ul>
+        <Link
+          onClick={[Function]}
+          to="/podcast"
+        >
+          name3
+        </Link>
+      </CardHeader>
+    </CardContent>
+  </Card>
+</CardGroup>
 `;
 
 exports[`Test PodcastList component should render correctly if Fecthing 1`] = `

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Menu } from 'semantic-ui-react';
 import history from './helpers/history';
@@ -17,26 +16,13 @@ import ConnectedSignup from './components/Signup/Signup';
 import 'semantic-ui-css/semantic.min.css';
 import ConnectedSearchForm from './components/SearchForm/SearchForm';
 
-const Container = styled.div`
-  height: 100%;
-  display: grid;
-  grid-template-rows: 60px auto;
-  grid-template-areas:
-    'profile'
-    'app';
-`;
-
-const AppContainer = styled.div`
-  grid-area: app;
-`;
-
 export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
   useEffect(() => {
     fetchUserConnect();
   }, [fetchUserConnect]);
 
   return (
-    <Container>
+    <div>
       <Router history={history}>
         {jwt ? (
           <Menu stackable>
@@ -75,7 +61,7 @@ export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
           </Menu>
         )}
 
-        <AppContainer>
+        <div>
           <Switch>
             <Route path='/' component={ConnectedSearchPodcast} exact />
             <Route path='/podcast' component={ConnectedPodcast} />
@@ -85,9 +71,9 @@ export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
             <Route path='/login' component={ConnectedLogin} />
             <Route path='/signup' component={ConnectedSignup} />
           </Switch>
-        </AppContainer>
+        </div>
       </Router>
-    </Container>
+    </div>
   );
 }
 
