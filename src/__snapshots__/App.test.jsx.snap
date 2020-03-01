@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test App Component Should Render Correctly 1`] = `
-<styled.div>
+<div>
   <Router
     history={
       Object {
@@ -72,7 +72,7 @@ exports[`Test App Component Should Render Correctly 1`] = `
         </Link>
       </MenuItem>
     </Menu>
-    <styled.div>
+    <div>
       <Switch>
         <Route
           component={
@@ -160,13 +160,13 @@ exports[`Test App Component Should Render Correctly 1`] = `
           path="/signup"
         />
       </Switch>
-    </styled.div>
+    </div>
   </Router>
-</styled.div>
+</div>
 `;
 
 exports[`Test App Component Should Render Correctly 2`] = `
-<styled.div>
+<div>
   <Router
     history={
       Object {
@@ -217,7 +217,7 @@ exports[`Test App Component Should Render Correctly 2`] = `
         </Link>
       </MenuItem>
     </Menu>
-    <styled.div>
+    <div>
       <Switch>
         <Route
           component={
@@ -305,7 +305,7 @@ exports[`Test App Component Should Render Correctly 2`] = `
           path="/signup"
         />
       </Switch>
-    </styled.div>
+    </div>
   </Router>
-</styled.div>
+</div>
 `;
