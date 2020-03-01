@@ -29,13 +29,22 @@ export function SubscriptionsEpisodeFeed({
     fetchFeedConnect,
     subscriptions
   ]);
+
+  function podcastGrid() {
+    return !feed.length > 0 ? (
+      <div>Feed is empty</div>
+    ) : (
+      <PodcastGrid>
+        <EpisodesList
+          episodes={feed}
+          setCurrentEpisodeConnect={setCurrentEpisodeConnect}
+        />
+      </PodcastGrid>
+    );
+  }
+
   return !isFetching ? (
-    <PodcastGrid>
-      <EpisodesList
-        episodes={feed}
-        setCurrentEpisodeConnect={setCurrentEpisodeConnect}
-      />
-    </PodcastGrid>
+    podcastGrid()
   ) : (
     <Dimmer active inverted>
       <Loader size='massive'>Loading</Loader>

@@ -1,32 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
+import { Form } from 'semantic-ui-react';
 import { setSearchPhrase } from '../../redux/actions/SearchPhrase/searchPhrase';
 import { searchPodcasts } from '../../redux/actions/Podcasts/podcasts';
-
-const Search = styled.form`
-  margin-top: 30px;
-  grid-area: search;
-  display: grid;
-  max-width: 700px;
-  align-self: center;
-  justify-self: center;
-  grid-template-columns: 10fr 1fr;
-  grid-template-areas: 'input button';
-`;
-
-const SearchInput = styled.input`
-  grid-area: input;
-  font-size: 18px;
-`;
-
-const SearchButton = styled.button`
-  grid-area: button;
-  font-size: 18px;
-`;
 
 export function SearchForm({
   searchPhrase,
@@ -35,21 +12,16 @@ export function SearchForm({
   searchPodcastsConnect
 }) {
   return (
-    <Search>
-      <SearchInput
-        type='text'
-        placeholder='Search podcast..'
-        name='search'
+    <Form onSubmit={e => searchPodcastsConnect(e, searchPhrase, jwt)}>
+      <Form.Input
         value={searchPhrase}
         onChange={setSearchPhraseConnect}
+        action={{
+          icon: 'search'
+        }}
+        placeholder='Search...'
       />
-      <SearchButton
-        type='submit'
-        onClick={e => searchPodcastsConnect(e, searchPhrase, jwt)}
-      >
-        <FontAwesomeIcon icon={faSearch} />
-      </SearchButton>
-    </Search>
+    </Form>
   );
 }
 

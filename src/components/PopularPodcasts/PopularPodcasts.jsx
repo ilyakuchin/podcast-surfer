@@ -14,7 +14,13 @@ function PopularPodcasts({
   }, [fetchPopularPodcastsConnect]);
 
   return (
-    <ConnectedPodcastList podcasts={popularPodcasts} isFetching={isFetching} />
+    <div>
+      Discover popular podcasts
+      <ConnectedPodcastList
+        podcasts={popularPodcasts}
+        isFetching={isFetching}
+      />
+    </div>
   );
 }
 

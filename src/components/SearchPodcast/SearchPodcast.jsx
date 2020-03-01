@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ConnectedSearchForm from '../SearchForm/SearchForm';
 import ConnectedSearchResults from '../SearchResults/SearchResults';
 import PopularPodcasts from '../PopularPodcasts/PopularPodcasts';
 
@@ -22,7 +21,6 @@ export function SearchPodcast({ podcasts }) {
   }
   return (
     <ComponentGrid>
-      <ConnectedSearchForm />
       {!hasPodcasts() ? <PopularPodcasts /> : <ConnectedSearchResults />}
     </ComponentGrid>
   );
