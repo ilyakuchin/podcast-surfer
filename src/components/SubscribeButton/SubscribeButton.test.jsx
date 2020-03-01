@@ -16,6 +16,7 @@ describe('Test SubscribeButton component', () => {
             currentPodcastUrl=''
             jwt=''
             updateSubscriptionsConnect={() => {}}
+            isButtonEnabled
           />
         )
       )
