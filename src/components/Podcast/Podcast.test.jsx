@@ -14,6 +14,7 @@ describe('Test Podcast Component', () => {
         name='podacstName'
         description='podcastDescription'
         imageUrl='podcast image'
+        jwt=''
       />
     );
 
@@ -27,6 +28,7 @@ describe('Test Podcast Component', () => {
         name='podacstName'
         description='podcastDescription'
         imageUrl='podcast image'
+        jwt=''
       />
     );
 
