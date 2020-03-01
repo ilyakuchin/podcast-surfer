@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { updateSubscriptions } from '../../redux/actions/UserInfo/userInfo';
 
@@ -15,11 +16,14 @@ export function SubscribeButton({
   subscriptions,
   currentPodcastUrl,
   jwt,
-  updateSubscriptionsConnect
+  updateSubscriptionsConnect,
+  isButtonEnabled
 }) {
   return (
     <div>
-      <button
+      <Button
+        loading={!isButtonEnabled}
+        disabled={!isButtonEnabled}
         onClick={e => {
           e.preventDefault();
           if (!isSubscribed(subscriptions, currentPodcastUrl)) {
@@ -40,12 +44,11 @@ export function SubscribeButton({
             }
           }
         }}
-        type='button'
       >
         {!isSubscribed(subscriptions, currentPodcastUrl)
           ? 'Subscribe'
           : 'Unsbscribe'}
-      </button>
+      </Button>
     </div>
   );
 }
@@ -54,7 +57,8 @@ SubscribeButton.propTypes = {
   subscriptions: PropTypes.arrayOf(PropTypes.string).isRequired,
   currentPodcastUrl: PropTypes.string.isRequired,
   jwt: PropTypes.string.isRequired,
-  updateSubscriptionsConnect: PropTypes.func.isRequired
+  updateSubscriptionsConnect: PropTypes.func.isRequired,
+  isButtonEnabled: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
@@ -62,7 +66,8 @@ const mapStateToProps = state => {
     subscriptions: state.userInfo.subscriptions,
     currentPodcastImageUrl: state.currentPodcast.imageUrl,
     jwt: state.userInfo.jwt,
-    currentPodcastUrl: state.currentPodcast.rss
+    currentPodcastUrl: state.currentPodcast.rss,
+    isButtonEnabled: state.userInfo.isSubscribeButtonEnabled
   };
 };
 

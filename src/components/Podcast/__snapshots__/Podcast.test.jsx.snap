@@ -8,7 +8,7 @@ exports[`Test Podcast Component should render correctly 1`] = `
   />
   <styled.h2>
     podacstName
-    <Connect(SubscribeButton) />
+    <div />
   </styled.h2>
   <styled.p>
     podcastDescription

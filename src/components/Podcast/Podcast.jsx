@@ -64,13 +64,13 @@ const PodcastDescription = styled.p`
   }
 `;
 
-export function Podcast({ isFetching, name, description, imageUrl }) {
+export function Podcast({ isFetching, name, description, imageUrl, jwt }) {
   return !isFetching ? (
     <PodcastGrid>
       <PodcastImg src={imageUrl} alt='podcast cover' />
       <PodcastTitle>
         {name}
-        <ConnectedSubscribeButton />
+        {jwt !== '' ? <ConnectedSubscribeButton /> : <div />}
       </PodcastTitle>
 
       <PodcastDescription>{description}</PodcastDescription>
@@ -87,7 +87,8 @@ Podcast.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired
+  imageUrl: PropTypes.string.isRequired,
+  jwt: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => {
@@ -96,7 +97,8 @@ const mapStateToProps = state => {
     name: state.currentPodcast.name,
     description: state.currentPodcast.description,
     imageUrl: state.currentPodcast.imageUrl,
-    podcastUrl: state.currentPodcast.podcastUrl
+    podcastUrl: state.currentPodcast.podcastUrl,
+    jwt: state.userInfo.jwt
   };
 };
 
