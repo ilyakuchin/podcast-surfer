@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { Loader, Dimmer } from 'semantic-ui-react';
 import { fetchCurrentPodcast } from '../../redux/actions/CurrentPodcast/currentPodcast';
 
 const Podcasts = styled.ul`
@@ -39,15 +39,6 @@ const PodcastImage = styled.img`
   object-fit: scale-down;
 `;
 
-const CenterSpinner = styled.div`
-  display: grid;
-  grid-area: results;
-  width: 100%;
-  height: 100%;
-  justify-items: center;
-  align-items: center;
-`;
-
 const PodcastLink = styled.div`
   grid-area: podcast-link;
 
@@ -75,9 +66,9 @@ export function PodcastList({
       ))}
     </Podcasts>
   ) : (
-    <CenterSpinner>
-      <LoadingSpinner />
-    </CenterSpinner>
+    <Dimmer active inverted>
+      <Loader size='massive'>Loading</Loader>
+    </Dimmer>
   );
 }
 

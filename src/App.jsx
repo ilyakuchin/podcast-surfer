@@ -13,6 +13,7 @@ import ConnectedSubscriptions from './components/Subscriptions/Subscriptions';
 import ConnectedLogin from './components/Login/Login';
 import ConnectedSubscriptionsEpisodeFeed from './components/SubscriptionsEpisodeFeed/SubscriptionsEpisodeFeed';
 import ConnectedSignup from './components/Signup/Signup';
+import 'semantic-ui-css/semantic.min.css';
 
 const Container = styled.div`
   height: 100%;
