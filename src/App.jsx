@@ -3,6 +3,7 @@ import { Switch, Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Menu } from 'semantic-ui-react';
 import history from './helpers/history';
 import './App.css';
 import ConnectedPodcast from './components/Podcast/Podcast';
@@ -14,6 +15,7 @@ import ConnectedLogin from './components/Login/Login';
 import ConnectedSubscriptionsEpisodeFeed from './components/SubscriptionsEpisodeFeed/SubscriptionsEpisodeFeed';
 import ConnectedSignup from './components/Signup/Signup';
 import 'semantic-ui-css/semantic.min.css';
+import ConnectedSearchForm from './components/SearchForm/SearchForm';
 
 const Container = styled.div`
   height: 100%;
@@ -22,10 +24,6 @@ const Container = styled.div`
   grid-template-areas:
     'profile'
     'app';
-`;
-
-const Profile = styled.div`
-  grid-area: profile;
 `;
 
 const AppContainer = styled.div`
@@ -41,23 +39,42 @@ export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
     <Container>
       <Router history={history}>
         {jwt ? (
-          <Profile>
-            <div>{username}</div>
-            <div>
+          <Menu stackable>
+            <Menu.Item>PODCAST SURFER</Menu.Item>
+            <Menu.Item>
+              <Link to='/'>Popular</Link>
+            </Menu.Item>
+            <Menu.Item>
               <Link to='/subscriptions'>Subscriptions</Link>
-            </div>
-            <div>
+            </Menu.Item>
+            <Menu.Item>
               <Link to='/feed'>Feed</Link>
-            </div>
-            <div>
+            </Menu.Item>
+            <Menu.Item position='right'>
+              <ConnectedSearchForm />
+            </Menu.Item>
+            <Menu.Item position='right'>{username}</Menu.Item>
+            <Menu.Item position='right'>
               <Link to='/' onClick={logoutConnect}>
                 Logout
               </Link>
-            </div>
-          </Profile>
+            </Menu.Item>
+          </Menu>
         ) : (
-          <Link to='/login'>Log in</Link>
+          <Menu stackable>
+            <Menu.Item>PODCAST SURFER</Menu.Item>
+            <Menu.Item>
+              <Link to='/'>Popular</Link>
+            </Menu.Item>
+            <Menu.Item position='right'>
+              <ConnectedSearchForm />
+            </Menu.Item>
+            <Menu.Item position='right'>
+              <Link to='/login'>Log in</Link>
+            </Menu.Item>
+          </Menu>
         )}
+
         <AppContainer>
           <Switch>
             <Route path='/' component={ConnectedSearchPodcast} exact />

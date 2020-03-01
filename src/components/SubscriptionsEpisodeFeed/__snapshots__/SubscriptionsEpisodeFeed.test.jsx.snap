@@ -1,12 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test SubscriptionsEpisodeFeed component should render correctly 1`] = `
-<styled.div>
-  <EpisodesList
-    episodes={Array []}
-    setCurrentEpisodeConnect={[Function]}
-  />
-</styled.div>
+<div>
+  Feed is empty
+</div>
 `;
 
 exports[`Test SubscriptionsEpisodeFeed component should render correctly 2`] = `
