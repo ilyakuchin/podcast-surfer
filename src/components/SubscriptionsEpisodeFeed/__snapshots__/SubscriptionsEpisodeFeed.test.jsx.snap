@@ -10,7 +10,14 @@ exports[`Test SubscriptionsEpisodeFeed component should render correctly 1`] = `
 `;
 
 exports[`Test SubscriptionsEpisodeFeed component should render correctly 2`] = `
-<styled.div>
-  <LoadingSpinner />
-</styled.div>
+<Dimmer
+  active={true}
+  inverted={true}
+>
+  <Loader
+    size="massive"
+  >
+    Loading
+  </Loader>
+</Dimmer>
 `;

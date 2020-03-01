@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Loader, Dimmer } from 'semantic-ui-react';
 import { fetchFeed } from '../../redux/actions/Feed/feed';
 import { EpisodesList } from '../EpisodesList/EpisodesList';
 import { setCurrentEpisode } from '../../redux/actions/CurrentEpisode/currentEpisode';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const PodcastGrid = styled.div`
   display: grid;
@@ -16,14 +16,6 @@ const PodcastGrid = styled.div`
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas: 'episodes';
-`;
-
-const CenterSpinner = styled.div`
-  display: grid;
-  width: 100%;
-  height: 100%;
-  justify-items: center;
-  align-items: center;
 `;
 
 export function SubscriptionsEpisodeFeed({
@@ -45,9 +37,9 @@ export function SubscriptionsEpisodeFeed({
       />
     </PodcastGrid>
   ) : (
-    <CenterSpinner>
-      <LoadingSpinner />
-    </CenterSpinner>
+    <Dimmer active inverted>
+      <Loader size='massive'>Loading</Loader>
+    </Dimmer>
   );
 }
 

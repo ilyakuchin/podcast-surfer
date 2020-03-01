@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { Loader, Dimmer } from 'semantic-ui-react';
 import ConnectedEpisodesList from '../EpisodesList/EpisodesList';
 import ConnectedSubscribeButton from '../SubscribeButton/SubscribeButton';
 
@@ -64,14 +64,6 @@ const PodcastDescription = styled.p`
   }
 `;
 
-const CenterSpinner = styled.div`
-  display: grid;
-  width: 100%;
-  height: 100%;
-  justify-items: center;
-  align-items: center;
-`;
-
 export function Podcast({ isFetching, name, description, imageUrl }) {
   return !isFetching ? (
     <PodcastGrid>
@@ -85,9 +77,9 @@ export function Podcast({ isFetching, name, description, imageUrl }) {
       <ConnectedEpisodesList />
     </PodcastGrid>
   ) : (
-    <CenterSpinner>
-      <LoadingSpinner />
-    </CenterSpinner>
+    <Dimmer active inverted>
+      <Loader size='massive'>Loading</Loader>
+    </Dimmer>
   );
 }
 

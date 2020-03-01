@@ -18,7 +18,14 @@ exports[`Test Podcast Component should render correctly 1`] = `
 `;
 
 exports[`Test Podcast Component should render correctly when isFetching 1`] = `
-<styled.div>
-  <LoadingSpinner />
-</styled.div>
+<Dimmer
+  active={true}
+  inverted={true}
+>
+  <Loader
+    size="massive"
+  >
+    Loading
+  </Loader>
+</Dimmer>
 `;
