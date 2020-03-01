@@ -51,7 +51,14 @@ exports[`Test PodcastList component should render correctly 1`] = `
 `;
 
 exports[`Test PodcastList component should render correctly if Fecthing 1`] = `
-<styled.div>
-  <LoadingSpinner />
-</styled.div>
+<Dimmer
+  active={true}
+  inverted={true}
+>
+  <Loader
+    size="massive"
+  >
+    Loading
+  </Loader>
+</Dimmer>
 `;
