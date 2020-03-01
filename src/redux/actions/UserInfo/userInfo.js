@@ -88,9 +88,9 @@ export function login(username, password) {
       .then(res => {
         dispatch(setSubscriptions(res.data.user.subscriptions));
       })
-      .catch(error => {
-        dispatch(setValidationErrorMessage(error.response.data));
-      });
+      .catch(err =>
+        dispatch(setValidationErrorMessage(err.response.data.message))
+      );
   };
 }
 
@@ -121,7 +121,7 @@ export function removeLocalStorageToken() {
 
 export function logout() {
   removeLocalStorageToken();
-  return { type: LOGOUT, username: '', password: '', jwt: null };
+  return { type: LOGOUT, username: '', password: '', jwt: '' };
 }
 
 export function signupInputValidation(username, password, confirmPassword) {
@@ -173,11 +173,11 @@ export function signup(username, password, confirmPassword) {
       })
       .then(() => {
         dispatch(clearUserInfo());
-        history.push('/');
+        history.push('/login');
       })
-      .catch(error => {
-        dispatch(setValidationErrorMessage(error.response.data));
-      });
+      .catch(err =>
+        dispatch(setValidationErrorMessage(err.response.data.message))
+      );
   };
 }
 

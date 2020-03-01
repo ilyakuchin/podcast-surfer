@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test App Component Should Render Correctly 1`] = `
-<div>
+<styled.div>
   <Router
     history={
       Object {
@@ -24,120 +24,128 @@ exports[`Test App Component Should Render Correctly 1`] = `
       }
     }
   >
-    <div>
+    <styled.div>
       <div>
         username
       </div>
-      <Link
-        to="/subscriptions"
-      >
-        Subscriptions
-      </Link>
-      <Link
-        to="/feed"
-      >
-        Feed
-      </Link>
-      <Link
-        onClick={[Function]}
-        to="/"
-      >
-        Logout
-      </Link>
-    </div>
-    <Switch>
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(SearchPodcast)",
-            "type": [Function],
+      <div>
+        <Link
+          to="/subscriptions"
+        >
+          Subscriptions
+        </Link>
+      </div>
+      <div>
+        <Link
+          to="/feed"
+        >
+          Feed
+        </Link>
+      </div>
+      <div>
+        <Link
+          onClick={[Function]}
+          to="/"
+        >
+          Logout
+        </Link>
+      </div>
+    </styled.div>
+    <styled.div>
+      <Switch>
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SearchPodcast)",
+              "type": [Function],
+            }
           }
-        }
-        exact={true}
-        path="/"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(Podcast)",
-            "type": [Function],
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Podcast)",
+              "type": [Function],
+            }
           }
-        }
-        path="/podcast"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(EpisodePlayer)",
-            "type": [Function],
+          path="/podcast"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(EpisodePlayer)",
+              "type": [Function],
+            }
           }
-        }
-        path="/episode-player"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(Subscriptions)",
-            "type": [Function],
+          path="/episode-player"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Subscriptions)",
+              "type": [Function],
+            }
           }
-        }
-        path="/subscriptions"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(SubscriptionsEpisodeFeed)",
-            "type": [Function],
+          path="/subscriptions"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SubscriptionsEpisodeFeed)",
+              "type": [Function],
+            }
           }
-        }
-        path="/feed"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(Login)",
-            "type": [Function],
+          path="/feed"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Login)",
+              "type": [Function],
+            }
           }
-        }
-        path="/login"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(Signup)",
-            "type": [Function],
+          path="/login"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Signup)",
+              "type": [Function],
+            }
           }
-        }
-        path="/signup"
-      />
-    </Switch>
+          path="/signup"
+        />
+      </Switch>
+    </styled.div>
   </Router>
-</div>
+</styled.div>
 `;
 
 exports[`Test App Component Should Render Correctly 2`] = `
-<div>
+<styled.div>
   <Router
     history={
       Object {
@@ -165,93 +173,95 @@ exports[`Test App Component Should Render Correctly 2`] = `
     >
       Log in
     </Link>
-    <Switch>
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(SearchPodcast)",
-            "type": [Function],
+    <styled.div>
+      <Switch>
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SearchPodcast)",
+              "type": [Function],
+            }
           }
-        }
-        exact={true}
-        path="/"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(Podcast)",
-            "type": [Function],
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Podcast)",
+              "type": [Function],
+            }
           }
-        }
-        path="/podcast"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(EpisodePlayer)",
-            "type": [Function],
+          path="/podcast"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(EpisodePlayer)",
+              "type": [Function],
+            }
           }
-        }
-        path="/episode-player"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(Subscriptions)",
-            "type": [Function],
+          path="/episode-player"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Subscriptions)",
+              "type": [Function],
+            }
           }
-        }
-        path="/subscriptions"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(SubscriptionsEpisodeFeed)",
-            "type": [Function],
+          path="/subscriptions"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SubscriptionsEpisodeFeed)",
+              "type": [Function],
+            }
           }
-        }
-        path="/feed"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(Login)",
-            "type": [Function],
+          path="/feed"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Login)",
+              "type": [Function],
+            }
           }
-        }
-        path="/login"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(Signup)",
-            "type": [Function],
+          path="/login"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Signup)",
+              "type": [Function],
+            }
           }
-        }
-        path="/signup"
-      />
-    </Switch>
+          path="/signup"
+        />
+      </Switch>
+    </styled.div>
   </Router>
-</div>
+</styled.div>
 `;

@@ -66,7 +66,7 @@ describe('UserInfo actions test', () => {
       type: LOGOUT,
       username: '',
       password: '',
-      jwt: null
+      jwt: ''
     };
 
     expect(logout()).toEqual(expectedAction);
