@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { List, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setCurrentEpisode } from '../../redux/actions/CurrentEpisode/currentEpisode';
@@ -16,63 +17,38 @@ const Episodes = styled.ul`
   align-items: center;
 `;
 
-const EpisodeGrid = styled.li`
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: grid;
-  grid-gap: 15px;
-  grid-template-areas: 'episode-image episode-link';
-  justify-items: center;
-  align-items: center;
-  grid-template-columns: 200px auto;
-
-  @media (max-width: 600px) {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    grid-template-columns: auto;
-    grid-template-areas:
-      'episode-image'
-      'episode-link';
-  }
-`;
-
-const EpisodeImage = styled.img`
-  grid-area: episode-image;
-  width: 200px;
-  height: 200px;
-  object-fit: scale-down;
-`;
-
-const EpisodeLink = styled.div`
-  max-width: 700px;
-  grid-area: episode-link;
-
-  @media (max-width: 600px) {
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: center;
-  }
-`;
-
 export function EpisodesList({ episodes, setCurrentEpisodeConnect }) {
   return (
     <Episodes>
-      {episodes.map(({ id, name, description, imageUrl, audioUrl }) => (
-        <EpisodeGrid key={id}>
-          <EpisodeImage src={imageUrl} alt='episode cover' />
-          <EpisodeLink>
-            <Link
-              onClick={() =>
-                setCurrentEpisodeConnect(name, description, imageUrl, audioUrl)
-              }
-              to='/episode-player'
-            >
-              {name}
-            </Link>
-          </EpisodeLink>
-        </EpisodeGrid>
-      ))}
+      <List verticalAlign='middle'>
+        {episodes.map(({ id, name, description, imageUrl, audioUrl }) => (
+          <List.Item key={id}>
+            <Image
+              style={{
+                width: '200px',
+                height: '200px',
+                objectFit: 'scale-down'
+              }}
+              src={imageUrl}
+            />
+            <List.Content>
+              <Link
+                onClick={() =>
+                  setCurrentEpisodeConnect(
+                    name,
+                    description,
+                    imageUrl,
+                    audioUrl
+                  )
+                }
+                to='/episode-player'
+              >
+                {name}
+              </Link>
+            </List.Content>
+          </List.Item>
+        ))}
+      </List>
     </Episodes>
   );
 }
