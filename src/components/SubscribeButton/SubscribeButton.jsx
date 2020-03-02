@@ -22,8 +22,8 @@ export function SubscribeButton({
   return (
     <div>
       <Button
-        loading={!isButtonEnabled}
         disabled={!isButtonEnabled}
+        loading={!isButtonEnabled}
         onClick={e => {
           e.preventDefault();
           if (!isSubscribed(subscriptions, currentPodcastUrl)) {

@@ -19,7 +19,7 @@ export function PodcastList({
               style={{
                 width: '200px',
                 height: '200px',
-                'object-fit': 'scale-down'
+                objectFit: 'scale-down'
               }}
               src={imageUrl}
               ui={false}
