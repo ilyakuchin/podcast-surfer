@@ -1,6 +1,6 @@
 import {
-  REQUEST_PODCASTS,
-  RECEIVE_PODCASTS
+  FETCH_PODCASTS_REQUEST,
+  FETCH_PODCASTS_SUCCESS
 } from '../../actions/Podcasts/podcasts';
 
 export default function podcasts(
@@ -8,9 +8,9 @@ export default function podcasts(
   action
 ) {
   switch (action.type) {
-    case REQUEST_PODCASTS:
+    case FETCH_PODCASTS_REQUEST:
       return { ...state, isFetching: action.isFetching };
-    case RECEIVE_PODCASTS:
+    case FETCH_PODCASTS_SUCCESS:
       return {
         ...state,
         isFetching: action.isFetching,

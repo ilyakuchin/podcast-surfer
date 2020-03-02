@@ -1,23 +1,25 @@
 import {
-  REQUEST_PODCASTS,
-  requestPodcasts,
-  RECEIVE_PODCASTS,
-  receivePodcasts
+  FETCH_PODCASTS_REQUEST,
+  fetchPodcastsRequest,
+  FETCH_PODCASTS_SUCCESS,
+  fetchPodcastsSuccess
 } from './podcasts';
 
 describe('Test podcast actions', () => {
-  test('should return REQUEST_PODCASTS action', () => {
-    const expectedAction = { type: REQUEST_PODCASTS, isFetching: true };
-    expect(requestPodcasts()).toEqual(expectedAction);
+  test('should return FETCH_PODCASTS_REQUEST action', () => {
+    const expectedAction = { type: FETCH_PODCASTS_REQUEST, isFetching: true };
+    expect(fetchPodcastsRequest()).toEqual(expectedAction);
   });
 
-  test('should return RECEIVE_PODCASTS action', () => {
+  test('should return FETCH_PODCASTS_SUCCESS action', () => {
     const expectedAction = {
-      type: RECEIVE_PODCASTS,
+      type: FETCH_PODCASTS_SUCCESS,
       isFetching: false,
       podcasts: ['podcast1', 'podcast2']
     };
 
-    expect(receivePodcasts(['podcast1', 'podcast2'])).toEqual(expectedAction);
+    expect(fetchPodcastsSuccess(['podcast1', 'podcast2'])).toEqual(
+      expectedAction
+    );
   });
 });
