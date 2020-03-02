@@ -182,5 +182,8 @@ test('should return signup actions', () => {
     .dispatch(signup(username, password, confirmPassword))
     .then(() => {
       expect(store.getActions()).toEqual(expectedActions);
+    })
+    .catch(() => {
+      expect(store.getActions()).toEqual(expectedActions);
     });
 });

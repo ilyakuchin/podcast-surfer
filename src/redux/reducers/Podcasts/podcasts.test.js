@@ -1,7 +1,7 @@
 import podcasts from './podcasts';
 import {
-  REQUEST_PODCASTS,
-  RECEIVE_PODCASTS
+  FETCH_PODCASTS_REQUEST,
+  FETCH_PODCASTS_SUCCESS
 } from '../../actions/Podcasts/podcasts';
 
 describe('Test podcasts reducer', () => {
@@ -12,9 +12,9 @@ describe('Test podcasts reducer', () => {
     });
   });
 
-  test('should handle REQUEST_PODCASTS', () => {
+  test('should handle FETCH_PODCASTS_REQUEST', () => {
     expect(
-      podcasts(undefined, { type: REQUEST_PODCASTS, isFetching: true })
+      podcasts(undefined, { type: FETCH_PODCASTS_REQUEST, isFetching: true })
     ).toEqual({
       isFetching: true,
       podcasts: []
@@ -24,7 +24,7 @@ describe('Test podcasts reducer', () => {
   test('should handle RECEIVE_PODCASTS', () => {
     expect(
       podcasts(undefined, {
-        type: RECEIVE_PODCASTS,
+        type: FETCH_PODCASTS_SUCCESS,
         isFetching: false,
         podcasts: ['podcast1', 'podcast2']
       })

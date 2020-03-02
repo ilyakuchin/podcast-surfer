@@ -17,8 +17,8 @@ export function fetchSubscriptionsSuccess(subscriptions) {
   };
 }
 
-export function fetchSubscriptionsFailure(subscriptions) {
-  return { type: FETCH_SUBSCRIPTIONS_FAILURE, subscriptions };
+export function fetchSubscriptionsFailure(error) {
+  return { type: FETCH_SUBSCRIPTIONS_FAILURE, isFetching: false, error };
 }
 
 export function fetchSubscriptions(subscriptions) {
@@ -30,8 +30,10 @@ export function fetchSubscriptions(subscriptions) {
     for (let i = 0; i < subscriptions.length; i += 1) {
       promises.push(axios.get(buildPodcastRequestUrl(subscriptions[i])));
     }
-    return Promise.all(promises).then(res => {
-      dispatch(fetchSubscriptionsSuccess(res.map(item => item.data)));
-    });
+    return Promise.all(promises)
+      .then(res => {
+        dispatch(fetchSubscriptionsSuccess(res.map(item => item.data)));
+      })
+      .catch(error => dispatch(fetchSubscriptionsFailure(error)));
   };
 }

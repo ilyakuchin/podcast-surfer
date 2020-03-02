@@ -195,10 +195,11 @@ export function updateSubscriptionsSuccess() {
   };
 }
 
-export function updateSubscriptionsFailure() {
+export function updateSubscriptionsFailure(error) {
   return {
     type: UPDATE_SUBSCRIPTIONS_FAILURE,
-    isSubscribeButtonEnabled: false
+    isSubscribeButtonEnabled: false,
+    error
   };
 }
 
@@ -216,6 +217,7 @@ export function updateSubscriptions(subscriptionUrls, jwt) {
         }
       )
       .then(() => dispatch(fetchUser()))
-      .then(() => dispatch(updateSubscriptionsSuccess()));
+      .then(() => dispatch(updateSubscriptionsSuccess()))
+      .catch(error => dispatch(updateSubscriptionsFailure(error)));
   };
 }

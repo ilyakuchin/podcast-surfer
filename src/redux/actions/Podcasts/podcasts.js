@@ -1,24 +1,32 @@
 import axios from 'axios';
 import { buildSearchPodcastUrl } from '../../../helpers/urls';
 
-export const REQUEST_PODCASTS = 'REQUEST_PODCASTS';
-export const RECEIVE_PODCASTS = 'RECEIVE_PODCASTS';
+export const FETCH_PODCASTS_REQUEST = 'FETCH_PODCASTS_REQUEST';
+export const FETCH_PODCASTS_SUCCESS = 'FETCH_PODCASTS_SUCCESS';
+export const FETCH_PODCASTS_FAILURE = 'FETCH_PODCASTS_FAILURE';
 
-export function requestPodcasts() {
-  return { type: REQUEST_PODCASTS, isFetching: true };
+export function fetchPodcastsRequest() {
+  return { type: FETCH_PODCASTS_REQUEST, isFetching: true };
 }
 
-export function receivePodcasts(podcasts) {
-  return { type: RECEIVE_PODCASTS, isFetching: false, podcasts };
+export function fetchPodcastsSuccess(podcasts) {
+  return { type: FETCH_PODCASTS_SUCCESS, isFetching: false, podcasts };
+}
+
+export function fetchPodcastsFailure(error) {
+  return { type: FETCH_PODCASTS_FAILURE, isFetching: false, error };
 }
 
 export function searchPodcasts(e, searchPhrase) {
   e.preventDefault();
 
   return dispatch => {
-    dispatch(requestPodcasts());
-    return axios.get(buildSearchPodcastUrl(searchPhrase)).then(res => {
-      dispatch(receivePodcasts(res.data));
-    });
+    dispatch(fetchPodcastsRequest());
+    return axios
+      .get(buildSearchPodcastUrl(searchPhrase))
+      .then(res => {
+        dispatch(fetchPodcastsSuccess(res.data));
+      })
+      .catch(error => dispatch(fetchPodcastsFailure(error)));
   };
 }
