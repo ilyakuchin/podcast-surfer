@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
+import history from '../../helpers/history';
 import { setSearchPhrase } from '../../redux/actions/SearchPhrase/searchPhrase';
 import { searchPodcasts } from '../../redux/actions/Podcasts/podcasts';
 
@@ -12,7 +13,12 @@ export function SearchForm({
   searchPodcastsConnect
 }) {
   return (
-    <Form onSubmit={e => searchPodcastsConnect(e, searchPhrase, jwt)}>
+    <Form
+      onSubmit={e => {
+        searchPodcastsConnect(e, searchPhrase, jwt);
+        history.push('/search');
+      }}
+    >
       <Form.Input
         value={searchPhrase}
         onChange={setSearchPhraseConnect}
