@@ -159,6 +159,9 @@ exports[`Test App Component Should Render Correctly 1`] = `
           }
           path="/signup"
         />
+        <Route
+          component={[Function]}
+        />
       </Switch>
     </div>
   </Router>
@@ -303,6 +306,9 @@ exports[`Test App Component Should Render Correctly 2`] = `
             }
           }
           path="/signup"
+        />
+        <Route
+          component={[Function]}
         />
       </Switch>
     </div>

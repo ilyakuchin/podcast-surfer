@@ -15,6 +15,7 @@ import ConnectedSubscriptionsEpisodeFeed from './components/SubscriptionsEpisode
 import ConnectedSignup from './components/Signup/Signup';
 import 'semantic-ui-css/semantic.min.css';
 import ConnectedSearchForm from './components/SearchForm/SearchForm';
+import NotFound from './components/NotFound/NotFound';
 
 export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
   useEffect(() => {
@@ -70,6 +71,7 @@ export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
             <Route path='/feed' component={ConnectedSubscriptionsEpisodeFeed} />
             <Route path='/login' component={ConnectedLogin} />
             <Route path='/signup' component={ConnectedSignup} />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </Router>
