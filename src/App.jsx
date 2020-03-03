@@ -7,7 +7,6 @@ import history from './helpers/history';
 import './App.css';
 import ConnectedPodcast from './components/Podcast/Podcast';
 import ConnectedEpisodePlayer from './components/EpisodePlayer/EpisodePlayer';
-import ConnectedSearchPodcast from './components/SearchPodcast/SearchPodcast';
 import { fetchUser, logout } from './redux/actions/UserInfo/userInfo';
 import ConnectedSubscriptions from './components/Subscriptions/Subscriptions';
 import ConnectedLogin from './components/Login/Login';
@@ -15,6 +14,9 @@ import ConnectedSubscriptionsEpisodeFeed from './components/SubscriptionsEpisode
 import ConnectedSignup from './components/Signup/Signup';
 import 'semantic-ui-css/semantic.min.css';
 import ConnectedSearchForm from './components/SearchForm/SearchForm';
+import NotFound from './components/NotFound/NotFound';
+import ConnectedSearchResults from './components/SearchResults/SearchResults';
+import PopularPodcasts from './components/PopularPodcasts/PopularPodcasts';
 
 export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
   useEffect(() => {
@@ -28,7 +30,7 @@ export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
           <Menu stackable>
             <Menu.Item>PODCAST SURFER</Menu.Item>
             <Menu.Item>
-              <Link to='/'>Popular</Link>
+              <Link to='/popular'>Popular</Link>
             </Menu.Item>
             <Menu.Item>
               <Link to='/subscriptions'>Subscriptions</Link>
@@ -60,16 +62,19 @@ export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
             </Menu.Item>
           </Menu>
         )}
-
         <div>
           <Switch>
-            <Route path='/' component={ConnectedSearchPodcast} exact />
+            <Route path='/' component={PopularPodcasts} exact />
+            <Route path='/search' component={ConnectedSearchResults} exact />
+            <Route path='/popular' component={PopularPodcasts} exact />
             <Route path='/podcast' component={ConnectedPodcast} />
             <Route path='/episode-player' component={ConnectedEpisodePlayer} />
             <Route path='/subscriptions' component={ConnectedSubscriptions} />
             <Route path='/feed' component={ConnectedSubscriptionsEpisodeFeed} />
             <Route path='/login' component={ConnectedLogin} />
             <Route path='/signup' component={ConnectedSignup} />
+            <Route path='/feed' component={ConnectedSubscriptionsEpisodeFeed} />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </Router>

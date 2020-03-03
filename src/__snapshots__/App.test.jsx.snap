@@ -32,7 +32,7 @@ exports[`Test App Component Should Render Correctly 1`] = `
       </MenuItem>
       <MenuItem>
         <Link
-          to="/"
+          to="/popular"
         >
           Popular
         </Link>
@@ -80,12 +80,38 @@ exports[`Test App Component Should Render Correctly 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(SearchPodcast)",
+              "displayName": "Connect(PopularPodcasts)",
               "type": [Function],
             }
           }
           exact={true}
           path="/"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SearchResults)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/search"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(PopularPodcasts)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/popular"
         />
         <Route
           component={
@@ -158,6 +184,21 @@ exports[`Test App Component Should Render Correctly 1`] = `
             }
           }
           path="/signup"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SubscriptionsEpisodeFeed)",
+              "type": [Function],
+            }
+          }
+          path="/feed"
+        />
+        <Route
+          component={[Function]}
         />
       </Switch>
     </div>
@@ -225,12 +266,38 @@ exports[`Test App Component Should Render Correctly 2`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(SearchPodcast)",
+              "displayName": "Connect(PopularPodcasts)",
               "type": [Function],
             }
           }
           exact={true}
           path="/"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SearchResults)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/search"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(PopularPodcasts)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/popular"
         />
         <Route
           component={
@@ -303,6 +370,21 @@ exports[`Test App Component Should Render Correctly 2`] = `
             }
           }
           path="/signup"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SubscriptionsEpisodeFeed)",
+              "type": [Function],
+            }
+          }
+          path="/feed"
+        />
+        <Route
+          component={[Function]}
         />
       </Switch>
     </div>
