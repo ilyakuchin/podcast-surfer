@@ -21,6 +21,7 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
+    "serve": "^11.3.0",
     "styled-components": "^4.4.1"
   },
   "size-limit": [
@@ -29,7 +30,8 @@
     }
   ],
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
