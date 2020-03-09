@@ -2,36 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Form, Input, Button, Message } from 'semantic-ui-react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
   setUsername,
   setPassword,
   signup
 } from '../../redux/actions/UserInfo/userInfo';
-
-// const Container = styled.div`
-//   height: 100%;
-//   width: 100%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   align-self: center;
-//   justify-self: center;
-//   flex-direction: column;
-// `;
-
-// const Input = styled.input`
-//   font-size: 18px;
-// `;
-
-// const Form = styled.form`
-//   display: grid;
-//   grid-gap: 10px;
-//   align-items: center;
-//   align-self: center;
-//   margin-bottom: 20px;
-// `;
 
 export function Signup({
   username,
