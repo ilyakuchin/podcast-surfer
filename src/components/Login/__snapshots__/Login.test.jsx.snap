@@ -2,6 +2,9 @@
 
 exports[`Test Login component should render correctly 1`] = `
 <div>
+  <h2>
+    SIGNUP
+  </h2>
   <Form
     as="form"
     error={true}
@@ -30,7 +33,7 @@ exports[`Test Login component should render correctly 1`] = `
     />
     <Button
       as="button"
-      content="Submit"
+      content="Log In"
       onClick={[Function]}
       type="submit"
     />
