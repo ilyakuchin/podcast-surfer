@@ -2,35 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Form, Input, Button, Message } from 'semantic-ui-react';
 import {
   setUsername,
   setPassword,
   login
 } from '../../redux/actions/UserInfo/userInfo';
-
-const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  justify-self: center;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  font-size: 18px;
-`;
-
-const Form = styled.form`
-  display: grid;
-  grid-gap: 10px;
-  align-items: center;
-  align-self: center;
-  margin-bottom: 20px;
-`;
 
 export function Login({
   username,
@@ -40,42 +17,50 @@ export function Login({
   setPasswordConnect,
   loginConnect
 }) {
+  const hasValidationError = () => {
+    return validationErrorMessage !== '';
+  };
   return (
-    <Container>
-      <h2>LOGIN</h2>
-      <div>{validationErrorMessage}</div>
-      <Form>
-        <Input
+    <div>
+      <Form error={hasValidationError()}>
+        <Form.Field
+          control={Input}
+          label='Username'
           type='text'
           value={username}
           onChange={e => setUsernameConnect(e.target.value)}
           placeholder='username'
           name='uname'
           required
+          width={6}
         />
 
-        <Input
+        <Form.Field
+          control={Input}
+          label='Password'
           type='password'
           value={password}
           onChange={e => setPasswordConnect(e.target.value)}
           placeholder='password'
           name='pswrd'
           required
+          width={6}
         />
-        <Input
+        <Button
+          content='Submit'
           type='submit'
-          value='Submit'
           onClick={e => {
             e.preventDefault();
             loginConnect(username, password);
           }}
         />
+        <Message error content={validationErrorMessage} />
       </Form>
       <div>
         Don&#39;t have an account?
         <Link to='/signup'>Sign Up</Link>
       </div>
-    </Container>
+    </div>
   );
 }
 

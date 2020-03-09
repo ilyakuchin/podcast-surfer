@@ -1,36 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test Login component should render correctly 1`] = `
-<styled.div>
-  <h2>
-    LOGIN
-  </h2>
-  <div>
-    errorMessage
-  </div>
-  <styled.form>
-    <styled.input
+<div>
+  <Form
+    as="form"
+    error={true}
+  >
+    <FormField
+      control={[Function]}
+      label="Username"
       name="uname"
       onChange={[Function]}
       placeholder="username"
       required={true}
       type="text"
       value="username"
+      width={6}
     />
-    <styled.input
+    <FormField
+      control={[Function]}
+      label="Password"
       name="pswrd"
       onChange={[Function]}
       placeholder="password"
       required={true}
       type="password"
       value="password"
+      width={6}
     />
-    <styled.input
+    <Button
+      as="button"
+      content="Submit"
       onClick={[Function]}
       type="submit"
-      value="Submit"
     />
-  </styled.form>
+    <Message
+      content="errorMessage"
+      error={true}
+    />
+  </Form>
   <div>
     Don't have an account?
     <Link
@@ -39,5 +47,5 @@ exports[`Test Login component should render correctly 1`] = `
       Sign Up
     </Link>
   </div>
-</styled.div>
+</div>
 `;
