@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test NotFound component should render correctly 1`] = `
+<div>
+  <Header
+    huge={true}
+  >
+    404 Not found
+  </Header>
+  <div>
+    <Link
+      to="/"
+    >
+      Home
+    </Link>
+  </div>
+</div>
+`;

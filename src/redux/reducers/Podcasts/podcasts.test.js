@@ -21,7 +21,7 @@ describe('Test podcasts reducer', () => {
     });
   });
 
-  test('should handle RECEIVE_PODCASTS', () => {
+  test('should handle FETCH_PODCASTS_SUCCESS', () => {
     expect(
       podcasts(undefined, {
         type: FETCH_PODCASTS_SUCCESS,

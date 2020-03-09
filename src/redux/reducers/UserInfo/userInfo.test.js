@@ -10,7 +10,8 @@ describe('Test userInfo reducer', () => {
           password: 'password',
           validationErrorMessage: '',
           jwt: 'jwt',
-          subscriptions: []
+          subscriptions: [],
+          isSubscribeButtonEnabled: true
         },
         { type: LOGOUT, username: '', password: '', jwt: '' }
       )
@@ -19,7 +20,8 @@ describe('Test userInfo reducer', () => {
       password: '',
       validationErrorMessage: '',
       jwt: '',
-      subscriptions: []
+      subscriptions: [],
+      isSubscribeButtonEnabled: true
     });
   });
 });

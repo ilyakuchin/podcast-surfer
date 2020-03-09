@@ -5,6 +5,8 @@ import searchPhrase from './SearchPhrase/searchPhrase';
 import podcasts from './Podcasts/podcasts';
 import currentPodcast from './CurrentPodcast/currentPodcast';
 import currentEpisode from './CurrentEpisode/currentEpisode';
+import popularPodcasts from './PopularPodcasts/popularPodcasts';
+import subscriptions from './Subscriptions/subscriptions';
 import feed from './Feed/feed';
 
 describe('Test root reducer', () => {
@@ -31,6 +33,18 @@ describe('Test root reducer', () => {
   test('should have currentEpisode reducer', () => {
     expect(store.getState().currentEpisode).toEqual(
       currentEpisode(undefined, {})
+    );
+  });
+
+  test('should have popularPodcasts reducer', () => {
+    expect(store.getState().popularPodcasts).toEqual(
+      popularPodcasts(undefined, {})
+    );
+  });
+
+  test('should have subscriptions reducer', () => {
+    expect(store.getState().subscriptions).toEqual(
+      subscriptions(undefined, {})
     );
   });
 
