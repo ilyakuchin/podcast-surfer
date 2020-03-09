@@ -1,36 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import { Form, Input, Button, Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {
   setUsername,
   setPassword,
   signup
 } from '../../redux/actions/UserInfo/userInfo';
-
-const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  justify-self: center;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  font-size: 18px;
-`;
-
-const Form = styled.form`
-  display: grid;
-  grid-gap: 10px;
-  align-items: center;
-  align-self: center;
-  margin-bottom: 20px;
-`;
 
 export function Signup({
   username,
@@ -40,42 +17,56 @@ export function Signup({
   setUsernameConnect,
   setPasswordConnect
 }) {
+  const hasValidationError = () => {
+    return validationErrorMessage !== '';
+  };
+
   const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
-    <Container>
+    <div>
       <h2>SIGNUP</h2>
-      <div>{validationErrorMessage}</div>
-      <Form>
-        <Input
+      <Form error={hasValidationError()}>
+        <Form.Field
+          control={Input}
+          label='Username'
           type='text'
           value={username}
           onChange={e => setUsernameConnect(e.target.value)}
           placeholder='username'
           required
+          width={6}
         />
-        <Input
+        <Form.Field
+          control={Input}
+          label='Password'
           type='password'
           value={password}
           onChange={e => setPasswordConnect(e.target.value)}
           placeholder='password'
           required
+          width={6}
         />
-        <Input
+        <Form.Field
+          control={Input}
+          label='Confirm Password'
           type='password'
           value={confirmPassword}
           onChange={e => setConfirmPassword(e.target.value)}
           placeholder='confirm password'
           required
+          width={6}
         />
-        <Input
+        <Button
+          content='Sign Up'
           type='submit'
           value='Submit'
           onClick={e => signupConnect(e, username, password, confirmPassword)}
         />
+        <Message error content={validationErrorMessage} />
       </Form>
       <Link to='/login'>Back to Login</Link>
-    </Container>
+    </div>
   );
 }
 

@@ -22,6 +22,7 @@ export function Login({
   };
   return (
     <div>
+      <h2>SIGNUP</h2>
       <Form error={hasValidationError()}>
         <Form.Field
           control={Input}
@@ -47,7 +48,7 @@ export function Login({
           width={6}
         />
         <Button
-          content='Submit'
+          content='Log In'
           type='submit'
           onClick={e => {
             e.preventDefault();
