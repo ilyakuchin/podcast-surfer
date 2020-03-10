@@ -23,10 +23,16 @@ export function searchPodcasts(e, searchPhrase) {
   return dispatch => {
     dispatch(fetchPodcastsRequest());
     return axios
-      .get(buildSearchPodcastUrl(searchPhrase))
+      .get(buildSearchPodcastUrl(searchPhrase), { timeout: '10s' })
       .then(res => {
         dispatch(fetchPodcastsSuccess(res.data));
       })
-      .catch(error => dispatch(fetchPodcastsFailure(error)));
+      .catch(error => {
+        if (!error.response) {
+          dispatch(fetchPodcastsFailure('Could not find podcasts'));
+        } else {
+          dispatch(fetchPodcastsFailure(error.response.data.message));
+        }
+      });
   };
 }

@@ -28,12 +28,20 @@ export function fetchSubscriptions(subscriptions) {
     const promises = [];
 
     for (let i = 0; i < subscriptions.length; i += 1) {
-      promises.push(axios.get(buildPodcastRequestUrl(subscriptions[i])));
+      promises.push(
+        axios.get(buildPodcastRequestUrl(subscriptions[i]), { timeout: '10s' })
+      );
     }
     return Promise.all(promises)
       .then(res => {
         dispatch(fetchSubscriptionsSuccess(res.map(item => item.data)));
       })
-      .catch(error => dispatch(fetchSubscriptionsFailure(error)));
+      .catch(error => {
+        if (!error.response) {
+          dispatch(fetchSubscriptionsFailure('Error connecting to the server'));
+        } else {
+          dispatch(fetchSubscriptionsFailure(error.response.data.message));
+        }
+      });
   };
 }

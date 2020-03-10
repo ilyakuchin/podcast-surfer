@@ -25,7 +25,7 @@ export function fetchCurrentPodcast(url) {
   return dispatch => {
     dispatch(fetchCurrentPodcastRequest());
     axios
-      .get(buildPodcastRequestUrl(url))
+      .get(buildPodcastRequestUrl(url), { timeout: '10s' })
       .then(res => {
         dispatch(
           fetchCurrentPodcastSuccess({
@@ -39,6 +39,14 @@ export function fetchCurrentPodcast(url) {
           })
         );
       })
-      .catch(err => fetchCurrentPodcastFailure(err));
+      .catch(err => {
+        if (!err.response) {
+          dispatch(
+            fetchCurrentPodcastFailure('Error connecting to the server')
+          );
+        } else {
+          dispatch(fetchCurrentPodcastFailure(err.response.data.message));
+        }
+      });
   };
 }

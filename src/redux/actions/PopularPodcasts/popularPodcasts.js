@@ -29,12 +29,18 @@ export function fetchPopularPodcasts() {
   return dispatch => {
     dispatch(fetchPopularPodcastsRequest());
     return axios
-      .get(popularPodcastsUrl)
+      .get(popularPodcastsUrl, { timeout: '10s' })
       .then(res => {
         dispatch(fetchPopularPodcastsSuccess(res.data));
       })
       .catch(err => {
-        dispatch(fetchPopularPodcastsFailure(err));
+        if (!err.response) {
+          dispatch(
+            fetchPopularPodcastsFailure('Error connecting to the server')
+          );
+        } else {
+          dispatch(fetchPopularPodcastsFailure(err.response.data.message));
+        }
       });
   };
 }

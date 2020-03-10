@@ -66,10 +66,14 @@ export function login(username, password) {
 
   return dispatch => {
     return axios
-      .post(loginUrl, {
-        username,
-        password
-      })
+      .post(
+        loginUrl,
+        {
+          username,
+          password
+        },
+        { timeout: '10s' }
+      )
       .then(res => {
         window.localStorage.setItem('jwt_token_podcast', res.data.token);
         dispatch(setJWT(window.localStorage.getItem('jwt_token_podcast')));
@@ -88,29 +92,41 @@ export function login(username, password) {
       .then(res => {
         dispatch(setSubscriptions(res.data.user.subscriptions));
       })
-      .catch(err =>
-        dispatch(setValidationErrorMessage(err.response.data.message))
-      );
+      .catch(err => {
+        if (!err.response) {
+          dispatch(setValidationErrorMessage('Error connecting to the server'));
+        } else {
+          dispatch(setValidationErrorMessage(err.response.data.message));
+        }
+      });
   };
 }
 
 export function fetchUser() {
   return dispatch => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/users`, {
-        headers: {
-          Authorization: `Bearer: ${window.localStorage.getItem(
-            'jwt_token_podcast'
-          )}`
-        }
-      })
+      .get(
+        `${process.env.REACT_APP_API_URL}/users`,
+        {
+          headers: {
+            Authorization: `Bearer: ${window.localStorage.getItem(
+              'jwt_token_podcast'
+            )}`
+          }
+        },
+        { timeout: '2m' }
+      )
       .then(res => {
         dispatch(setUsername(res.data.user.username));
         dispatch(setJWT(window.localStorage.getItem('jwt_token_podcast')));
         dispatch(setSubscriptions(res.data.user.subscriptions));
       })
-      .catch(() => {
-        dispatch(clearUserInfo());
+      .catch(err => {
+        if (!err.response) {
+          dispatch(setValidationErrorMessage('Error connecting to the server'));
+        } else {
+          dispatch(clearUserInfo());
+        }
       });
   };
 }
@@ -166,18 +182,26 @@ export function signup(username, password, confirmPassword) {
   }
   return dispatch => {
     return axios
-      .post(registerUrl, {
-        username,
-        password,
-        confirmPassword
-      })
+      .post(
+        registerUrl,
+        {
+          username,
+          password,
+          confirmPassword
+        },
+        { timeout: '10s' }
+      )
       .then(() => {
         dispatch(clearUserInfo());
         history.push('/login');
       })
-      .catch(err =>
-        dispatch(setValidationErrorMessage(err.response.data.message))
-      );
+      .catch(err => {
+        if (!err.response) {
+          dispatch(setValidationErrorMessage('Error connecting to the server'));
+        } else {
+          dispatch(setValidationErrorMessage(err.response.data.message));
+        }
+      });
   };
 }
 
@@ -211,6 +235,7 @@ export function updateSubscriptions(subscriptionUrls, jwt) {
         `${process.env.REACT_APP_API_URL}/users`,
         { subscriptions: subscriptionUrls },
         {
+          timeout: '10s',
           headers: {
             Authorization: `Bearer: ${jwt}`
           }
@@ -218,6 +243,14 @@ export function updateSubscriptions(subscriptionUrls, jwt) {
       )
       .then(() => dispatch(fetchUser()))
       .then(() => dispatch(updateSubscriptionsSuccess()))
-      .catch(error => dispatch(updateSubscriptionsFailure(error)));
+      .catch(error => {
+        if (!error.response) {
+          dispatch(
+            updateSubscriptionsFailure('Error connecting to the server')
+          );
+        } else {
+          dispatch(updateSubscriptionsFailure(error.response.data.message));
+        }
+      });
   };
 }

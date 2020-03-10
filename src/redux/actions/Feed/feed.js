@@ -28,7 +28,9 @@ export function fetchFeed(urlList) {
     dispatch(fetchFeedRequest());
     const promises = [];
     for (let i = 0; i < urlList.length; i += 1) {
-      promises.push(axios.get(buildPodcastRequestUrl(urlList[i])));
+      promises.push(
+        axios.get(buildPodcastRequestUrl(urlList[i]), { timeout: '10s' })
+      );
     }
     Promise.all(promises)
       .then(res => {
@@ -38,8 +40,18 @@ export function fetchFeed(urlList) {
             return { ...item, date: new Date(item.date) };
           })
           .sort((episodeA, episodeB) => sortEpisodesByDate(episodeA, episodeB));
-        dispatch(fetchFeedSuccess(episodes));
+        if (episodes && episodes.length > 0) {
+          dispatch(fetchFeedSuccess(episodes));
+        } else {
+          dispatch(fetchFeedFailure('Feed is empty'));
+        }
       })
-      .catch(error => dispatch(fetchFeedFailure(error)));
+      .catch(error => {
+        if (!error.response) {
+          dispatch(fetchFeedFailure('Error connecting to the server'));
+        } else {
+          dispatch(fetchFeedFailure(error.response.data.message));
+        }
+      });
   };
 }
