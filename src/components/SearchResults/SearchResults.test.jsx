@@ -8,13 +8,17 @@ configure({ adapter: new Adapter() });
 
 describe('Test SearchResults Component', () => {
   test('should render correctly', () => {
-    const wrapper = shallow(<SearchResults isFetching podcasts={[]} />);
+    const wrapper = shallow(
+      <SearchResults isFetching podcasts={[]} error='' />
+    );
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   test('should render correctly', () => {
-    const wrapper = shallow(<SearchResults isFetching={false} podcasts={[]} />);
+    const wrapper = shallow(
+      <SearchResults isFetching={false} podcasts={[]} error='' />
+    );
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });

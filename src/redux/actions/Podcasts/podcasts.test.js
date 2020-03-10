@@ -15,7 +15,8 @@ describe('Test podcast actions', () => {
     const expectedAction = {
       type: FETCH_PODCASTS_SUCCESS,
       isFetching: false,
-      podcasts: ['podcast1', 'podcast2']
+      podcasts: ['podcast1', 'podcast2'],
+      error: ''
     };
 
     expect(fetchPodcastsSuccess(['podcast1', 'podcast2'])).toEqual(

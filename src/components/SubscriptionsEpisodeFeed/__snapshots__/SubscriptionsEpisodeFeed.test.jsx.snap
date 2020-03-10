@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test SubscriptionsEpisodeFeed component should render correctly 1`] = `
-<div>
+<Header
+  as="h2"
+>
   Feed is empty
-</div>
+</Header>
 `;
 
 exports[`Test SubscriptionsEpisodeFeed component should render correctly 2`] = `

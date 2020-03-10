@@ -20,7 +20,8 @@ describe('Test ConnectedSearchResults component', () => {
           { id: '1', image: 'link', rss: 'rss1', name: 'name' },
           { id: '2', image: 'link2', rss: 'rss2', name: 'name2' },
           { id: '3', image: 'link3', rss: 'rss3', name: 'name3' }
-        ]
+        ],
+        error: ''
       }
     });
 

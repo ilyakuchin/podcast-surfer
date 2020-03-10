@@ -9,7 +9,8 @@ describe('Test popularPodcasts reducer', () => {
   test('should return initial state', () => {
     expect(popularPodcasts(undefined, {})).toEqual({
       isFetching: false,
-      podcasts: []
+      podcasts: [],
+      error: ''
     });
   });
 
@@ -21,7 +22,8 @@ describe('Test popularPodcasts reducer', () => {
       })
     ).toEqual({
       isFetching: true,
-      podcasts: []
+      podcasts: [],
+      error: ''
     });
   });
 
@@ -34,7 +36,8 @@ describe('Test popularPodcasts reducer', () => {
       })
     ).toEqual({
       isFetching: false,
-      podcasts: ['podcast1', 'podcast2', 'podcast3']
+      podcasts: ['podcast1', 'podcast2', 'podcast3'],
+      error: ''
     });
   });
 

@@ -5,7 +5,7 @@ exports[`Test Subscriptions component should render correctly 1`] = `
   <Header
     as="h2"
   >
-    Subscriptions
+    There is no subscriptions yet
   </Header>
   <styled.div>
     <Connect(PodcastList)

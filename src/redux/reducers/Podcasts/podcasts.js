@@ -5,7 +5,7 @@ import {
 } from '../../actions/Podcasts/podcasts';
 
 export default function podcasts(
-  state = { isFetching: false, podcasts: [] },
+  state = { isFetching: false, podcasts: [], error: '' },
   action
 ) {
   switch (action.type) {
@@ -15,7 +15,8 @@ export default function podcasts(
       return {
         ...state,
         isFetching: action.isFetching,
-        podcasts: action.podcasts
+        podcasts: action.podcasts,
+        error: action.error
       };
     case FETCH_PODCASTS_FAILURE:
       return {
