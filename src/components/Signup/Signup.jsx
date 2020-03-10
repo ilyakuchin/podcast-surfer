@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Form, Input, Button, Message } from 'semantic-ui-react';
+import { Form, Input, Button, Message, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {
   setUsername,
@@ -25,7 +25,7 @@ export function Signup({
 
   return (
     <div>
-      <h2>SIGNUP</h2>
+      <Header as='h2'>Signup</Header>
       <Form error={hasValidationError()}>
         <Form.Field
           control={Input}

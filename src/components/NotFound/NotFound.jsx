@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 export default function NotFound() {
   return (
     <div>
-      <Header huge>404 Not found</Header>
-      <div>
+      <Header as='h1'>404 Not found</Header>
+      <Header as='h3'>
         <Link to='/'>Home</Link>
-      </div>
+      </Header>
     </div>
   );
 }

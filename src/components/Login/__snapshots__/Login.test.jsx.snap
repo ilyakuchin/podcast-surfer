@@ -2,9 +2,11 @@
 
 exports[`Test Login component should render correctly 1`] = `
 <div>
-  <h2>
-    SIGNUP
-  </h2>
+  <Header
+    as="h2"
+  >
+    Login
+  </Header>
   <Form
     as="form"
     error={true}

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Header } from 'semantic-ui-react';
 import ConnectedPodcastList from '../PodcastList/PodcastList';
 import { fetchPopularPodcasts } from '../../redux/actions/PopularPodcasts/popularPodcasts';
 
@@ -15,7 +16,7 @@ function PopularPodcasts({
 
   return (
     <div>
-      Discover popular podcasts
+      <Header as='h2'>Popular podcasts</Header>
       <ConnectedPodcastList
         podcasts={popularPodcasts}
         isFetching={isFetching}

@@ -4,7 +4,8 @@ import {
   FETCH_FEED_SUCCESS,
   fetchFeedSuccess,
   FETCH_FEED_FAILURE,
-  fetchFeedFailure
+  fetchFeedFailure,
+  sortEpisodesByDate
 } from './feed';
 
 describe('Test feed actions', () => {
@@ -31,5 +32,26 @@ describe('Test feed actions', () => {
     };
 
     expect(fetchFeedFailure()).toEqual(expectedAction);
+  });
+
+  test('should return -1 because date of episode B less than date of episode A', () => {
+    const episodeA = { date: '2020-03-09T07:00:00.000Z' };
+    const episodeB = { date: '2020-03-06T17:05:55.000Z' };
+
+    expect(sortEpisodesByDate(episodeA, episodeB)).toEqual(-1);
+  });
+
+  test('should return 1 because date of episode A less than date of episode B', () => {
+    const episodeA = { date: '2020-01-20T19:38:49.000Z' };
+    const episodeB = { date: '2020-03-05T09:30:00.000Z' };
+
+    expect(sortEpisodesByDate(episodeA, episodeB)).toEqual(1);
+  });
+
+  test('should return 0 because dates of episodes A and B are equal', () => {
+    const episodeA = { date: '2020-01-20T19:38:49.000Z' };
+    const episodeB = { date: '2020-01-20T19:38:49.000Z' };
+
+    expect(sortEpisodesByDate(episodeA, episodeB)).toEqual(0);
   });
 });

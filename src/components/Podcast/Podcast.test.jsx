@@ -34,4 +34,18 @@ describe('Test Podcast Component', () => {
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  test('should render correctly when jwt is not an empty string', () => {
+    const wrapper = shallow(
+      <Podcast
+        isFetching={false}
+        name='podacstName'
+        description='podcastDescription'
+        imageUrl='podcast image'
+        jwt='jwt'
+      />
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });

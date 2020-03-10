@@ -17,6 +17,12 @@ export function fetchFeedFailure(error) {
   return { type: FETCH_FEED_FAILURE, isFetching: false, error };
 }
 
+export function sortEpisodesByDate(episodeA, episodeB) {
+  if (episodeA.date < episodeB.date) return 1;
+  if (episodeA.date > episodeB.date) return -1;
+  return 0;
+}
+
 export function fetchFeed(urlList) {
   return dispatch => {
     dispatch(fetchFeedRequest());
@@ -31,11 +37,7 @@ export function fetchFeed(urlList) {
           .map(item => {
             return { ...item, date: new Date(item.date) };
           })
-          .sort((a, b) => {
-            if (a.date < b.date) return 1;
-            if (a.date > b.date) return -1;
-            return 0;
-          });
+          .sort((episodeA, episodeB) => sortEpisodesByDate(episodeA, episodeB));
         dispatch(fetchFeedSuccess(episodes));
       })
       .catch(error => dispatch(fetchFeedFailure(error)));

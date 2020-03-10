@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Loader, Dimmer } from 'semantic-ui-react';
+import { Loader, Dimmer, Header } from 'semantic-ui-react';
 import { fetchFeed } from '../../redux/actions/Feed/feed';
 import { EpisodesList } from '../EpisodesList/EpisodesList';
 import { setCurrentEpisode } from '../../redux/actions/CurrentEpisode/currentEpisode';
@@ -34,12 +34,15 @@ export function SubscriptionsEpisodeFeed({
     return !feed.length > 0 ? (
       <div>Feed is empty</div>
     ) : (
-      <PodcastGrid>
-        <EpisodesList
-          episodes={feed}
-          setCurrentEpisodeConnect={setCurrentEpisodeConnect}
-        />
-      </PodcastGrid>
+      <div>
+        <Header as='h2'>Feed</Header>
+        <PodcastGrid>
+          <EpisodesList
+            episodes={feed}
+            setCurrentEpisodeConnect={setCurrentEpisodeConnect}
+          />
+        </PodcastGrid>
+      </div>
     );
   }
 
