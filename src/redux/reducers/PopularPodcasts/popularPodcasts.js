@@ -5,7 +5,7 @@ import {
 } from '../../actions/PopularPodcasts/popularPodcasts';
 
 export default function podcasts(
-  state = { isFetching: false, podcasts: [] },
+  state = { isFetching: false, podcasts: [], error: '' },
   action
 ) {
   switch (action.type) {

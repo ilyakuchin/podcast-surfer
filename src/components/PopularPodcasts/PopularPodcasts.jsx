@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Header } from 'semantic-ui-react';
+import { Header, Message } from 'semantic-ui-react';
 import ConnectedPodcastList from '../PodcastList/PodcastList';
 import { fetchPopularPodcasts } from '../../redux/actions/PopularPodcasts/popularPodcasts';
 
 function PopularPodcasts({
   fetchPopularPodcastsConnect,
   popularPodcasts,
-  isFetching
+  isFetching,
+  error
 }) {
   useEffect(() => {
     fetchPopularPodcastsConnect();
@@ -17,10 +18,17 @@ function PopularPodcasts({
   return (
     <div>
       <Header as='h2'>Popular podcasts</Header>
-      <ConnectedPodcastList
-        podcasts={popularPodcasts}
-        isFetching={isFetching}
-      />
+      {error !== '' ? (
+        <Message negative>
+          <Message.Header>Error</Message.Header>
+          <p>{error}</p>
+        </Message>
+      ) : (
+        <ConnectedPodcastList
+          podcasts={popularPodcasts}
+          isFetching={isFetching}
+        />
+      )}
     </div>
   );
 }
@@ -41,7 +49,8 @@ PopularPodcasts.propTypes = {
 const mapStateToProps = state => {
   return {
     popularPodcasts: state.popularPodcasts.podcasts,
-    isFetching: state.popularPodcasts.isFetching
+    isFetching: state.popularPodcasts.isFetching,
+    error: state.popularPodcasts.error
   };
 };
 

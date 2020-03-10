@@ -10,7 +10,12 @@ export function fetchPodcastsRequest() {
 }
 
 export function fetchPodcastsSuccess(podcasts) {
-  return { type: FETCH_PODCASTS_SUCCESS, isFetching: false, podcasts };
+  return {
+    type: FETCH_PODCASTS_SUCCESS,
+    isFetching: false,
+    podcasts,
+    error: ''
+  };
 }
 
 export function fetchPodcastsFailure(error) {
@@ -25,13 +30,17 @@ export function searchPodcasts(e, searchPhrase) {
     return axios
       .get(buildSearchPodcastUrl(searchPhrase), { timeout: '10s' })
       .then(res => {
-        dispatch(fetchPodcastsSuccess(res.data));
+        if (res.data.length === 0) {
+          dispatch(fetchPodcastsFailure('Could not find podcasts'));
+        } else {
+          dispatch(fetchPodcastsSuccess(res.data));
+        }
       })
       .catch(error => {
         if (!error.response) {
-          dispatch(fetchPodcastsFailure('Could not find podcasts'));
+          dispatch(fetchPodcastsFailure('Error connecting to server'));
         } else {
-          dispatch(fetchPodcastsFailure(error.response.data.message));
+          dispatch(fetchPodcastsFailure('Could not find podcasts'));
         }
       });
   };

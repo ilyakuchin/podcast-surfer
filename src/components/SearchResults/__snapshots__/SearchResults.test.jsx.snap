@@ -1,15 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test SearchResults Component should render correctly 1`] = `
-<Connect(PodcastList)
-  isFetching={true}
-  podcasts={Array []}
-/>
+<div>
+  <Connect(PodcastList)
+    isFetching={true}
+    podcasts={Array []}
+  />
+</div>
 `;
 
 exports[`Test SearchResults Component should render correctly 2`] = `
-<Connect(PodcastList)
-  isFetching={false}
-  podcasts={Array []}
-/>
+<div>
+  <Connect(PodcastList)
+    isFetching={false}
+    podcasts={Array []}
+  />
+</div>
 `;

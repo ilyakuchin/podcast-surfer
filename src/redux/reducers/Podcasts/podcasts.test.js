@@ -9,7 +9,8 @@ describe('Test podcasts reducer', () => {
   test('should return initial state', () => {
     expect(podcasts(undefined, {})).toEqual({
       isFetching: false,
-      podcasts: []
+      podcasts: [],
+      error: ''
     });
   });
 
@@ -18,7 +19,8 @@ describe('Test podcasts reducer', () => {
       podcasts(undefined, { type: FETCH_PODCASTS_REQUEST, isFetching: true })
     ).toEqual({
       isFetching: true,
-      podcasts: []
+      podcasts: [],
+      error: ''
     });
   });
 
