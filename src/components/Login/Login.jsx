@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Form, Input, Button, Message } from 'semantic-ui-react';
+import { Form, Input, Button, Message, Header } from 'semantic-ui-react';
 import {
   setUsername,
   setPassword,
@@ -22,7 +22,7 @@ export function Login({
   };
   return (
     <div>
-      <h2>SIGNUP</h2>
+      <Header as='h2'>Login</Header>
       <Form error={hasValidationError()}>
         <Form.Field
           control={Input}

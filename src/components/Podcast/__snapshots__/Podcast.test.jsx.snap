@@ -29,3 +29,20 @@ exports[`Test Podcast Component should render correctly when isFetching 1`] = `
   </Loader>
 </Dimmer>
 `;
+
+exports[`Test Podcast Component should render correctly when jwt is not an empty string 1`] = `
+<styled.div>
+  <styled.img
+    alt="podcast cover"
+    src="podcast image"
+  />
+  <styled.h2>
+    podacstName
+    <Connect(SubscribeButton) />
+  </styled.h2>
+  <styled.p>
+    podcastDescription
+  </styled.p>
+  <Connect(EpisodesList) />
+</styled.div>
+`;

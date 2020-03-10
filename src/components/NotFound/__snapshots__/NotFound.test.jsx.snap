@@ -3,16 +3,18 @@
 exports[`Test NotFound component should render correctly 1`] = `
 <div>
   <Header
-    huge={true}
+    as="h1"
   >
     404 Not found
   </Header>
-  <div>
+  <Header
+    as="h3"
+  >
     <Link
       to="/"
     >
       Home
     </Link>
-  </div>
+  </Header>
 </div>
 `;

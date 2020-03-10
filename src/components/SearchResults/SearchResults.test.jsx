@@ -12,4 +12,10 @@ describe('Test SearchResults Component', () => {
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  test('should render correctly', () => {
+    const wrapper = shallow(<SearchResults isFetching={false} podcasts={[]} />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });

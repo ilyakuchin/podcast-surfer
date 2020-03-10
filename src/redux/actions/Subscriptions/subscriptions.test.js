@@ -9,7 +9,6 @@ describe('Test subscriptions actions', () => {
       type: FETCH_SUBSCRIPTIONS_REQUEST,
       isFetching: true
     };
-
     expect(fetchSubscriptionsRequest()).toEqual(expectedAction);
   });
 });

@@ -6,3 +6,10 @@ exports[`Test SearchResults Component should render correctly 1`] = `
   podcasts={Array []}
 />
 `;
+
+exports[`Test SearchResults Component should render correctly 2`] = `
+<Connect(PodcastList)
+  isFetching={false}
+  podcasts={Array []}
+/>
+`;

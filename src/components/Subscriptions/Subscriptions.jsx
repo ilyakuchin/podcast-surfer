@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Header } from 'semantic-ui-react';
 import ConnectedPodcastList from '../PodcastList/PodcastList';
 import { fetchSubscriptions } from '../../redux/actions/Subscriptions/subscriptions';
 
@@ -23,9 +24,15 @@ export function Subscriptions({
   }, [fetchSubscriptionsConnect, subscriptionUrls]);
 
   return (
-    <ComponentGrid>
-      <ConnectedPodcastList podcasts={subscriptions} isFetching={isFetching} />
-    </ComponentGrid>
+    <div>
+      <Header as='h2'>Subscriptions</Header>
+      <ComponentGrid>
+        <ConnectedPodcastList
+          podcasts={subscriptions}
+          isFetching={isFetching}
+        />
+      </ComponentGrid>
+    </div>
   );
 }
 

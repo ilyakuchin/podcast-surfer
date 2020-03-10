@@ -36,6 +36,7 @@ export default function currentPodcast(
     case FETCH_CURRENT_PODCAST_FAILURE:
       return {
         ...state,
+        isFetching: action.isFetching,
         error: action.error
       };
     default:
