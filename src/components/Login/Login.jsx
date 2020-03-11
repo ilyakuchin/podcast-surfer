@@ -68,14 +68,12 @@ export function Login({
         </Grid>
       </Form>
       <Grid textAlign='center' columns={1} container stackable>
-        <Grid.Row>
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <div>
-              Don&#39;t have an account?
-              <Link to='/signup'> Sign Up</Link>
-            </div>
-          </Grid.Column>
-        </Grid.Row>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <div>
+            Don&#39;t have an account?
+            <Link to='/signup'> Sign Up</Link>
+          </div>
+        </Grid.Column>
       </Grid>
     </div>
   );
