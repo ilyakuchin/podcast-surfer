@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Form, Input, Button, Message, Header } from 'semantic-ui-react';
+import { Form, Input, Button, Message, Header, Grid } from 'semantic-ui-react';
 import {
   setUsername,
   setPassword,
@@ -22,47 +22,61 @@ export function Login({
   };
   return (
     <div>
-      <Header as='h2' textAlign='center'>
-        Login
-      </Header>
       <Form error={hasValidationError()}>
-        <Form.Field
-          control={Input}
-          label='Username'
-          type='text'
-          value={username}
-          onChange={e => setUsernameConnect(e.target.value)}
-          placeholder='username'
-          name='uname'
-          required
-          width={6}
-        />
+        <Grid
+          textAlign='center'
+          style={{ height: '80vh' }}
+          verticalAlign='middle'
+        >
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h2' textAlign='center'>
+              Login
+            </Header>
+            <Form.Field
+              control={Input}
+              type='text'
+              value={username}
+              label={{ align: ' left', children: 'Username' }}
+              onChange={e => setUsernameConnect(e.target.value)}
+              placeholder='username'
+              name='uname'
+              required
+            />
 
-        <Form.Field
-          control={Input}
-          label='Password'
-          type='password'
-          value={password}
-          onChange={e => setPasswordConnect(e.target.value)}
-          placeholder='password'
-          name='pswrd'
-          required
-          width={6}
-        />
-        <Button
-          content='Log In'
-          type='submit'
-          onClick={e => {
-            e.preventDefault();
-            loginConnect(username, password);
-          }}
-        />
-        <Message error content={validationErrorMessage} />
+            <Form.Field
+              control={Input}
+              type='password'
+              value={password}
+              label={{ align: ' left', children: 'Password' }}
+              onChange={e => setPasswordConnect(e.target.value)}
+              placeholder='password'
+              name='pswrd'
+              required
+            />
+
+            <Button
+              content='Log In'
+              type='submit'
+              onClick={e => {
+                e.preventDefault();
+                loginConnect(username, password);
+              }}
+            />
+
+            <Message error content={validationErrorMessage} />
+          </Grid.Column>
+        </Grid>
       </Form>
-      <div>
-        Don&#39;t have an account?
-        <Link to='/signup'>Sign Up</Link>
-      </div>
+      <Grid textAlign='center' columns={1} container stackable>
+        <Grid.Row>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <div>
+              Don&#39;t have an account?
+              <Link to='/signup'> Sign Up</Link>
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 }
