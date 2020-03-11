@@ -17,7 +17,9 @@ function PopularPodcasts({
 
   return (
     <div>
-      <Header as='h2'>Popular podcasts</Header>
+      <Header as='h2' textAlign='center'>
+        Popular podcasts
+      </Header>
       {error !== '' ? (
         <Message negative>
           <Message.Header>Error</Message.Header>

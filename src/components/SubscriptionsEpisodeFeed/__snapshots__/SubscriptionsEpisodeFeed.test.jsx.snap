@@ -3,6 +3,7 @@
 exports[`Test SubscriptionsEpisodeFeed component should render correctly 1`] = `
 <Header
   as="h2"
+  textAlign="center"
 >
   Feed is empty
 </Header>

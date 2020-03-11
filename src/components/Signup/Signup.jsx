@@ -25,7 +25,9 @@ export function Signup({
 
   return (
     <div>
-      <Header as='h2'>Signup</Header>
+      <Header as='h2' textAlign='center'>
+        Signup
+      </Header>
       <Form error={hasValidationError()}>
         <Form.Field
           control={Input}

@@ -22,7 +22,9 @@ export function Login({
   };
   return (
     <div>
-      <Header as='h2'>Login</Header>
+      <Header as='h2' textAlign='center'>
+        Login
+      </Header>
       <Form error={hasValidationError()}>
         <Form.Field
           control={Input}

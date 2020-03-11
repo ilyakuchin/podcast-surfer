@@ -4,6 +4,7 @@ exports[`Test Login component should render correctly 1`] = `
 <div>
   <Header
     as="h2"
+    textAlign="center"
   >
     Login
   </Header>

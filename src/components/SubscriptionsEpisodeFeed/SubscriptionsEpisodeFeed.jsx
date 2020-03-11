@@ -32,10 +32,14 @@ export function SubscriptionsEpisodeFeed({
 
   function podcastGrid() {
     return !feed.length > 0 ? (
-      <Header as='h2'>Feed is empty</Header>
+      <Header as='h2' textAlign='center'>
+        Feed is empty
+      </Header>
     ) : (
       <div>
-        <Header as='h2'>Feed</Header>
+        <Header as='h2' textAlign='center'>
+          Feed
+        </Header>
         <PodcastGrid>
           <EpisodesList
             episodes={feed}
