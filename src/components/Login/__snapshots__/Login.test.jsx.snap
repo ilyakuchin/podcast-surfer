@@ -2,55 +2,97 @@
 
 exports[`Test Login component should render correctly 1`] = `
 <div>
-  <Header
-    as="h2"
-  >
-    Login
-  </Header>
   <Form
     as="form"
     error={true}
   >
-    <FormField
-      control={[Function]}
-      label="Username"
-      name="uname"
-      onChange={[Function]}
-      placeholder="username"
-      required={true}
-      type="text"
-      value="username"
-      width={6}
-    />
-    <FormField
-      control={[Function]}
-      label="Password"
-      name="pswrd"
-      onChange={[Function]}
-      placeholder="password"
-      required={true}
-      type="password"
-      value="password"
-      width={6}
-    />
-    <Button
-      as="button"
-      content="Log In"
-      onClick={[Function]}
-      type="submit"
-    />
-    <Message
-      content="errorMessage"
-      error={true}
-    />
-  </Form>
-  <div>
-    Don't have an account?
-    <Link
-      to="/signup"
+    <Grid
+      style={
+        Object {
+          "height": "80vh",
+        }
+      }
+      textAlign="center"
+      verticalAlign="middle"
     >
-      Sign Up
-    </Link>
-  </div>
+      <GridColumn
+        style={
+          Object {
+            "maxWidth": 450,
+          }
+        }
+      >
+        <Header
+          as="h2"
+          textAlign="center"
+        >
+          Login
+        </Header>
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Username",
+            }
+          }
+          name="uname"
+          onChange={[Function]}
+          placeholder="username"
+          required={true}
+          type="text"
+          value="username"
+        />
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Password",
+            }
+          }
+          name="pswrd"
+          onChange={[Function]}
+          placeholder="password"
+          required={true}
+          type="password"
+          value="password"
+        />
+        <Button
+          as="button"
+          content="Log In"
+          onClick={[Function]}
+          type="submit"
+        />
+        <Message
+          content="errorMessage"
+          error={true}
+        />
+      </GridColumn>
+    </Grid>
+  </Form>
+  <Grid
+    columns={1}
+    container={true}
+    stackable={true}
+    textAlign="center"
+  >
+    <GridColumn
+      style={
+        Object {
+          "maxWidth": 450,
+        }
+      }
+    >
+      <div>
+        Don't have an account?
+        <Link
+          to="/signup"
+        >
+           Sign Up
+        </Link>
+      </div>
+    </GridColumn>
+  </Grid>
 </div>
 `;

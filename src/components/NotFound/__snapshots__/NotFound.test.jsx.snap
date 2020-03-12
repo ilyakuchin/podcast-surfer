@@ -4,11 +4,13 @@ exports[`Test NotFound component should render correctly 1`] = `
 <div>
   <Header
     as="h1"
+    textAlign="center"
   >
     404 Not found
   </Header>
   <Header
     as="h3"
+    textAlign="center"
   >
     <Link
       to="/"

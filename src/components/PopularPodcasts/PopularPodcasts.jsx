@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Header, Message } from 'semantic-ui-react';
+import { Header, Message, Grid } from 'semantic-ui-react';
 import ConnectedPodcastList from '../PodcastList/PodcastList';
 import { fetchPopularPodcasts } from '../../redux/actions/PopularPodcasts/popularPodcasts';
 
@@ -17,12 +17,18 @@ function PopularPodcasts({
 
   return (
     <div>
-      <Header as='h2'>Popular podcasts</Header>
+      <Header as='h2' textAlign='center'>
+        Popular podcasts
+      </Header>
       {error !== '' ? (
-        <Message negative>
-          <Message.Header>Error</Message.Header>
-          <p>{error}</p>
-        </Message>
+        <Grid textAlign='center' columns={1} container stackable>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Message negative>
+              <Message.Header>Error</Message.Header>
+              <p>{error}</p>
+            </Message>
+          </Grid.Column>
+        </Grid>
       ) : (
         <ConnectedPodcastList
           podcasts={popularPodcasts}

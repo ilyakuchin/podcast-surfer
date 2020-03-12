@@ -26,9 +26,13 @@ export function Subscriptions({
   return (
     <div>
       {subscriptions.length > 0 ? (
-        <Header as='h2'>Subscriptions</Header>
+        <Header as='h2' textAlign='center'>
+          Subscriptions
+        </Header>
       ) : (
-        <Header as='h2'>There is no subscriptions yet</Header>
+        <Header as='h2' textAlign='center'>
+          There is no subscriptions yet
+        </Header>
       )}
       <ComponentGrid>
         <ConnectedPodcastList

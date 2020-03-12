@@ -2,61 +2,107 @@
 
 exports[`Test Signup component should render correctly 1`] = `
 <div>
-  <Header
-    as="h2"
-  >
-    Signup
-  </Header>
   <Form
     as="form"
     error={true}
   >
-    <FormField
-      control={[Function]}
-      label="Username"
-      onChange={[Function]}
-      placeholder="username"
-      required={true}
-      type="text"
-      value="username"
-      width={6}
-    />
-    <FormField
-      control={[Function]}
-      label="Password"
-      onChange={[Function]}
-      placeholder="password"
-      required={true}
-      type="password"
-      value="password"
-      width={6}
-    />
-    <FormField
-      control={[Function]}
-      label="Confirm Password"
-      onChange={[Function]}
-      placeholder="confirm password"
-      required={true}
-      type="password"
-      value=""
-      width={6}
-    />
-    <Button
-      as="button"
-      content="Sign Up"
-      onClick={[Function]}
-      type="submit"
-      value="Submit"
-    />
-    <Message
-      content="error"
-      error={true}
-    />
+    <Grid
+      style={
+        Object {
+          "height": "80vh",
+        }
+      }
+      textAlign="center"
+      verticalAlign="middle"
+    >
+      <GridColumn
+        style={
+          Object {
+            "maxWidth": 450,
+          }
+        }
+      >
+        <Header
+          as="h2"
+          textAlign="center"
+        >
+          Signup
+        </Header>
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Username",
+            }
+          }
+          onChange={[Function]}
+          placeholder="username"
+          required={true}
+          type="text"
+          value="username"
+        />
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Password",
+            }
+          }
+          onChange={[Function]}
+          placeholder="password"
+          required={true}
+          type="password"
+          value="password"
+        />
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Confirm Password",
+            }
+          }
+          onChange={[Function]}
+          placeholder="confirm password"
+          required={true}
+          type="password"
+          value=""
+        />
+        <Button
+          as="button"
+          content="Sign Up"
+          onClick={[Function]}
+          type="submit"
+          value="Submit"
+        />
+        <Message
+          content="error"
+          error={true}
+        />
+      </GridColumn>
+    </Grid>
   </Form>
-  <Link
-    to="/login"
+  <Grid
+    columns={1}
+    container={true}
+    stackable={true}
+    textAlign="center"
   >
-    Back to Login
-  </Link>
+    <GridColumn
+      style={
+        Object {
+          "maxWidth": 450,
+        }
+      }
+    >
+      <Link
+        to="/login"
+      >
+        Back to Login
+      </Link>
+    </GridColumn>
+  </Grid>
 </div>
 `;

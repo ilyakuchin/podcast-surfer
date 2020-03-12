@@ -1,17 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Message } from 'semantic-ui-react';
+import { Message, Grid } from 'semantic-ui-react';
 import ConnectedPodcastList from '../PodcastList/PodcastList';
 
 export function SearchResults({ podcasts, isFetching, error }) {
   return (
     <div>
       {error !== '' ? (
-        <Message negative>
-          <Message.Header>Error</Message.Header>
-          <p>{error}</p>
-        </Message>
+        <Grid textAlign='center' columns={1} container stackable>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Message negative>
+              <Message.Header>Error</Message.Header>
+              <p>{error}</p>
+            </Message>
+          </Grid.Column>
+        </Grid>
       ) : (
         <ConnectedPodcastList podcasts={podcasts} isFetching={isFetching} />
       )}
