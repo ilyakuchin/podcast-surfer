@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test SearchForm component should render correctly 1`] = `
+<Form
+  as="form"
+  onSubmit={[Function]}
+>
+  <FormInput
+    action={
+      Object {
+        "icon": "search",
+      }
+    }
+    as={[Function]}
+    control={[Function]}
+    onChange={[Function]}
+    placeholder="Search..."
+    value="searchPhrase"
+  />
+</Form>
+`;

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Podcast Component should render correctly 1`] = `
+<styled.div>
+  <styled.img
+    alt="podcast cover"
+    src="podcast image"
+  />
+  <styled.h2>
+    podacstName
+    <div />
+  </styled.h2>
+  <styled.p>
+    podcastDescription
+  </styled.p>
+  <Connect(EpisodesList) />
+</styled.div>
+`;
+
+exports[`Test Podcast Component should render correctly when isFetching 1`] = `
+<Dimmer
+  active={true}
+  inverted={true}
+>
+  <Loader
+    size="massive"
+  >
+    Loading
+  </Loader>
+</Dimmer>
+`;
+
+exports[`Test Podcast Component should render correctly when jwt is not an empty string 1`] = `
+<styled.div>
+  <styled.img
+    alt="podcast cover"
+    src="podcast image"
+  />
+  <styled.h2>
+    podacstName
+    <Connect(SubscribeButton) />
+  </styled.h2>
+  <styled.p>
+    podcastDescription
+  </styled.p>
+  <Connect(EpisodesList) />
+</styled.div>
+`;

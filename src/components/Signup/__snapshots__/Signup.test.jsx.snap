@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Signup component should render correctly 1`] = `
+<div>
+  <Form
+    as="form"
+    error={true}
+  >
+    <Grid
+      style={
+        Object {
+          "height": "80vh",
+        }
+      }
+      textAlign="center"
+      verticalAlign="middle"
+    >
+      <GridColumn
+        style={
+          Object {
+            "maxWidth": 450,
+          }
+        }
+      >
+        <Header
+          as="h2"
+          textAlign="center"
+        >
+          Signup
+        </Header>
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Username",
+            }
+          }
+          onChange={[Function]}
+          placeholder="username"
+          required={true}
+          type="text"
+          value="username"
+        />
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Password",
+            }
+          }
+          onChange={[Function]}
+          placeholder="password"
+          required={true}
+          type="password"
+          value="password"
+        />
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Confirm Password",
+            }
+          }
+          onChange={[Function]}
+          placeholder="confirm password"
+          required={true}
+          type="password"
+          value=""
+        />
+        <Button
+          as="button"
+          content="Sign Up"
+          onClick={[Function]}
+          type="submit"
+          value="Submit"
+        />
+        <Message
+          content="error"
+          error={true}
+        />
+      </GridColumn>
+    </Grid>
+  </Form>
+  <Grid
+    columns={1}
+    container={true}
+    stackable={true}
+    textAlign="center"
+  >
+    <GridColumn
+      style={
+        Object {
+          "maxWidth": 450,
+        }
+      }
+    >
+      <Link
+        to="/login"
+      >
+        Back to Login
+      </Link>
+    </GridColumn>
+  </Grid>
+</div>
+`;

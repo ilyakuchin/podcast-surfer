@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Subscriptions component should render correctly 1`] = `
+<div>
+  <Header
+    as="h2"
+    textAlign="center"
+  >
+    There is no subscriptions yet
+  </Header>
+  <styled.div>
+    <Connect(PodcastList)
+      isFetching={false}
+      podcasts={Array []}
+    />
+  </styled.div>
+</div>
+`;

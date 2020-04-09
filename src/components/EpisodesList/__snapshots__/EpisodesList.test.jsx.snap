@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test EpisodesList Component should render correctly 1`] = `
+<styled.ul>
+  <Pagination
+    aria-label="Pagination Navigation"
+    boundaryRange={1}
+    defaultActivePage={1}
+    ellipsisItem="..."
+    firstItem={
+      Object {
+        "aria-label": "First item",
+        "content": "«",
+      }
+    }
+    lastItem={
+      Object {
+        "aria-label": "Last item",
+        "content": "»",
+      }
+    }
+    nextItem={
+      Object {
+        "aria-label": "Next item",
+        "content": "⟩",
+      }
+    }
+    onPageChange={[Function]}
+    pageItem={Object {}}
+    prevItem={
+      Object {
+        "aria-label": "Previous item",
+        "content": "⟨",
+      }
+    }
+    siblingRange={1}
+    totalPages={0}
+  />
+  <List
+    verticalAlign="middle"
+  >
+    <ListItem
+      key="1"
+    >
+      <Image
+        as="img"
+        style={
+          Object {
+            "height": "200px",
+            "objectFit": "scale-down",
+            "width": "200px",
+          }
+        }
+        ui={true}
+      />
+      <ListContent>
+        <Link
+          onClick={[Function]}
+          to="/episode-player"
+        >
+          name1
+        </Link>
+      </ListContent>
+    </ListItem>
+    <ListItem
+      key="2"
+    >
+      <Image
+        as="img"
+        style={
+          Object {
+            "height": "200px",
+            "objectFit": "scale-down",
+            "width": "200px",
+          }
+        }
+        ui={true}
+      />
+      <ListContent>
+        <Link
+          onClick={[Function]}
+          to="/episode-player"
+        >
+          name2
+        </Link>
+      </ListContent>
+    </ListItem>
+    <ListItem
+      key="3"
+    >
+      <Image
+        as="img"
+        style={
+          Object {
+            "height": "200px",
+            "objectFit": "scale-down",
+            "width": "200px",
+          }
+        }
+        ui={true}
+      />
+      <ListContent>
+        <Link
+          onClick={[Function]}
+          to="/episode-player"
+        >
+          name3
+        </Link>
+      </ListContent>
+    </ListItem>
+  </List>
+</styled.ul>
+`;

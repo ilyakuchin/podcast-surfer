@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Login component should render correctly 1`] = `
+<div>
+  <Form
+    as="form"
+    error={true}
+  >
+    <Grid
+      style={
+        Object {
+          "height": "80vh",
+        }
+      }
+      textAlign="center"
+      verticalAlign="middle"
+    >
+      <GridColumn
+        style={
+          Object {
+            "maxWidth": 450,
+          }
+        }
+      >
+        <Header
+          as="h2"
+          textAlign="center"
+        >
+          Login
+        </Header>
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Username",
+            }
+          }
+          name="uname"
+          onChange={[Function]}
+          placeholder="username"
+          required={true}
+          type="text"
+          value="username"
+        />
+        <FormField
+          control={[Function]}
+          label={
+            Object {
+              "align": " left",
+              "children": "Password",
+            }
+          }
+          name="pswrd"
+          onChange={[Function]}
+          placeholder="password"
+          required={true}
+          type="password"
+          value="password"
+        />
+        <Button
+          as="button"
+          content="Log In"
+          onClick={[Function]}
+          type="submit"
+        />
+        <Message
+          content="errorMessage"
+          error={true}
+        />
+      </GridColumn>
+    </Grid>
+  </Form>
+  <Grid
+    columns={1}
+    container={true}
+    stackable={true}
+    textAlign="center"
+  >
+    <GridColumn
+      style={
+        Object {
+          "maxWidth": 450,
+        }
+      }
+    >
+      <div>
+        Don't have an account?
+        <Link
+          to="/signup"
+        >
+           Sign Up
+        </Link>
+      </div>
+    </GridColumn>
+  </Grid>
+</div>
+`;

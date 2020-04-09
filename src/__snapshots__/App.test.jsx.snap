@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test App Component Should Render Correctly 1`] = `
+<div>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Menu
+      stackable={true}
+    >
+      <MenuItem>
+        PODCAST SURFER
+      </MenuItem>
+      <MenuItem>
+        <Link
+          to="/popular"
+        >
+          Popular
+        </Link>
+      </MenuItem>
+      <MenuItem>
+        <Link
+          to="/subscriptions"
+        >
+          Subscriptions
+        </Link>
+      </MenuItem>
+      <MenuItem>
+        <Link
+          to="/feed"
+        >
+          Feed
+        </Link>
+      </MenuItem>
+      <MenuItem
+        position="right"
+      >
+        <Connect(SearchForm) />
+      </MenuItem>
+      <MenuItem
+        position="right"
+      >
+        username
+      </MenuItem>
+      <MenuItem
+        position="right"
+      >
+        <Link
+          onClick={[Function]}
+          to="/"
+        >
+          Logout
+        </Link>
+      </MenuItem>
+    </Menu>
+    <div>
+      <Switch>
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(PopularPodcasts)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SearchResults)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/search"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(PopularPodcasts)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/popular"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Podcast)",
+              "type": [Function],
+            }
+          }
+          path="/podcast"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(EpisodePlayer)",
+              "type": [Function],
+            }
+          }
+          path="/episode-player"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Subscriptions)",
+              "type": [Function],
+            }
+          }
+          path="/subscriptions"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SubscriptionsEpisodeFeed)",
+              "type": [Function],
+            }
+          }
+          path="/feed"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Login)",
+              "type": [Function],
+            }
+          }
+          path="/login"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Signup)",
+              "type": [Function],
+            }
+          }
+          path="/signup"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SubscriptionsEpisodeFeed)",
+              "type": [Function],
+            }
+          }
+          path="/feed"
+        />
+        <Route
+          component={[Function]}
+        />
+      </Switch>
+    </div>
+  </Router>
+</div>
+`;
+
+exports[`Test App Component Should Render Correctly 2`] = `
+<div>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Menu
+      stackable={true}
+    >
+      <MenuItem>
+        PODCAST SURFER
+      </MenuItem>
+      <MenuItem>
+        <Link
+          to="/"
+        >
+          Popular
+        </Link>
+      </MenuItem>
+      <MenuItem
+        position="right"
+      >
+        <Connect(SearchForm) />
+      </MenuItem>
+      <MenuItem
+        position="right"
+      >
+        <Link
+          to="/login"
+        >
+          Log in
+        </Link>
+      </MenuItem>
+    </Menu>
+    <div>
+      <Switch>
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(PopularPodcasts)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SearchResults)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/search"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(PopularPodcasts)",
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/popular"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Podcast)",
+              "type": [Function],
+            }
+          }
+          path="/podcast"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(EpisodePlayer)",
+              "type": [Function],
+            }
+          }
+          path="/episode-player"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Subscriptions)",
+              "type": [Function],
+            }
+          }
+          path="/subscriptions"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SubscriptionsEpisodeFeed)",
+              "type": [Function],
+            }
+          }
+          path="/feed"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Login)",
+              "type": [Function],
+            }
+          }
+          path="/login"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(Signup)",
+              "type": [Function],
+            }
+          }
+          path="/signup"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SubscriptionsEpisodeFeed)",
+              "type": [Function],
+            }
+          }
+          path="/feed"
+        />
+        <Route
+          component={[Function]}
+        />
+      </Switch>
+    </div>
+  </Router>
+</div>
+`;
