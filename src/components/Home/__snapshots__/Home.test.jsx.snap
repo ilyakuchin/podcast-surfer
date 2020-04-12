@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Home component should render correctly 1`] = `
+<div>
+  <Grid
+    columns="2"
+  >
+    <GridColumn
+      textAlign="center"
+      verticalAlign="middle"
+    >
+      <Image
+        as="img"
+        size="big"
+        src="undraw_imagination_ok71.svg"
+        ui={true}
+      />
+    </GridColumn>
+    <GridColumn
+      textAlign="center"
+      verticalAlign="middle"
+    >
+      <Header
+        as="h1"
+      >
+        Discover audio stories, news and shows
+      </Header>
+    </GridColumn>
+  </Grid>
+</div>
+`;

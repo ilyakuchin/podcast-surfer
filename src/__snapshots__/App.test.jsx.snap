@@ -28,13 +28,10 @@ exports[`Test App Component Should Render Correctly 1`] = `
       stackable={true}
     >
       <MenuItem>
-        PODCAST SURFER
-      </MenuItem>
-      <MenuItem>
         <Link
-          to="/popular"
+          to="/"
         >
-          Popular
+          PODCAST SURFER
         </Link>
       </MenuItem>
       <MenuItem>
@@ -75,15 +72,7 @@ exports[`Test App Component Should Render Correctly 1`] = `
     <div>
       <Switch>
         <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [Function],
-              "compare": null,
-              "displayName": "Connect(PopularPodcasts)",
-              "type": [Function],
-            }
-          }
+          component={[Function]}
           exact={true}
           path="/"
         />
@@ -101,17 +90,9 @@ exports[`Test App Component Should Render Correctly 1`] = `
           path="/search"
         />
         <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [Function],
-              "compare": null,
-              "displayName": "Connect(PopularPodcasts)",
-              "type": [Function],
-            }
-          }
+          component={[Function]}
           exact={true}
-          path="/popular"
+          path="/home"
         />
         <Route
           component={
@@ -234,13 +215,10 @@ exports[`Test App Component Should Render Correctly 2`] = `
       stackable={true}
     >
       <MenuItem>
-        PODCAST SURFER
-      </MenuItem>
-      <MenuItem>
         <Link
           to="/"
         >
-          Popular
+          PODCAST SURFER
         </Link>
       </MenuItem>
       <MenuItem
@@ -261,15 +239,7 @@ exports[`Test App Component Should Render Correctly 2`] = `
     <div>
       <Switch>
         <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [Function],
-              "compare": null,
-              "displayName": "Connect(PopularPodcasts)",
-              "type": [Function],
-            }
-          }
+          component={[Function]}
           exact={true}
           path="/"
         />
@@ -287,17 +257,9 @@ exports[`Test App Component Should Render Correctly 2`] = `
           path="/search"
         />
         <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [Function],
-              "compare": null,
-              "displayName": "Connect(PopularPodcasts)",
-              "type": [Function],
-            }
-          }
+          component={[Function]}
           exact={true}
-          path="/popular"
+          path="/home"
         />
         <Route
           component={

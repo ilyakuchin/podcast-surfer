@@ -22,15 +22,6 @@ const mockState = {
     ]
   },
 
-  popularPodcasts: {
-    isFetching: false,
-    podcasts: [
-      { id: '1', image: 'toplink', rss: 'toprss1', name: 'topname' },
-      { id: '2', image: 'toplink2', rss: 'toprss2', name: 'topname2' },
-      { id: '3', image: 'toplink3', rss: 'toprss3', name: 'topname3' }
-    ]
-  },
-
   searchPhrase: 'testSearchPhrase',
 
   currentPodcast: {

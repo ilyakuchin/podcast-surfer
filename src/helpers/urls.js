@@ -6,5 +6,3 @@ export function buildPodcastRequestUrl(podcastUrl) {
 export function buildSearchPodcastUrl(term) {
   return `${process.env.REACT_APP_API_URL}/podcasts?term=${term}`;
 }
-
-export const popularPodcastsUrl = `${process.env.REACT_APP_API_URL}/podcasts/popular`;
