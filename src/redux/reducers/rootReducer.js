@@ -6,7 +6,6 @@ import currentPodcast from './CurrentPodcast/currentPodcast';
 import podcasts from './Podcasts/podcasts';
 import searchPhrase from './SearchPhrase/searchPhrase';
 import feed from './Feed/feed';
-import popularPodcasts from './PopularPodcasts/popularPodcasts';
 import subscriptions from './Subscriptions/subscriptions';
 
 const rootReducer = combineReducers({
@@ -15,7 +14,6 @@ const rootReducer = combineReducers({
   podcasts,
   currentPodcast,
   currentEpisode,
-  popularPodcasts,
   subscriptions,
   feed
 });

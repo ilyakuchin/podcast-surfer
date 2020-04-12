@@ -16,7 +16,7 @@ import 'semantic-ui-css/semantic.min.css';
 import ConnectedSearchForm from './components/SearchForm/SearchForm';
 import NotFound from './components/NotFound/NotFound';
 import ConnectedSearchResults from './components/SearchResults/SearchResults';
-import PopularPodcasts from './components/PopularPodcasts/PopularPodcasts';
+import Home from './components/Home/Home';
 
 export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
   useEffect(() => {
@@ -26,47 +26,44 @@ export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
   return (
     <div>
       <Router history={history}>
-        {jwt ? (
-          <Menu stackable>
-            <Menu.Item>PODCAST SURFER</Menu.Item>
-            <Menu.Item>
-              <Link to='/popular'>Popular</Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/subscriptions'>Subscriptions</Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/feed'>Feed</Link>
-            </Menu.Item>
-            <Menu.Item position='right'>
-              <ConnectedSearchForm />
-            </Menu.Item>
-            <Menu.Item position='right'>{username}</Menu.Item>
-            <Menu.Item position='right'>
-              <Link to='/' onClick={logoutConnect}>
-                Logout
-              </Link>
-            </Menu.Item>
-          </Menu>
-        ) : (
-          <Menu stackable>
-            <Menu.Item>PODCAST SURFER</Menu.Item>
-            <Menu.Item>
-              <Link to='/'>Popular</Link>
-            </Menu.Item>
-            <Menu.Item position='right'>
-              <ConnectedSearchForm />
-            </Menu.Item>
-            <Menu.Item position='right'>
-              <Link to='/login'>Log in</Link>
-            </Menu.Item>
-          </Menu>
-        )}
+        <Menu stackable>
+          <Menu.Item>
+            <Link to='/'>PODCAST SURFER</Link>
+          </Menu.Item>
+          {jwt ? (
+            <>
+              <Menu.Item>
+                <Link to='/subscriptions'>Subscriptions</Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link to='/feed'>Feed</Link>
+              </Menu.Item>
+              <Menu.Item position='right'>
+                <ConnectedSearchForm />
+              </Menu.Item>
+              <Menu.Item position='right'>{username}</Menu.Item>
+              <Menu.Item position='right'>
+                <Link to='/' onClick={logoutConnect}>
+                  Logout
+                </Link>
+              </Menu.Item>
+            </>
+          ) : (
+            <>
+              <Menu.Item position='right'>
+                <ConnectedSearchForm />
+              </Menu.Item>
+              <Menu.Item position='right'>
+                <Link to='/login'>Log in</Link>
+              </Menu.Item>
+            </>
+          )}
+        </Menu>
         <div>
           <Switch>
-            <Route path='/' component={PopularPodcasts} exact />
+            <Route path='/' component={Home} exact />
             <Route path='/search' component={ConnectedSearchResults} exact />
-            <Route path='/popular' component={PopularPodcasts} exact />
+            <Route path='/home' component={Home} exact />
             <Route path='/podcast' component={ConnectedPodcast} />
             <Route path='/episode-player' component={ConnectedEpisodePlayer} />
             <Route path='/subscriptions' component={ConnectedSubscriptions} />
