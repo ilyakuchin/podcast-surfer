@@ -21,7 +21,6 @@ const mockState = {
       { id: '3', image: 'link3', rss: 'rss3', name: 'name3' }
     ]
   },
-
   searchPhrase: 'testSearchPhrase',
 
   currentPodcast: {
