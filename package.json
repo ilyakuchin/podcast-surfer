@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/compat-data": "^7.9.0",
     "@babel/core": "^7.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
@@ -67,7 +68,7 @@
     ]
   },
   "resolutions": {
-    "@babel/preset-env": "7.5.5"
+    "@babel/preset-env": "7.9.0"
   },
   "devDependencies": {
     "@babel/helper-call-delegate": "^7.8.7",
