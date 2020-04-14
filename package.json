@@ -68,7 +68,7 @@
     ]
   },
   "resolutions": {
-    "@babel/preset-env": "7.9.0"
+    "@babel/preset-env": "^7.8.7"
   },
   "devDependencies": {
     "@babel/helper-call-delegate": "^7.8.7",
