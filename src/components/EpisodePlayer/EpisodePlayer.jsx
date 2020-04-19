@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Player from '../Player/Player';
 
 const Grid = styled.div`
   position: relative;
@@ -50,11 +51,6 @@ const Header = styled.h2`
   }
 `;
 
-const Audio = styled.audio`
-  grid-area: audio;
-  width: 95%;
-`;
-
 const Description = styled.div`
   grid-area: description;
   max-width: 700px;
@@ -69,10 +65,8 @@ export function EpisodePlayer({ name, description, imageUrl, audioUrl }) {
     <Grid>
       <Pic src={imageUrl} alt='' />
       <Header>{name}</Header>
-      <Audio controls>
-        <source src={audioUrl} type='audio/mp4' />
-      </Audio>
       <Description>{description}</Description>
+      <Player audioUrl={audioUrl} />
     </Grid>
   );
 }
@@ -81,16 +75,16 @@ EpisodePlayer.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  audioUrl: PropTypes.string.isRequired
+  audioUrl: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     isFetching: state.currentEpisode.isFetching,
     name: state.currentEpisode.name,
     description: state.currentEpisode.description,
     imageUrl: state.currentEpisode.imageUrl,
-    audioUrl: state.currentEpisode.audioUrl
+    audioUrl: state.currentEpisode.audioUrl,
   };
 };
 

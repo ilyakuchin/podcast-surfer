@@ -9,17 +9,12 @@ exports[`Test EpisodePlayer component should render correctly 1`] = `
   <styled.h2>
     test
   </styled.h2>
-  <styled.audio
-    controls={true}
-  >
-    <source
-      src="test"
-      type="audio/mp4"
-    />
-  </styled.audio>
   <styled.div>
     test
   </styled.div>
+  <Player
+    audioUrl="test"
+  />
 </styled.div>
 `;
 
@@ -32,16 +27,11 @@ exports[`Test EpisodePlayer component should render correctly 2`] = `
   <styled.h2>
     test
   </styled.h2>
-  <styled.audio
-    controls={true}
-  >
-    <source
-      src="test"
-      type="audio/mp4"
-    />
-  </styled.audio>
   <styled.div>
     test
   </styled.div>
+  <Player
+    audioUrl="test"
+  />
 </styled.div>
 `;
