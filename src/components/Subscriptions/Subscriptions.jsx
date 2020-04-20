@@ -1,23 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Header } from 'semantic-ui-react';
 import ConnectedPodcastList from '../PodcastList/PodcastList';
 import { fetchSubscriptions } from '../../redux/actions/Subscriptions/subscriptions';
-
-const ComponentGrid = styled.div`
-  height: 100%;
-  display: grid;
-  justify-content: center;
-  grid-template-areas: 'results';
-`;
 
 export function Subscriptions({
   fetchSubscriptionsConnect,
   subscriptionUrls,
   subscriptions,
-  isFetching
+  isFetching,
 }) {
   useEffect(() => {
     fetchSubscriptionsConnect(subscriptionUrls);
@@ -26,20 +17,16 @@ export function Subscriptions({
   return (
     <div>
       {subscriptions.length > 0 ? (
-        <Header as='h2' textAlign='center'>
-          Subscriptions
-        </Header>
+        <h2>Subscriptions</h2>
       ) : (
-        <Header as='h2' textAlign='center'>
-          There is no subscriptions yet
-        </Header>
+        <h2>There is no subscriptions yet</h2>
       )}
-      <ComponentGrid>
+      <div>
         <ConnectedPodcastList
           podcasts={subscriptions}
           isFetching={isFetching}
         />
-      </ComponentGrid>
+      </div>
     </div>
   );
 }
@@ -60,28 +47,28 @@ Subscriptions.propTypes = {
           imageUrl: PropTypes.string,
           audioUrl: PropTypes.string,
           date: PropTypes.string,
-          podcastUrl: PropTypes.string
+          podcastUrl: PropTypes.string,
         })
       ),
-      rss: PropTypes.string
+      rss: PropTypes.string,
     })
   ).isRequired,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     subscriptionUrls: state.userInfo.subscriptions,
     username: state.userInfo.username,
     subscriptions: state.subscriptions.subscriptions,
-    isFetching: state.subscriptions.isFetching
+    isFetching: state.subscriptions.isFetching,
   };
 };
 
-const dispatchToProps = dispatch => {
+const dispatchToProps = (dispatch) => {
   return {
     fetchSubscriptionsConnect: (username, jwt) =>
-      dispatch(fetchSubscriptions(username, jwt))
+      dispatch(fetchSubscriptions(username, jwt)),
   };
 };
 

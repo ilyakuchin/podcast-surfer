@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
 import history from '../../helpers/history';
 import { setSearchPhrase } from '../../redux/actions/SearchPhrase/searchPhrase';
 import { searchPodcasts } from '../../redux/actions/Podcasts/podcasts';
@@ -10,39 +9,39 @@ export function SearchForm({
   searchPhrase,
   jwt,
   setSearchPhraseConnect,
-  searchPodcastsConnect
+  searchPodcastsConnect,
 }) {
   return (
-    <Form
-      onSubmit={e => {
+    <form
+      onSubmit={(e) => {
         searchPodcastsConnect(e, searchPhrase, jwt);
         history.push('/search');
       }}
     >
-      <Form.Input
+      <input
         value={searchPhrase}
         onChange={setSearchPhraseConnect}
         action={{
-          icon: 'search'
+          icon: 'search',
         }}
         placeholder='Search...'
       />
-    </Form>
+    </form>
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     searchPhrase: state.searchPhrase,
-    jwt: state.userInfo.jwt
+    jwt: state.userInfo.jwt,
   };
 };
 
-const dispatchStateToProps = dispatch => {
+const dispatchStateToProps = (dispatch) => {
   return {
     searchPodcastsConnect: (e, searchPhrase, jwt) =>
       dispatch(searchPodcasts(e, searchPhrase, jwt)),
-    setSearchPhraseConnect: e => dispatch(setSearchPhrase(e.target.value))
+    setSearchPhraseConnect: (e) => dispatch(setSearchPhrase(e.target.value)),
   };
 };
 
@@ -50,7 +49,7 @@ SearchForm.propTypes = {
   searchPhrase: PropTypes.string.isRequired,
   jwt: PropTypes.string.isRequired,
   setSearchPhraseConnect: PropTypes.func.isRequired,
-  searchPodcastsConnect: PropTypes.func.isRequired
+  searchPodcastsConnect: PropTypes.func.isRequired,
 };
 
 const ConnectedSearchForm = connect(

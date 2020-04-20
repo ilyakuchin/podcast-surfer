@@ -2,17 +2,14 @@
 
 exports[`Test Subscriptions component should render correctly 1`] = `
 <div>
-  <Header
-    as="h2"
-    textAlign="center"
-  >
+  <h2>
     There is no subscriptions yet
-  </Header>
-  <styled.div>
+  </h2>
+  <div>
     <Connect(PodcastList)
       isFetching={false}
       podcasts={Array []}
     />
-  </styled.div>
+  </div>
 </div>
 `;

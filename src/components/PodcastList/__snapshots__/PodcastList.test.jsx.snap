@@ -1,16 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test PodcastList component should render correctly 1`] = `
-<CardGroup>
-  <Card
-    centered={true}
+<div>
+  <div
     key="rss1"
   >
-    <CardContent
-      textAlign="center"
-    >
-      <Image
-        as="img"
+    <div>
+      <img
         style={
           Object {
             "height": "200px",
@@ -20,27 +16,21 @@ exports[`Test PodcastList component should render correctly 1`] = `
         }
         ui={false}
       />
-      <CardHeader
-        textAlign="center"
-      >
+      <div>
         <Link
           onClick={[Function]}
           to="/podcast"
         >
           name
         </Link>
-      </CardHeader>
-    </CardContent>
-  </Card>
-  <Card
-    centered={true}
+      </div>
+    </div>
+  </div>
+  <div
     key="rss2"
   >
-    <CardContent
-      textAlign="center"
-    >
-      <Image
-        as="img"
+    <div>
+      <img
         style={
           Object {
             "height": "200px",
@@ -50,27 +40,21 @@ exports[`Test PodcastList component should render correctly 1`] = `
         }
         ui={false}
       />
-      <CardHeader
-        textAlign="center"
-      >
+      <div>
         <Link
           onClick={[Function]}
           to="/podcast"
         >
           name2
         </Link>
-      </CardHeader>
-    </CardContent>
-  </Card>
-  <Card
-    centered={true}
+      </div>
+    </div>
+  </div>
+  <div
     key="rss3"
   >
-    <CardContent
-      textAlign="center"
-    >
-      <Image
-        as="img"
+    <div>
+      <img
         style={
           Object {
             "height": "200px",
@@ -80,30 +64,21 @@ exports[`Test PodcastList component should render correctly 1`] = `
         }
         ui={false}
       />
-      <CardHeader
-        textAlign="center"
-      >
+      <div>
         <Link
           onClick={[Function]}
           to="/podcast"
         >
           name3
         </Link>
-      </CardHeader>
-    </CardContent>
-  </Card>
-</CardGroup>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Test PodcastList component should render correctly if Fecthing 1`] = `
-<Dimmer
-  active={true}
-  inverted={true}
->
-  <Loader
-    size="massive"
-  >
-    Loading
-  </Loader>
-</Dimmer>
+<div>
+  Loading...
+</div>
 `;

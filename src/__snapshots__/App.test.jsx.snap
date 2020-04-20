@@ -24,51 +24,43 @@ exports[`Test App Component Should Render Correctly 1`] = `
       }
     }
   >
-    <Menu
-      stackable={true}
-    >
-      <MenuItem>
+    <div>
+      <div>
         <Link
           to="/"
         >
           PODCAST SURFER
         </Link>
-      </MenuItem>
-      <MenuItem>
+      </div>
+      <div>
         <Link
           to="/subscriptions"
         >
           Subscriptions
         </Link>
-      </MenuItem>
-      <MenuItem>
+      </div>
+      <div>
         <Link
           to="/feed"
         >
           Feed
         </Link>
-      </MenuItem>
-      <MenuItem
-        position="right"
-      >
+      </div>
+      <div>
         <Connect(SearchForm) />
-      </MenuItem>
-      <MenuItem
-        position="right"
-      >
+      </div>
+      <div>
         username
-      </MenuItem>
-      <MenuItem
-        position="right"
-      >
+      </div>
+      <div>
         <Link
           onClick={[Function]}
           to="/"
         >
           Logout
         </Link>
-      </MenuItem>
-    </Menu>
+      </div>
+    </div>
     <div>
       <Switch>
         <Route
@@ -211,31 +203,25 @@ exports[`Test App Component Should Render Correctly 2`] = `
       }
     }
   >
-    <Menu
-      stackable={true}
-    >
-      <MenuItem>
+    <div>
+      <div>
         <Link
           to="/"
         >
           PODCAST SURFER
         </Link>
-      </MenuItem>
-      <MenuItem
-        position="right"
-      >
+      </div>
+      <div>
         <Connect(SearchForm) />
-      </MenuItem>
-      <MenuItem
-        position="right"
-      >
+      </div>
+      <div>
         <Link
           to="/login"
         >
           Log in
         </Link>
-      </MenuItem>
-    </Menu>
+      </div>
+    </div>
     <div>
       <Switch>
         <Route

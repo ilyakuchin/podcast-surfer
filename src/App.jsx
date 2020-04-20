@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import { Switch, Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Menu } from 'semantic-ui-react';
 import history from './helpers/history';
-import './App.css';
 import ConnectedPodcast from './components/Podcast/Podcast';
 import ConnectedEpisodePlayer from './components/EpisodePlayer/EpisodePlayer';
 import { fetchUser, logout } from './redux/actions/UserInfo/userInfo';
@@ -12,7 +10,6 @@ import ConnectedSubscriptions from './components/Subscriptions/Subscriptions';
 import ConnectedLogin from './components/Login/Login';
 import ConnectedSubscriptionsEpisodeFeed from './components/SubscriptionsEpisodeFeed/SubscriptionsEpisodeFeed';
 import ConnectedSignup from './components/Signup/Signup';
-import 'semantic-ui-css/semantic.min.css';
 import ConnectedSearchForm from './components/SearchForm/SearchForm';
 import NotFound from './components/NotFound/NotFound';
 import ConnectedSearchResults from './components/SearchResults/SearchResults';
@@ -26,39 +23,39 @@ export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
   return (
     <div>
       <Router history={history}>
-        <Menu stackable>
-          <Menu.Item>
+        <div>
+          <div>
             <Link to='/'>PODCAST SURFER</Link>
-          </Menu.Item>
+          </div>
           {jwt ? (
             <>
-              <Menu.Item>
+              <div>
                 <Link to='/subscriptions'>Subscriptions</Link>
-              </Menu.Item>
-              <Menu.Item>
+              </div>
+              <div>
                 <Link to='/feed'>Feed</Link>
-              </Menu.Item>
-              <Menu.Item position='right'>
+              </div>
+              <div>
                 <ConnectedSearchForm />
-              </Menu.Item>
-              <Menu.Item position='right'>{username}</Menu.Item>
-              <Menu.Item position='right'>
+              </div>
+              <div>{username}</div>
+              <div>
                 <Link to='/' onClick={logoutConnect}>
                   Logout
                 </Link>
-              </Menu.Item>
+              </div>
             </>
           ) : (
             <>
-              <Menu.Item position='right'>
+              <div>
                 <ConnectedSearchForm />
-              </Menu.Item>
-              <Menu.Item position='right'>
+              </div>
+              <div>
                 <Link to='/login'>Log in</Link>
-              </Menu.Item>
+              </div>
             </>
           )}
-        </Menu>
+        </div>
         <div>
           <Switch>
             <Route path='/' component={Home} exact />
@@ -80,28 +77,28 @@ export function App({ jwt, fetchUserConnect, logoutConnect, username }) {
 }
 
 App.defaultProps = {
-  jwt: null
+  jwt: null,
 };
 
 App.propTypes = {
   jwt: PropTypes.string,
   fetchUserConnect: PropTypes.func.isRequired,
   logoutConnect: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     jwt: state.userInfo.jwt,
     username: state.userInfo.username,
-    subscriptions: state.userInfo.subscriptions
+    subscriptions: state.userInfo.subscriptions,
   };
 };
 
-const dispatchToProps = dispatch => {
+const dispatchToProps = (dispatch) => {
   return {
     fetchUserConnect: () => dispatch(fetchUser()),
-    logoutConnect: () => dispatch(logout())
+    logoutConnect: () => dispatch(logout()),
   };
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { updateSubscriptions } from '../../redux/actions/UserInfo/userInfo';
 
@@ -17,14 +16,14 @@ export function SubscribeButton({
   currentPodcastUrl,
   jwt,
   updateSubscriptionsConnect,
-  isButtonEnabled
+  isButtonEnabled,
 }) {
   return (
     <div>
-      <Button
+      <button
         disabled={!isButtonEnabled}
         loading={!isButtonEnabled}
-        onClick={e => {
+        onClick={(e) => {
           e.preventDefault();
           if (!isSubscribed(subscriptions, currentPodcastUrl)) {
             updateSubscriptionsConnect(
@@ -37,7 +36,7 @@ export function SubscribeButton({
               updateSubscriptionsConnect(
                 [
                   ...subscriptions.slice(0, index),
-                  ...subscriptions.slice(index + 1)
+                  ...subscriptions.slice(index + 1),
                 ],
                 jwt
               );
@@ -48,7 +47,7 @@ export function SubscribeButton({
         {!isSubscribed(subscriptions, currentPodcastUrl)
           ? 'Subscribe'
           : 'Unsbscribe'}
-      </Button>
+      </button>
     </div>
   );
 }
@@ -58,23 +57,23 @@ SubscribeButton.propTypes = {
   currentPodcastUrl: PropTypes.string.isRequired,
   jwt: PropTypes.string.isRequired,
   updateSubscriptionsConnect: PropTypes.func.isRequired,
-  isButtonEnabled: PropTypes.bool.isRequired
+  isButtonEnabled: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     subscriptions: state.userInfo.subscriptions,
     currentPodcastImageUrl: state.currentPodcast.imageUrl,
     jwt: state.userInfo.jwt,
     currentPodcastUrl: state.currentPodcast.rss,
-    isButtonEnabled: state.userInfo.isSubscribeButtonEnabled
+    isButtonEnabled: state.userInfo.isSubscribeButtonEnabled,
   };
 };
 
-const dispatchToProps = dispatch => {
+const dispatchToProps = (dispatch) => {
   return {
     updateSubscriptionsConnect: (subscriptions, jwt) =>
-      dispatch(updateSubscriptions(subscriptions, jwt))
+      dispatch(updateSubscriptions(subscriptions, jwt)),
   };
 };
 

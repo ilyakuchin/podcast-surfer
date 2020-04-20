@@ -1,49 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test EpisodesList Component should render correctly 1`] = `
-<styled.ul>
-  <Pagination
-    aria-label="Pagination Navigation"
-    boundaryRange={1}
-    defaultActivePage={1}
-    ellipsisItem="..."
-    firstItem={
-      Object {
-        "aria-label": "First item",
-        "content": "«",
-      }
-    }
-    lastItem={
-      Object {
-        "aria-label": "Last item",
-        "content": "»",
-      }
-    }
-    nextItem={
-      Object {
-        "aria-label": "Next item",
-        "content": "⟩",
-      }
-    }
-    onPageChange={[Function]}
-    pageItem={Object {}}
-    prevItem={
-      Object {
-        "aria-label": "Previous item",
-        "content": "⟨",
-      }
-    }
-    siblingRange={1}
-    totalPages={0}
-  />
-  <List
-    verticalAlign="middle"
-  >
-    <ListItem
+<div>
+  <div>
+    <div
       key="1"
     >
-      <Image
-        as="img"
+      <img
         style={
           Object {
             "height": "200px",
@@ -51,22 +14,20 @@ exports[`Test EpisodesList Component should render correctly 1`] = `
             "width": "200px",
           }
         }
-        ui={true}
       />
-      <ListContent>
+      <div>
         <Link
           onClick={[Function]}
           to="/episode-player"
         >
           name1
         </Link>
-      </ListContent>
-    </ListItem>
-    <ListItem
+      </div>
+    </div>
+    <div
       key="2"
     >
-      <Image
-        as="img"
+      <img
         style={
           Object {
             "height": "200px",
@@ -74,22 +35,20 @@ exports[`Test EpisodesList Component should render correctly 1`] = `
             "width": "200px",
           }
         }
-        ui={true}
       />
-      <ListContent>
+      <div>
         <Link
           onClick={[Function]}
           to="/episode-player"
         >
           name2
         </Link>
-      </ListContent>
-    </ListItem>
-    <ListItem
+      </div>
+    </div>
+    <div
       key="3"
     >
-      <Image
-        as="img"
+      <img
         style={
           Object {
             "height": "200px",
@@ -97,17 +56,16 @@ exports[`Test EpisodesList Component should render correctly 1`] = `
             "width": "200px",
           }
         }
-        ui={true}
       />
-      <ListContent>
+      <div>
         <Link
           onClick={[Function]}
           to="/episode-player"
         >
           name3
         </Link>
-      </ListContent>
-    </ListItem>
-  </List>
-</styled.ul>
+      </div>
+    </div>
+  </div>
+</div>
 `;

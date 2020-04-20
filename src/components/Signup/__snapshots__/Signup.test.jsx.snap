@@ -2,34 +2,15 @@
 
 exports[`Test Signup component should render correctly 1`] = `
 <div>
-  <Form
-    as="form"
+  <form
     error={true}
   >
-    <Grid
-      style={
-        Object {
-          "height": "80vh",
-        }
-      }
-      textAlign="center"
-      verticalAlign="middle"
-    >
-      <GridColumn
-        style={
-          Object {
-            "maxWidth": 450,
-          }
-        }
-      >
-        <Header
-          as="h2"
-          textAlign="center"
-        >
+    <div>
+      <div>
+        <h2>
           Signup
-        </Header>
-        <FormField
-          control={[Function]}
+        </h2>
+        <input
           label={
             Object {
               "align": " left",
@@ -42,8 +23,7 @@ exports[`Test Signup component should render correctly 1`] = `
           type="text"
           value="username"
         />
-        <FormField
-          control={[Function]}
+        <input
           label={
             Object {
               "align": " left",
@@ -56,8 +36,7 @@ exports[`Test Signup component should render correctly 1`] = `
           type="password"
           value="password"
         />
-        <FormField
-          control={[Function]}
+        <input
           label={
             Object {
               "align": " left",
@@ -70,39 +49,26 @@ exports[`Test Signup component should render correctly 1`] = `
           type="password"
           value=""
         />
-        <Button
-          as="button"
+        <button
           content="Sign Up"
           onClick={[Function]}
           type="submit"
           value="Submit"
         />
-        <Message
-          content="error"
-          error={true}
-        />
-      </GridColumn>
-    </Grid>
-  </Form>
-  <Grid
-    columns={1}
-    container={true}
-    stackable={true}
-    textAlign="center"
-  >
-    <GridColumn
-      style={
-        Object {
-          "maxWidth": 450,
-        }
-      }
-    >
+        <div>
+          error
+        </div>
+      </div>
+    </div>
+  </form>
+  <div>
+    <div>
       <Link
         to="/login"
       >
         Back to Login
       </Link>
-    </GridColumn>
-  </Grid>
+    </div>
+  </div>
 </div>
 `;

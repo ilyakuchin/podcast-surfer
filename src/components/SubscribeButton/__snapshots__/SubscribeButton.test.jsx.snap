@@ -2,13 +2,12 @@
 
 exports[`Test SubscribeButton component should render correctly 1`] = `
 <div>
-  <Button
-    as="button"
+  <button
     disabled={false}
     loading={false}
     onClick={[Function]}
   >
     Subscribe
-  </Button>
+  </button>
 </div>
 `;

@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Form, Input, Button, Message, Header, Grid } from 'semantic-ui-react';
 import {
   setUsername,
   setPassword,
-  login
+  login,
 } from '../../redux/actions/UserInfo/userInfo';
 
 export function Login({
@@ -15,66 +14,64 @@ export function Login({
   validationErrorMessage,
   setUsernameConnect,
   setPasswordConnect,
-  loginConnect
+  loginConnect,
 }) {
   const hasValidationError = () => {
     return validationErrorMessage !== '';
   };
   return (
     <div>
-      <Form error={hasValidationError()}>
-        <Grid
+      <form error={hasValidationError()}>
+        <div
           textAlign='center'
           style={{ height: '80vh' }}
           verticalAlign='middle'
         >
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' textAlign='center'>
-              Login
-            </Header>
-            <Form.Field
-              control={Input}
+          <div style={{ maxWidth: 450 }}>
+            <h2>Login</h2>
+            <input
               type='text'
               value={username}
               label={{ align: ' left', children: 'Username' }}
-              onChange={e => setUsernameConnect(e.target.value)}
+              onChange={(e) => setUsernameConnect(e.target.value)}
               placeholder='username'
               name='uname'
               required
             />
 
-            <Form.Field
-              control={Input}
+            <input
               type='password'
               value={password}
               label={{ align: ' left', children: 'Password' }}
-              onChange={e => setPasswordConnect(e.target.value)}
+              onChange={(e) => setPasswordConnect(e.target.value)}
               placeholder='password'
               name='pswrd'
               required
             />
 
-            <Button
+            <button
               content='Log In'
               type='submit'
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 loginConnect(username, password);
               }}
             />
 
-            <Message error content={validationErrorMessage} />
-          </Grid.Column>
-        </Grid>
-      </Form>
-      <Grid textAlign='center' columns={1} container stackable>
-        <Grid.Column style={{ maxWidth: 450 }}>
+            <div>
+              {validationErrorMessage} <div />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div>
+        <div>
           <div>
             Don&#39;t have an account?
             <Link to='/signup'> Sign Up</Link>
           </div>
-        </Grid.Column>
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 }
@@ -85,22 +82,22 @@ Login.propTypes = {
   validationErrorMessage: PropTypes.string.isRequired,
   setUsernameConnect: PropTypes.func.isRequired,
   setPasswordConnect: PropTypes.func.isRequired,
-  loginConnect: PropTypes.func.isRequired
+  loginConnect: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     username: state.userInfo.username,
     password: state.userInfo.password,
-    validationErrorMessage: state.userInfo.validationErrorMessage
+    validationErrorMessage: state.userInfo.validationErrorMessage,
   };
 };
 
-const dispatchToProps = dispatch => {
+const dispatchToProps = (dispatch) => {
   return {
-    setUsernameConnect: username => dispatch(setUsername(username)),
-    setPasswordConnect: password => dispatch(setPassword(password)),
-    loginConnect: (username, password) => dispatch(login(username, password))
+    setUsernameConnect: (username) => dispatch(setUsername(username)),
+    setPasswordConnect: (password) => dispatch(setPassword(password)),
+    loginConnect: (username, password) => dispatch(login(username, password)),
   };
 };
 

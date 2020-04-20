@@ -2,11 +2,10 @@
 
 exports[`Test Login component should render correctly 1`] = `
 <div>
-  <Form
-    as="form"
+  <form
     error={true}
   >
-    <Grid
+    <div
       style={
         Object {
           "height": "80vh",
@@ -15,21 +14,17 @@ exports[`Test Login component should render correctly 1`] = `
       textAlign="center"
       verticalAlign="middle"
     >
-      <GridColumn
+      <div
         style={
           Object {
             "maxWidth": 450,
           }
         }
       >
-        <Header
-          as="h2"
-          textAlign="center"
-        >
+        <h2>
           Login
-        </Header>
-        <FormField
-          control={[Function]}
+        </h2>
+        <input
           label={
             Object {
               "align": " left",
@@ -43,8 +38,7 @@ exports[`Test Login component should render correctly 1`] = `
           type="text"
           value="username"
         />
-        <FormField
-          control={[Function]}
+        <input
           label={
             Object {
               "align": " left",
@@ -58,32 +52,21 @@ exports[`Test Login component should render correctly 1`] = `
           type="password"
           value="password"
         />
-        <Button
-          as="button"
+        <button
           content="Log In"
           onClick={[Function]}
           type="submit"
         />
-        <Message
-          content="errorMessage"
-          error={true}
-        />
-      </GridColumn>
-    </Grid>
-  </Form>
-  <Grid
-    columns={1}
-    container={true}
-    stackable={true}
-    textAlign="center"
-  >
-    <GridColumn
-      style={
-        Object {
-          "maxWidth": 450,
-        }
-      }
-    >
+        <div>
+          errorMessage
+           
+          <div />
+        </div>
+      </div>
+    </div>
+  </form>
+  <div>
+    <div>
       <div>
         Don't have an account?
         <Link
@@ -92,7 +75,7 @@ exports[`Test Login component should render correctly 1`] = `
            Sign Up
         </Link>
       </div>
-    </GridColumn>
-  </Grid>
+    </div>
+  </div>
 </div>
 `;

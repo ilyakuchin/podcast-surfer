@@ -2,50 +2,47 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Loader, Dimmer, Card, Image } from 'semantic-ui-react';
 import { fetchCurrentPodcast } from '../../redux/actions/CurrentPodcast/currentPodcast';
 
 export function PodcastList({
   isFetching,
   podcasts,
-  fetchCurrentPodcastConnect
+  fetchCurrentPodcastConnect,
 }) {
   return !isFetching ? (
-    <Card.Group>
+    <div>
       {podcasts.map(({ name, imageUrl, rss }) => (
-        <Card centered key={rss}>
-          <Card.Content textAlign='center'>
-            <Image
+        <div key={rss}>
+          <div>
+            <img
               style={{
                 width: '200px',
                 height: '200px',
-                objectFit: 'scale-down'
+                objectFit: 'scale-down',
               }}
               src={imageUrl}
               ui={false}
             />
-            <Card.Header textAlign='center'>
+            <div>
               <Link
                 onClick={() => fetchCurrentPodcastConnect(rss)}
                 to='/podcast'
               >
                 {name}
               </Link>
-            </Card.Header>
-          </Card.Content>
-        </Card>
+            </div>
+          </div>
+        </div>
       ))}
-    </Card.Group>
+    </div>
   ) : (
-    <Dimmer active inverted>
-      <Loader size='massive'>Loading</Loader>
-    </Dimmer>
+    <div>Loading...</div>
   );
 }
 
-const dispatchToProps = dispatch => {
+const dispatchToProps = (dispatch) => {
   return {
-    fetchCurrentPodcastConnect: rss => dispatch(fetchCurrentPodcast(rss))
+    fetchCurrentPodcastConnect: (rss) => dispatch(fetchCurrentPodcast(rss)),
   };
 };
 
@@ -60,8 +57,8 @@ PodcastList.propTypes = {
       id: PropTypes.string,
       image: PropTypes.string,
       rss: PropTypes.string,
-      name: PropTypes.string
+      name: PropTypes.string,
     })
   ).isRequired,
-  fetchCurrentPodcastConnect: PropTypes.func.isRequired
+  fetchCurrentPodcastConnect: PropTypes.func.isRequired,
 };
