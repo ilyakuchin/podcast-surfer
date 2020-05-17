@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Player from '../Player/Player';
+import ReactPodcastPlayer from '../ReactPodcastPlayer/ReactPodcastPlayer';
 
 const Grid = styled.div`
   position: relative;
@@ -66,7 +66,7 @@ export function EpisodePlayer({ name, description, imageUrl, audioUrl }) {
       <Pic src={imageUrl} alt='' />
       <Header>{name}</Header>
       <Description>{description}</Description>
-      <Player audioUrl={audioUrl} />
+      <ReactPodcastPlayer audioUrl={audioUrl} />
     </Grid>
   );
 }
